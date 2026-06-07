@@ -9,7 +9,7 @@
   --font-dm: var(--font-dm-sans);
   --font-cormorant: var(--font-cormorant);
   --font-serif: var(--font-cormorant), Georgia, serif;
-  --font-ui: var(--font-dm-sans), sans-serif;
+  --font-ui: "DM Sans", sans-serif;
 
   --color-brand-purple2: #21015f;
   --color-brand-purple: #5700ff;
@@ -189,11 +189,11 @@ body.landing-page {
   color: var(--color-purple-dark);
   font-family: var(--font-sans);
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   body.landing-page {
     display: block;
     overflow: auto;
     height: auto;
   }
-}
+} */
 
