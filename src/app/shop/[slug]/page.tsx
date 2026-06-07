@@ -23,7 +23,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const colors = ["Red", "Green", "Purple"];
   const sizes = ["Small", "Medium", "Large"];
 
-  // Use the same image 3 times as thumbnails (replace with real variants later)
   const thumbnails = [product.image, product.image, product.image];
 
   const [activeImage, setActiveImage] = useState(0);
@@ -114,10 +113,14 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
                 {product.title.toLowerCase() === "work in progress" ? (
                   <div className="flex flex-wrap items-center gap-2 mt-4">
-                    {product.meta.map((tag, i) => (
+                    {[
+                      "Pages: 174",
+                      "Category: Non Fiction",
+                      "Language: English",
+                    ].map((tag, i) => (
                       <span
                         key={i}
-                        className="text-brand-purple2 border border-black/15 py-1 px-3 rounded-[40px] text-base"
+                        className="text-brand-purple2 font-light bg-black/4 py-1 px-3 rounded-[40px] text-base"
                       >
                         {tag}
                       </span>
@@ -205,7 +208,17 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
         {/* other products */}
         <div className="mt-6 ">
           <h3 className="font-cormorant font-semibold text-black text-[40px] mb-6">
-            Complete the <span className="text-brand-purple">experience</span>
+            {product.title.toLowerCase() === "work in progress" ? (
+              <>
+                Others who pre-ordered also grabbed this{" "}
+                <span className="text-brand-purple">experience</span>
+              </>
+            ) : (
+              <>
+                Complete the{" "}
+                <span className="text-brand-purple">experience</span>
+              </>
+            )}
           </h3>
           <section id="products-grid" className="scroll-mt-6">
             {ALL_PRODUCTS.length > 0 ? (
