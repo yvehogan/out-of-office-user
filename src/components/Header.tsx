@@ -11,9 +11,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="navbar" id="site-header">
-        <div className="logo-container">
-          <Link href="/" className="logo-text" aria-label="Out of Office Home">
+      <header className="shrink-0 w-full bg-white flex justify-between items-center px-[60px] py-2.5 z-[1000] border-b border-[#e9ecef] min-[1440px]:px-[100px] min-[1440px]:py-5 max-lg:sticky max-lg:top-0 max-lg:h-[90px] max-lg:px-6 max-lg:py-0" id="site-header">
+        <div className="flex items-center">
+          <Link href="/" className="font-serif text-[28px] font-bold text-brand-purple2 no-underline tracking-[-0.5px] [&_svg]:w-[100px] [&_svg]:h-[45px] min-[1440px]:[&_svg]:w-[139px] min-[1440px]:[&_svg]:h-[63px] max-lg:[&_svg]:w-[110px] max-lg:[&_svg]:h-[50px]" aria-label="Out of Office Home">
             <svg width="139" height="63" viewBox="0 0 139 63" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_2093_338)">
                 <path d="M43.4365 16.5361C34.8374 16.5361 27.8399 23.5314 27.8399 32.1305C27.8399 33.2423 27.9569 34.3277 28.1797 35.3755C29.9665 37.3874 31.2549 39.8471 31.8549 42.5649C34.7117 45.7328 38.8458 47.727 43.4365 47.727C52.0355 47.727 59.0308 40.7295 59.0308 32.1305C59.0308 23.5314 52.0355 16.5361 43.4365 16.5361ZM51.4951 29.9884L48.0956 38.8588C47.7095 39.8648 46.5823 40.3677 45.5785 39.9817L36.7081 36.5822C35.7022 36.1962 35.1992 35.0689 35.5853 34.0651L38.9847 25.1948C39.3708 25.1948 40.4981 23.6858 41.5018 24.0719L50.3722 27.4714C51.3781 27.8574 51.8811 28.9847 51.4951 29.9884Z" fill="#5700FF" />
@@ -41,7 +41,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <button className={`menu-toggle ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
+        <button className={`bg-none border-none cursor-pointer w-8 h-8 flex justify-center items-center z-[1010] relative min-[1440px]:w-[50px] min-[1440px]:h-[50px] max-lg:w-9 max-lg:h-9 [&_svg]:w-7 [&_svg]:h-7 [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] min-[1440px]:[&_svg]:w-[50px] min-[1440px]:[&_svg]:h-[50px] ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
           <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="2" y="11" width="47" height="10" rx="5" fill="#5700FF" />
             <rect x="2" y="29" width="47" height="10" rx="5" fill="#5700FF" />
@@ -49,12 +49,12 @@ export default function Header() {
         </button>
       </header>
 
-      <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`} id="nav-dropdown">
-        <ul className="nav-links">
-          <li><Link href="/shop" className="nav-link" onClick={closeMenu}>Books</Link></li>
-          <li><Link href="/insights" className="nav-link" onClick={closeMenu}>Insights</Link></li>
-          <li><Link href="/shop" className="nav-link" onClick={closeMenu}>Shop</Link></li>
-          <li><Link href="/events" className="nav-link" onClick={closeMenu}>Events</Link></li>
+      <nav className={`fixed top-[84px] w-[400px] h-[calc(100vh-84px)] bg-white shadow-[-10px_0_30px_rgba(33,1,95,0.05)] transition-[right] duration-[0.4s] ease-[cubic-bezier(0.4,0,0.2,1)] z-[999] flex flex-col p-[60px_50px] border-l border-[#e9ecef] min-[1440px]:top-[103px] min-[1440px]:h-[calc(100vh-103px)] max-lg:top-[90px] max-lg:w-full max-lg:h-[calc(100vh-90px)] max-lg:p-[40px_24px] max-lg:border-l-0 ${isMenuOpen ? 'right-0' : '-right-full'}`} id="nav-dropdown">
+        <ul className="list-none flex flex-col gap-10 max-lg:gap-[30px]">
+          <li><Link href="/shop" className="font-serif text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5 max-lg:text-[28px]" onClick={closeMenu}>Books</Link></li>
+          <li><Link href="/insights" className="font-serif text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5 max-lg:text-[28px]" onClick={closeMenu}>Insights</Link></li>
+          <li><Link href="/shop" className="font-serif text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5 max-lg:text-[28px]" onClick={closeMenu}>Shop</Link></li>
+          <li><Link href="/events" className="font-serif text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5 max-lg:text-[28px]" onClick={closeMenu}>Events</Link></li>
         </ul>
       </nav>
     </>
