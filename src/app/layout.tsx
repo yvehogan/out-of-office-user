@@ -3,6 +3,7 @@ import "./globals.css";
 import localfont from "next/font/local";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Header from "@/components/Header";
 
 // const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body
         className={`${unageo.variable} ${dmSans.variable} ${cormorantGaramond.variable} ${unageo.className}`}
       >
+        <Header />
         {children}
       </body>
     </html>
