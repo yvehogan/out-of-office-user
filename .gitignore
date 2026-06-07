@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Next.js
-.next/
+# Next.js build output
+/.next/
+/out/
+
+# Production build
+/build/
+/dist/

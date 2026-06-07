@@ -7,6 +7,7 @@ import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ALL_PRODUCTS, getProductBySlug } from "@/lib/data/shop-data";
 import { ProductCard } from "@/components/pages/shop/product-card";
+import { Footer } from "@/components/Footer";
 
 interface ProductDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -235,6 +236,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

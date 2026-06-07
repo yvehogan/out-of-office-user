@@ -3,11 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-// import { Navbar } from "@/components/Navbar";
 import { FeaturedEvent } from "@/components/pages/events/featured-event";
 import { EventCard } from "@/components/pages/events/event-card";
 import { Pagination } from "@/components/pagination";
-// import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import { FEATURED_EVENT, getPaginatedEvents } from "@/lib/data/events-data";
 
 export default function EventsPage() {
@@ -80,6 +79,7 @@ export default function EventsPage() {
           />
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { Pagination } from "@/components/pagination";
 import { getPaginatedInsights } from "@/lib/data/events-data";
 import { InsightCard } from "@/components/pages/insights/insight-card";
+import { Footer } from "@/components/Footer";
 
 export default function InsightsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,8 +78,7 @@ export default function InsightsPage() {
           />
         </section>
       </main>
-
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

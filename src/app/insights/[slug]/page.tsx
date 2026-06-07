@@ -4,6 +4,7 @@ import { BookOpenText, ChevronRight } from "lucide-react";
 import { Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ALL_INSIGHTS, getInsightBySlug } from "@/lib/data/events-data";
+import { Footer } from "@/components/Footer";
 
 interface InsightDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -135,6 +136,7 @@ export default async function InsightDetailPage({
           </div>
         </article>
       </main>
+      <Footer />
     </div>
   );
 }
