@@ -7,6 +7,7 @@ import { Pagination } from "@/components/pagination";
 import { getPaginatedProducts, ProductCategory } from "@/lib/data/shop-data";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { Footer } from "@/components/Footer";
 
 export default function ShopPage() {
   const [category, setCategory] = useState<ProductCategory>("All");
@@ -91,6 +92,7 @@ export default function ShopPage() {
           )}
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

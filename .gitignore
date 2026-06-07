@@ -22,4 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.next/
+
+# Next.js build output
+/.next/
+/out/
+
+# Production build
+/build/
+/dist/
