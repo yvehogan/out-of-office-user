@@ -42,8 +42,8 @@ export default function Home() {
         <div className="flex flex-col h-auto w-full xl:!w-max xl:h-full xl:flex-row">
 
           {/* 1. HERO SECTION */}
-          <section className="relative w-full h-auto py-10 px-6 md:px-12 md:flex-row md:items-center xl:py-[60px] xl:px-0 bg-white flex flex-col-reverse gap-0 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:pt-0 xl:shrink-0 xl:inline-flex xl:flex-row xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max 2xl:w-max xl:gap-[30px] 2xl:gap-[60px]" id="hero">
-            <div className="flex flex-col justify-center w-full h-auto p-0 md:w-1/2 md:pr-0 xl:w-[500px] 2xl:w-[700px] xl:pl-[60px] xl:pr-0 xl:h-full relative z-10 xl:shrink-0 xl:pt-[64px] 2xl:pt-0">
+          <section className="relative w-full h-auto py-10 px-6 md:px-12 md:flex-row md:items-center xl:py-[60px] xl:px-0 bg-white flex flex-col-reverse gap-0 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:pt-0 xl:shrink-0 xl:inline-flex xl:flex-row xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max 2xl:w-max xl:gap-[30px] 2xl:gap-[80px]" id="hero">
+            <div className="flex flex-col justify-center w-full h-auto p-0 md:w-1/2 md:pr-0 xl:w-[500px] 2xl:!w-[680px] xl:pl-[60px] 2xl:!pl-[100px] xl:pr-0 xl:h-full relative z-10 xl:shrink-0 xl:pt-[64px] 2xl:pt-0">
               <div className="flex flex-row items-center md:flex-col lg:flex-row md:items-start lg:items-center md:gap-2 gap-3 mb-4 mt-8 md:mt-0 xl:gap-[15px] xl:mb-[20px] 2xl:mb-[30px] xl:mt-0">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -51,30 +51,30 @@ export default function Home() {
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
                     fill="black" />
                 </svg>
-                <div className="font-serif text-[13px] font-bold text-brand-green2 xl:text-[14px] 2xl:text-[18px] uppercase tracking-wider">NEW BOOK AVAILABLE FOR PRE-ORDER</div>
+                <div className="font-serif text-[13px] font-bold text-brand-green2 xl:text-[14px] 2xl:!text-[16px] uppercase tracking-wider whitespace-nowrap">NEW BOOK AVAILABLE FOR PRE-ORDER</div>
               </div>
-              <div className="max-w-[670px]">
-                <h1 className="font-serif text-[48px] md:text-[56px] font-bold leading-[1.1] text-brand-purple2 mb-4 xl:mb-5 xl:leading-[1.05] xl:text-[64px] 2xl:text-[80px]">
+              <div className="w-full">
+                <h1 className="font-serif text-[48px] md:text-[56px] font-bold leading-[1.1] text-brand-purple2 mb-4 xl:mb-5 xl:leading-[1.05] xl:text-[64px] 2xl:!text-[96px] whitespace-nowrap">
                   <span className="text-brand-purple2">Life beyond</span><br />
                   <span className="text-brand-purple italic">the job title.</span>
                 </h1>
-                <p className="font-unageo text-lg md:text-[17px] max-w-full font-light leading-[1.5] text-brand-purple2 mb-[30px] xl:max-w-full 2xl:max-w-[500px] xl:mb-7 xl:text-[16px] 2xl:mb-12 2xl:text-[22px]">Out of Office is not a book about work. It is a playbook for navigating failed ventures,
+                <p className="font-unageo text-lg md:text-[17px] w-full font-light leading-[1.5] text-brand-purple2 mb-[30px] xl:mb-7 xl:text-[16px] 2xl:mb-12 2xl:!text-[22px] whitespace-normal xl:w-full 2xl:w-full">Out of Office is not a book about work. It is a playbook for navigating failed ventures,
                   difficult transitions, and the courage to reinvent yourself, so you can step into the most meaningful season
                   of your life.&apos;</p>
               </div>
-              <Button render={<Link href="/coming-soon" />} className="!inline-flex items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 md:w-[200px] xl:w-[160px] 2xl:w-[220px] xl:py-4 2xl:py-6 xl:text-sm 2xl:text-base">Pre-order Now</Button>
+              <Button render={<Link href="/coming-soon" />} className="!inline-flex items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 md:w-[200px] xl:w-[160px] 2xl:!w-[220px] xl:py-4 2xl:!py-6 xl:text-sm 2xl:!text-lg">Pre-order Now</Button>
             </div>
 
-            <div className="flex items-center justify-start z-[1] w-full h-auto relative left-auto top-auto md:w-1/2 md:justify-center xl:relative xl:py-0 xl:w-[500px] 2xl:w-[600px] xl:left-auto xl:h-full xl:shrink-0 xl:items-center xl:justify-center xl:-ml-[60px] xl:mr-[20px]">
-              <img src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] xl:h-auto xl:max-h-[105%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:mt-[40px] xl:scale-100 transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
+            <div className="flex items-center justify-start z-[1] w-full h-auto relative left-auto top-auto md:w-1/2 md:justify-center xl:relative xl:py-0 xl:w-[500px] 2xl:!w-[650px] xl:left-auto xl:h-full xl:shrink-0 xl:items-center xl:justify-center xl:-ml-[60px] xl:mr-[20px]">
+              <img src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
             </div>
           </section>
 
           {/* 2. "THERE IS MORE" SECTION */}
-          <section className="relative mt-20 flex flex-col md:flex-row md:items-start gap-[30px] w-full h-auto px-[24px] md:px-12 xl:px-0 xl:w-max 2xl:w-max xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 2xl:gap-0 xl:-ml-[50px] 2xl:ml-[0px] xl:mr-[10px] 2xl:mr-[120px] xl:mt-0 xl:pt-[80px] 2xl:pt-[120px]" id="there-is-more">
-            <div className="flex flex-col w-full h-auto md:w-1/2 md:pr-10 xl:pr-0 xl:w-[560px] 2xl:w-[600px] xl:h-full xl:shrink-0 relative">
-              <h2 className="font-serif text-[38px] max-w-full font-bold italic leading-[1.2] text-brand-purple2 xl:text-[56px] 2xl:text-[80px] xl:leading-[1.1] 2xl:leading-[1.1]">
-                "There is <span className="text-brand-purple">more to life</span><br className="hidden xl:block" /> than what you do for<br className="hidden xl:block" /> work."
+          <section className="relative mt-20 flex flex-col md:flex-row md:items-start gap-[30px] w-full h-auto px-[24px] md:px-12 xl:px-0 xl:w-max 2xl:w-max xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 2xl:gap-0 xl:-ml-[50px] 2xl:!-ml-[80px] xl:mr-[10px] 2xl:mr-[120px] xl:mt-0 xl:pt-[80px] 2xl:!pt-[125px]" id="there-is-more">
+            <div className="flex flex-col w-full h-auto md:w-1/2 md:pr-10 xl:pr-0 xl:w-[560px] 2xl:!w-[800px] 2xl:!pr-0 xl:h-full xl:shrink-0 relative">
+              <h2 className="font-serif text-[38px] max-w-full font-bold italic leading-[1.2] text-brand-purple2 xl:text-[56px] 2xl:!text-[82px] xl:leading-[1.1] 2xl:!leading-[1.1]">
+                "There is <span className="text-brand-purple">more to life</span><br className="hidden xl:block 2xl:hidden" /> than what you do for<br className="hidden xl:block 2xl:hidden" /> work."
               </h2>
               
               {/* Tablet/Desktop Icon (Hidden on mobile) */}
@@ -83,9 +83,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className='relative md:w-1/2 xl:w-[450px] 2xl:w-[680px] xl:shrink-0'>
-              <div className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-[12px]">
-                <p className="font-unageo text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[16px] 2xl:text-[22px] text-left">
+            <div className='relative md:w-1/2 xl:w-[450px] 2xl:!w-[650px] xl:shrink-0'>
+              <div className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-[12px] 2xl:!pt-[24px]">
+                <p className="font-unageo text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[16px] 2xl:!text-[22px] 2xl:!leading-[1.6] text-left">
                   This is a playbook for young professionals, entrepreneurs, emerging leaders and leaders
                   across every space of life who are ready to take bold steps with their future. It offers unconventional
                   wisdom on how work really works, how life really unfolds, and what it takes to navigate both with clarity,

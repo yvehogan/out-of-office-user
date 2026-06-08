@@ -11,10 +11,10 @@ export default function Header() {
 
   return (
     <>
-      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] border-b border-[#e9ecef] sticky top-0 h-[90px] px-6 md:px-12 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 min-[1440px]:px-[100px]" id="site-header">
+      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] border-b border-[#e9ecef] sticky top-0 h-[90px] px-6 md:px-12 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 2xl:!px-[100px]" id="site-header">
         <div className="flex items-center">
-          <Link href="/" className="font-serif text-[28px] font-bold text-brand-purple2 no-underline tracking-[-0.5px] [&_svg]:w-[110px] [&_svg]:h-[50px] xl:[&_svg]:w-[100px] xl:[&_svg]:h-[45px] min-[1440px]:[&_svg]:w-[139px] min-[1440px]:[&_svg]:h-[63px]" aria-label="Out of Office Home">
-            <svg width="139" height="63" viewBox="0 0 139 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <Link href="/" className="block font-serif text-[28px] font-bold text-brand-purple2 no-underline tracking-[-0.5px] w-[110px] h-[50px] xl:w-[100px] xl:h-[45px] 2xl:!w-[139px] 2xl:!h-[63px]" aria-label="Out of Office Home">
+            <svg className="w-full h-full" viewBox="0 0 139 63" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_2093_338)">
                 <path d="M43.4365 16.5361C34.8374 16.5361 27.8399 23.5314 27.8399 32.1305C27.8399 33.2423 27.9569 34.3277 28.1797 35.3755C29.9665 37.3874 31.2549 39.8471 31.8549 42.5649C34.7117 45.7328 38.8458 47.727 43.4365 47.727C52.0355 47.727 59.0308 40.7295 59.0308 32.1305C59.0308 23.5314 52.0355 16.5361 43.4365 16.5361ZM51.4951 29.9884L48.0956 38.8588C47.7095 39.8648 46.5823 40.3677 45.5785 39.9817L36.7081 36.5822C35.7022 36.1962 35.1992 35.0689 35.5853 34.0651L38.9847 25.1948C39.3708 25.1948 40.4981 23.6858 41.5018 24.0719L50.3722 27.4714C51.3781 27.8574 51.8811 28.9847 51.4951 29.9884Z" fill="#5700FF" />
                 <path d="M18.7357 0C10.1366 0 3.13916 6.99528 3.13916 15.5943C3.13916 24.1934 10.1344 31.1887 18.7335 31.1887C27.3326 31.1887 34.3278 24.1934 34.3278 15.5943C34.3278 6.99528 27.3348 0 18.7357 0ZM26.0464 19.638L17.5092 23.8029C16.5429 24.275 15.3759 23.8735 14.9039 22.9051L10.7389 14.3678C10.2668 13.4016 10.6683 12.2346 11.6367 11.7625L20.174 7.59753C21.1403 7.12544 22.3072 7.52693 22.7793 8.49537L26.9443 17.0327C27.4164 17.9989 27.0149 19.1659 26.0464 19.638Z" fill="#00CC8D" />
@@ -41,8 +41,8 @@ export default function Header() {
           </Link>
         </div>
 
-        <button className={`bg-transparent border-none cursor-pointer w-9 h-9 xl:w-8 xl:h-8 min-[1440px]:w-[50px] min-[1440px]:h-[50px] flex justify-center items-center z-[1010] relative [&_svg]:w-7 [&_svg]:h-7 [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] min-[1440px]:[&_svg]:w-[50px] min-[1440px]:[&_svg]:h-[50px] ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none">
+        <button className={`bg-transparent border-none cursor-pointer w-9 h-9 xl:w-8 xl:h-8 2xl:!w-[50px] 2xl:!h-[50px] flex justify-center items-center z-[1010] relative [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
+          <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none w-7 h-7 2xl:!w-full 2xl:!h-full">
             <rect x="2" y="11" width="47" height="10" rx="5" fill="#5700FF" />
             <rect x="2" y="29" width="47" height="10" rx="5" fill="#5700FF" />
           </svg>
