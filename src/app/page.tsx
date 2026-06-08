@@ -78,7 +78,7 @@ export default function Home() {
               </h2>
               
               {/* Tablet/Desktop Icon (Hidden on mobile) */}
-              <div className="relative left-auto top-auto w-full max-w-[220px] md:max-w-[180px] mx-auto md:mx-0 mt-8 h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-auto xl:-right-[60px] 2xl:right-[80px] xl:-bottom-[100px] 2xl:-bottom-[80px] xl:w-[220px] 2xl:w-[300px] xl:h-auto 2xl:h-[300px] xl:py-0 hidden md:block">
+              <div className="relative left-auto top-auto w-full max-w-[220px] md:max-w-[180px] mx-auto md:mx-0 mt-8 h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-auto xl:-right-[60px] 2xl:!-right-[110px] xl:-bottom-[100px] 2xl:!-bottom-[110px] xl:w-[220px] 2xl:!w-[340px] xl:h-auto 2xl:!h-[340px] xl:py-0 hidden md:block">
                 <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-contain" />
               </div>
             </div>
@@ -104,20 +104,20 @@ export default function Home() {
 
           {/* 3. BEYOND THE BOOK SECTION */}
           <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:py-[60px] xl:px-6 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:justify-start xl:pr-[40px] 2xl:pr-[60px]" id="beyond-the-book">
-            <div className="pl-0 mb-[30px] xl:pl-[60px] xl:mb-[24px] 2xl:mb-[40px]">
-              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
+            <div className="pl-0 mb-[30px] xl:pl-[60px] xl:mb-[24px] 2xl:mb-[40px] 2xl:!pl-[100px]">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[16px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
                     fill="black" />
                 </svg>
-                <div className="font-serif text-[13px] xl:text-[14px] 2xl:text-2xl font-bold text-brand-purple2">BEYOND THE BOOK</div>
+                <div className="font-serif text-[13px] xl:text-[14px] 2xl:!text-[16px] font-bold text-brand-purple2">BEYOND THE BOOK</div>
               </div>
-              <h2 className="font-serif text-[36px] leading-[40px] font-bold text-brand-purple2 xl:text-[36px] 2xl:text-[64px] xl:leading-[1.1]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
+              <h2 className="font-serif text-[36px] leading-[40px] font-bold text-brand-purple2 xl:text-[36px] 2xl:!text-[48px] xl:leading-[1.1] 2xl:!leading-[1.05] 2xl:pb-[18px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
             </div>
 
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:gap-[24px]">
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px]">
               <BeyondCard
                 href="/coming-soon"
                 image="screenshots/beyond-community.webp"
@@ -151,7 +151,7 @@ export default function Home() {
 
           {/* 4. SHOP SECTION */}
           <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 bg-white flex flex-col gap-[6px] xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max xl:justify-start xl:pr-[60px]" id="shop">
-            <div className="pl-0 mb-[30px] xl:pl-[24px] 2xl:pl-[60px] xl:mb-[16px] 2xl:mb-[40px]">
+            <div className="pl-0 mb-[30px] xl:pl-[24px] 2xl:!pl-[100px] xl:mb-[16px] 2xl:mb-[40px]">
               <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-[8px] 2xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -159,42 +159,42 @@ export default function Home() {
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
                     fill="black" />
                 </svg>
-                <div className="font-cormorant text-[13px] font-bold text-brand-purple2 xl:text-[16px] 2xl:text-2xl">THE SHOP</div>
+                <div className="font-cormorant text-[13px] font-bold text-brand-purple2 xl:text-[16px] 2xl:!text-[16px]">THE SHOP</div>
               </div>
-              <div className="flex flex-col items-start gap-4 w-full md:flex-row md:justify-start md:gap-6 md:items-center xl:items-center xl:gap-8">
-                <h2 className="font-cormorant text-4xl font-bold text-brand-purple2 xl:text-[42px] 2xl:text-[64px] tracking-tight">Wear the <span className="text-brand-purple">movement</span></h2>
-                <Button render={<Link href="/shop" />} className="!inline-flex items-center justify-center w-full md:w-auto md:px-10 px-7 py-6 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white xl:w-auto xl:py-2 xl:px-6 2xl:px-10 2xl:py-6 xl:text-sm 2xl:text-base">Shop Now</Button>
+              <div className="flex flex-col items-start gap-4 w-full md:flex-row md:justify-start md:gap-6 md:items-center xl:items-center xl:gap-8 2xl:pb-[18px]">
+                <h2 className="font-cormorant text-4xl font-bold text-brand-purple2 xl:text-[42px] 2xl:!text-[48px] tracking-tight">Wear the <span className="text-brand-purple">movement</span></h2>
+                <Button render={<Link href="/shop" />} className="!inline-flex items-center justify-center w-full md:w-auto md:px-10 px-7 py-6 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white xl:w-auto xl:py-2 xl:px-6 2xl:!px-9 2xl:!py-5 2xl:!text-lg">Shop Now</Button>
               </div>
             </div>
 
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-6 p-0 w-full xl:flex xl:flex-row xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:gap-[30px] xl:pl-[24px] 2xl:pl-[60px]">
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-6 p-0 w-full xl:flex xl:flex-row xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] xl:pl-[24px] 2xl:!pl-[100px]">
               <ShopCard
                 title="Planner/Journal"
                 image="product-journal.png"
                 bgColor="bg-[#FFEEF5]"
                 imagePosition="-bottom-2 -right-4"
-                xlImagePosition="2xl:left-[90px] 2xl:top-[90px]"
+                // xlImagePosition="2xl:left-[90px] 2xl:top-[90px]"
               />
               <ShopCard
                 title="T-Shirt"
                 image="product-tshirt.png"
                 bgColor="bg-[#CCF4E9]"
                 imagePosition="-bottom-4 -right-8"
-                xlImagePosition="2xl:left-[85px] 2xl:top-[99px]"
+                // xlImagePosition="2xl:left-[85px] 2xl:top-[99px]"
               />
               <ShopCard
                 title="Hoodie"
                 image="product-hoodie.png"
                 bgColor="bg-[#DECCFF]"
                 imagePosition="-bottom-3 -right-3"
-                xlImagePosition="2xl:-left-[20px] 2xl:-top-[18px]"
+                // xlImagePosition="2xl:-left-[20px] 2xl:-top-[18px]"
               />
               <ShopCard
                 title="Cap"
                 image="product-cap.png"
                 bgColor="bg-[#FEEECB]"
                 imagePosition="-bottom-2 -right-4"
-                xlImagePosition="2xl:left-[45px] 2xl:top-[70px]"
+                // xlImagePosition="2xl:left-[45px] 2xl:top-[70px]"
               />
             </div>
           </section>
