@@ -56,10 +56,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans" /* geist.variable */)}>
-      <body
-        className={`${unageo.variable} ${dmSans.variable} ${cormorantGaramond.variable} ${unageo.className}`}
-      >
+    <html lang="en" className={cn("font-sans", unageo.variable, dmSans.variable, cormorantGaramond.variable)}>
+      <body className={unageo.className}>
         <Header />
         {children}
       </body>

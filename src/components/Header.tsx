@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] border-b border-[#e9ecef] sticky top-0 h-[90px] px-6 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 min-[1440px]:px-[100px]" id="site-header">
+      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] border-b border-[#e9ecef] sticky top-0 h-[90px] px-6 md:px-12 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 min-[1440px]:px-[100px]" id="site-header">
         <div className="flex items-center">
           <Link href="/" className="font-serif text-[28px] font-bold text-brand-purple2 no-underline tracking-[-0.5px] [&_svg]:w-[110px] [&_svg]:h-[50px] xl:[&_svg]:w-[100px] xl:[&_svg]:h-[45px] min-[1440px]:[&_svg]:w-[139px] min-[1440px]:[&_svg]:h-[63px]" aria-label="Out of Office Home">
             <svg width="139" height="63" viewBox="0 0 139 63" fill="none" xmlns="http://www.w3.org/2000/svg">

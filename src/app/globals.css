@@ -9,7 +9,7 @@
   --font-dm: var(--font-dm-sans);
   --font-cormorant: var(--font-cormorant);
   --font-serif: var(--font-cormorant), Georgia, serif;
-  --font-ui: "DM Sans", sans-serif;
+  --font-ui: var(--font-dm-sans), sans-serif;
 
   --color-brand-purple2: #21015f;
   --color-brand-purple: #5700ff;
