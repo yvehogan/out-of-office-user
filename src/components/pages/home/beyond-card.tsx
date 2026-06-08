@@ -8,8 +8,8 @@ interface BeyondCardProps {
 
 export function BeyondCard({ href, image, clipId, title, description }: BeyondCardProps) {
   return (
-    <a href={href} className="group w-[240px] xl:w-[404px] h-auto no-underline text-brand-purple2 flex flex-col transition-transform duration-300 ease-[ease] max-lg:w-full max-lg:h-auto">
-      <div className="relative w-[240px] h-[200px] xl:w-[404px] xl:h-[361px]">
+    <a href={href} className="group w-full h-auto no-underline text-brand-purple2 flex flex-col transition-transform duration-300 ease-[ease] xl:w-[404px]">
+      <div className="relative w-full aspect-[240/200] max-w-[280px] xl:max-w-none xl:w-[404px] xl:h-[361px]">
         <svg className="w-full h-full block overflow-visible" viewBox="0 0 240 200">
           <defs>
             <clipPath id={clipId}>
