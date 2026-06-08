@@ -201,7 +201,7 @@ export default function Home() {
 
           {/* 5. AUTHOR SECTION */}
           <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-[15px] xl:flex-nowrap" id="author">
-            <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:w-[450px] xl:p-[16px_0_16px_24px] 2xl:p-[16px_0_64px_60px] xl:h-[calc(100vh-120px)]">
+            <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-[calc(100vh-120px)]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -209,44 +209,44 @@ export default function Home() {
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
                     fill="black" />
                 </svg>
-                <div className="font-serif text-[13px] xl:text-[14px] 2xl:text-2xl font-bold text-brand-purple2">THE AUTHOR</div>
+                <div className="font-serif text-[13px] xl:text-[14px] 2xl:!text-[16px] font-bold text-brand-purple2">THE AUTHOR</div>
               </div>
-              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[20px] xl:text-[42px] 2xl:text-[56px] xl:mb-[16px] 2xl:mb-[20px]"><span className="text-[#21015F]">Solomon</span><br /><span
+              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[20px] xl:text-[42px] 2xl:!text-[52px] xl:mb-[16px] 2xl:!mb-[40px]"><span className="text-[#21015F]">Solomon</span><br /><span
                 className="text-[#5700FF] italic">Ayodele</span></h2>
-              <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:text-[16px]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
+              <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
                 social transformation converge. With over a decade of experience in product and technology within the
                 banking and financial technology ecosystem, he has built a reputation for designing and scaling
                 customer-centered solutions, leading high-impact teams, and driving meaningful business transformation where
                 people, product, process, and technology meet.</p>
             </div>
 
-            <div className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:w-[500px] xl:h-[calc(100vh-120px)] 2xl:h-[580px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:-ml-[35px] 2xl:mr-[0px]">
+            <div className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
               <div className="w-full max-w-[320px] h-[420px] mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
                 <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain" />
               </div>
             </div>
 
-            <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[600px] 2xl:w-[800px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:gap-[32px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px]">
-              <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[290px] 2xl:w-[380px]">
-                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:text-[16px]">His professional journey spans critical roles such as his time at Standard Bank
+            <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[600px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
+              <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[290px] 2xl:!w-[520px]">
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">His professional journey spans critical roles such as his time at Standard Bank
                   Group, where he contributed to advancing digital strategy, led end-to-end product development, facilitated
                   enterprise-wide design thinking, and forged strategic partnerships that strengthened innovation culture
                   across the organization. He currently leads as Head of Product & Technology Innovation at Wema Bank Plc,
                   and serves as an advisory board member of three high-growth startups across Africa spanning health, legal,
                   and financial services.
                 </p>
-                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:text-[16px]" style={{ paddingTop: '10px' }}>
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]" style={{ paddingTop: '10px' }}>
                   Beyond the boardroom, Solomon is the Founder of Boys Quarters Africa, a pioneering social movement
                   committed to raising a generation of emotionally grounded, socially responsible, and purpose-driven boys
                   and men.
                 </p>
               </div>
 
-              <div className="flex flex-col w-full md:w-1/2 xl:w-[290px] 2xl:w-[380px]">
-                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:text-[16px]">Through this work, he has built a global platform for redefining masculinity and
+              <div className="flex flex-col w-full md:w-1/2 xl:w-[290px] 2xl:!w-[520px]">
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Through this work, he has built a global platform for redefining masculinity and
                   leadership, engaging over 2 million boys and men across Africa through grassroots programs, policy
                   engagement, and community transformation initiatives.</p>
-                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:text-[16px]" style={{ paddingTop: '10px' }}>
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]" style={{ paddingTop: '10px' }}>
                   In recognition of his work, he is a two-time
                   recipient of The Future Awards Africa Prize for Intrapreneurship and for Activism and Advocacy, reflecting
                   both his influence within corporate innovation and his commitment to societal change. His life's work is
@@ -254,30 +254,30 @@ export default function Home() {
                   power of technology.
                 </p>
 
-                <div className="mt-8 flex flex-col items-start gap-[10px] xl:mt-auto xl:gap-[6px]">
-                  <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[14px] 2xl:text-[16px]">Connect with Solomon</h4>
-                  <div className="flex gap-[10px]">
-                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="LinkedIn">
+                <div className="mt-8 flex flex-col items-start gap-[10px] xl:mt-8 xl:gap-[6px] 2xl:!gap-[16px]">
+                  <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[14px] 2xl:!text-[24px]">Connect with Solomon</h4>
+                  <div className="flex gap-[10px] 2xl:!gap-[16px]">
+                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] 2xl:!w-[56px] 2xl:!h-[48px] 2xl:!rounded-[24px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] 2xl:![&>svg]:w-[24px] 2xl:![&>svg]:h-[24px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="LinkedIn">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M20.4491 20.4496H16.8931V14.8805C16.8931 13.5525 16.8694 11.8429 15.0436 11.8429C13.1915 11.8429 12.9081 13.2899 12.9081 14.7838V20.4492H9.35203V8.99689H12.7658V10.562H12.8136C13.1553 9.97782 13.649 9.49726 14.2421 9.17149C14.8352 8.84572 15.5056 8.68693 16.1819 8.71203C19.7861 8.71203 20.4506 11.0828 20.4506 14.167L20.4491 20.4496ZM5.33963 7.43144C4.93148 7.43151 4.53247 7.31055 4.19307 7.08385C3.85367 6.85715 3.58913 6.53489 3.43287 6.15783C3.27661 5.78077 3.23566 5.36584 3.31521 4.96551C3.39477 4.56517 3.59125 4.19743 3.8798 3.90876C4.16835 3.6201 4.53602 3.42348 4.93631 3.34378C5.3366 3.26408 5.75152 3.30488 6.12863 3.46101C6.50573 3.61713 6.82807 3.88158 7.05489 4.22091C7.2817 4.56025 7.40281 4.95922 7.40288 5.36738C7.40293 5.63839 7.34959 5.90675 7.24593 6.15715C7.14227 6.40754 6.99032 6.63507 6.79873 6.82674C6.60714 7.0184 6.37966 7.17045 6.1293 7.27421C5.87895 7.37796 5.61062 7.43139 5.33963 7.43144ZM7.11765 20.4496H3.5579V8.99689H7.11765V20.4496ZM22.222 0.00163516H1.77099C1.30681 -0.00360329 0.859518 0.175663 0.52744 0.500042C0.195362 0.824421 0.00566506 1.26737 0 1.73156V22.2681C0.00547117 22.7325 0.195057 23.1758 0.527123 23.5005C0.85919 23.8252 1.30658 24.0048 1.77099 23.9999H22.222C22.6873 24.0057 23.1359 23.8266 23.469 23.5019C23.8027 23.1772 23.9936 22.7334 24 22.2681V1.73008C23.9934 1.26497 23.8024 0.821515 23.469 0.497144C23.1356 0.172773 22.6871 -0.00598143 22.222 0.000152822"
                           fill="currentColor" />
                       </svg>
                     </a>
-                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="Instagram">
+                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] 2xl:!w-[56px] 2xl:!h-[48px] 2xl:!rounded-[24px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] 2xl:![&>svg]:w-[24px] 2xl:![&>svg]:h-[24px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="Instagram">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.9727 -0.0625C6.94974 -0.0625 5.48072 -0.0573162 5.19517 -0.0336251C4.16438 0.0520814 3.52297 0.214427 2.82417 0.562428C2.28564 0.829924 1.86092 1.13998 1.44176 1.57463C0.678384 2.36727 0.21573 3.34244 0.0482458 4.50161C-0.0331772 5.06435 -0.0568685 5.17912 -0.0616795 8.05354C-0.0635257 9.01168 -0.0616795 10.2727 -0.0616795 11.964C-0.0616795 16.9843 -0.0561319 18.4522 -0.0320678 18.7373C0.0512104 19.7406 0.208508 20.3718 0.541621 21.0623C1.17824 22.384 2.39408 23.3762 3.82646 23.7464C4.32243 23.8741 4.87021 23.9445 5.57344 23.9778C5.87139 23.9907 8.90824 24 11.9469 24C14.9857 24 18.0244 23.9963 18.3149 23.9815C19.1292 23.9432 19.602 23.8797 20.1248 23.7445C21.5664 23.3725 22.7601 22.3951 23.4096 21.0549C23.7363 20.3811 23.9019 19.7258 23.9769 18.7748C23.9932 18.5675 24 15.262 24 11.9609C24 8.65922 23.9926 5.35979 23.9763 5.15246C23.9004 4.18618 23.7348 3.53644 23.3976 2.84967C23.121 2.28749 22.8138 1.86765 22.3678 1.43839C21.5718 0.677946 20.5984 0.215164 19.4384 0.0478253C18.8764 -0.0334431 18.7644 -0.0575071 15.8886 -0.0625H11.9727Z" fill="currentColor" />
                         <path className="ig-inner" d="M11.9737 3.02734C9.54398 3.02734 9.23905 3.03796 8.28474 3.08136C7.3323 3.12494 6.68218 3.27561 6.11332 3.4967C5.5249 3.72504 5.02575 4.03048 4.52847 4.52758C4.03082 5.0245 3.72513 5.52327 3.49588 6.11108C3.27407 6.6797 3.1231 7.32952 3.08023 8.28088C3.03755 9.23448 3.02637 9.53937 3.02637 11.9673C3.02637 14.3953 3.03718 14.699 3.08042 15.6526C3.12422 16.6044 3.27501 17.254 3.49606 17.8224C3.72476 18.4104 4.03044 18.9092 4.5279 19.4061C5.02501 19.9034 5.52415 20.2096 6.1122 20.4379C6.68142 20.659 7.33174 20.8097 8.28399 20.8533C9.2383 20.8967 9.54304 20.9073 11.9726 20.9073C14.4025 20.9073 14.7065 20.8967 15.6609 20.8533C16.6133 20.8097 17.2642 20.659 17.8334 20.4379C18.4216 20.2096 18.92 19.9034 19.4171 19.4061C19.9148 18.9092 20.2205 18.4104 20.4497 17.8226C20.6696 17.254 20.8206 16.6042 20.8654 15.6528C20.9082 14.6992 20.9194 14.3953 20.9194 11.9673C20.9194 9.53936 20.9082 9.23467 20.8654 8.28107C20.8206 7.32933 20.6696 6.6797 20.4497 6.11127C20.2205 5.52327 19.9148 5.02449 19.4171 4.52758C18.9195 4.03029 18.4218 3.72485 17.8328 3.49669C17.2625 3.27561 16.612 3.12494 15.6596 3.08136C14.7052 3.03796 14.4014 3.02734 11.9709 3.02734H11.9737ZM11.1711 4.6384C11.4093 4.63803 11.6751 4.6384 11.9737 4.6384C14.3625 4.6384 14.6456 4.64697 15.5889 4.68981C16.4612 4.72967 16.9346 4.87531 17.25 4.99767C17.6675 5.15971 17.9652 5.35341 18.2781 5.66631C18.5912 5.97921 18.7851 6.27721 18.9476 6.69441C19.0701 7.00917 19.216 7.48224 19.2557 8.35389C19.2986 9.29631 19.3079 9.57941 19.3079 11.9653C19.3079 14.3511 19.2986 14.6342 19.2557 15.5766C19.2158 16.4483 19.0701 16.9214 18.9476 17.2361C18.7855 17.6533 18.5912 17.9504 18.2781 18.2631C17.965 18.576 17.6677 18.7697 17.25 18.9317C16.935 19.0547 16.4612 19.1999 15.5889 19.2398C14.6458 19.2826 14.3625 19.2919 11.9737 19.2919C9.58479 19.2919 9.30167 19.2826 8.35855 19.2398C7.48626 19.1996 7.01284 19.0539 6.69728 18.9316C6.27977 18.7695 5.98154 18.5758 5.66842 18.2629C5.35528 17.95 5.16144 17.6528 4.99891 17.2354C4.87645 16.9206 4.73051 16.4475 4.69081 15.5759C4.64794 14.6335 4.63937 14.3504 4.63937 11.963C4.63937 9.57569 4.64794 9.29407 4.69081 8.35166C4.7307 7.48001 4.87645 7.00694 4.99891 6.6918C5.16106 6.2746 5.35528 5.9766 5.66842 5.66371C5.98154 5.3508 6.27977 5.15711 6.69728 4.9947C7.01265 4.87177 7.48626 4.7265 8.35855 4.68645C9.18387 4.6492 9.50372 4.63803 11.1711 4.63616V4.6384ZM16.7494 6.12281C16.1566 6.12281 15.6758 6.60278 15.6758 7.19523C15.6758 7.78751 16.1566 8.26803 16.7494 8.26803C17.3421 8.26803 17.823 7.78751 17.823 7.19523C17.823 6.60296 17.3421 6.12244 16.7494 6.12244V6.12281ZM11.9737 7.37626C9.43643 7.37626 7.37927 9.4319 7.37927 11.9673C7.37927 14.5027 9.43643 16.5574 11.9737 16.5574C14.511 16.5574 16.5674 14.5027 16.5674 11.9673C16.5674 9.4319 14.5108 7.37626 11.9735 7.37626H11.9737ZM11.9737 8.98733C13.6206 8.98733 14.9559 10.3214 14.9559 11.9673C14.9559 13.613 13.6206 14.9473 11.9737 14.9473C10.3266 14.9473 8.99152 13.613 8.99152 11.9673C8.99152 10.3214 10.3266 8.98733 11.9737 8.98733Z" fill="white" />
                       </svg>
                     </a>
-                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="X">
+                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] 2xl:!w-[56px] 2xl:!h-[48px] 2xl:!rounded-[24px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] 2xl:![&>svg]:w-[24px] 2xl:![&>svg]:h-[24px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="X">
                       <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M18.8431 0H22.4964L14.5169 9.1812L23.9384 21.6311H16.5358L10.7675 14.0843L4.13395 21.6311H0.480691L9.037 11.825L0 0H7.59492L12.8345 6.92195L18.8431 0ZM17.5452 19.4199H19.5641L6.48933 2.06697H4.27815L17.5452 19.4199Z"
                           fill="currentColor" />
                       </svg>
                     </a>
-                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="Website">
+                    <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] 2xl:!w-[56px] 2xl:!h-[48px] 2xl:!rounded-[24px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] 2xl:![&>svg]:w-[24px] 2xl:![&>svg]:h-[24px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="Website">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M6.92531 22.3951C6.89031 22.3951 6.84365 22.4185 6.80865 22.4185C4.54531 21.2985 2.70198 19.4435 1.57031 17.1801C1.57031 17.1451 1.59365 17.0985 1.59365 17.0635C3.01698 17.4835 4.48698 17.7985 5.94531 18.0435C6.20198 19.5135 6.50531 20.9718 6.92531 22.3951Z"
@@ -317,53 +317,53 @@ export default function Home() {
           {/* Newsletter and Contact Tablet Wrapper */}
           <div className="w-full flex flex-col xl:contents">
             {/* 6. NEWSLETTER SECTION */}
-            <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:py-[60px] xl:px-6 xl:border-none inline-flex flex-col xl:h-[calc(100vh-120px)] 2xl:h-full xl:w-[450px] 2xl:w-[600px] xl:shrink-0 xl:whitespace-normal" id="newsletter">
-              <div className="w-full p-0 flex flex-col h-full xl:justify-start xl:px-[40px] 2xl:px-[60px]">
-                <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
+            <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 xl:border-none xl:inline-flex xl:align-top flex-col xl:h-[calc(100vh-120px)] 2xl:h-full xl:w-[450px] 2xl:!w-[750px] xl:shrink-0 xl:whitespace-normal" id="newsletter">
+              <div className="w-full p-0 flex flex-col h-full xl:justify-start xl:px-[40px] 2xl:!pl-[100px] 2xl:!pr-[40px]">
+                <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:!mb-[16px]">
                   <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z" fill="black" />
                   </svg>
-                  <div className="font-serif text-[13px] xl:text-[14px] 2xl:text-2xl font-bold text-brand-purple2">THE NEWSLETTER</div>
+                  <div className="font-serif text-[13px] xl:text-[14px] 2xl:!text-[16px] font-bold text-brand-purple2">THE NEWSLETTER</div>
                 </div>
-                <div className="max-w-[500px]">
-                  <h2 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-[16px] xl:text-[42px] 2xl:text-[64px] xl:mb-[12px] 2xl:mb-[16px] xl:leading-[1.08]"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
-                  <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:text-[16px]">Join thousands of readers who get weekly reflections on purpose, identity, and what
+                <div className="max-w-[500px] 2xl:!max-w-[700px]">
+                  <h2 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-[16px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[12px] 2xl:!mb-[24px] xl:leading-[1.08] whitespace-normal 2xl:whitespace-nowrap"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
+                  <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:!text-[22px] 2xl:!mb-[40px] 2xl:!leading-[1.6]">Join thousands of readers who get weekly reflections on purpose, identity, and what
                     it means to live a full life.</p>
                 </div>
 
-                <form className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:gap-[24px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
-                  <input type="email" placeholder="Your email address" className="w-full xl:w-[300px] 2xl:w-[400px] h-[50px] xl:h-[40px] 2xl:h-[50px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                  <Button type="submit" className="shrink-0 !inline-flex items-center justify-center w-full xl:w-[120px] 2xl:w-[150px] py-6 xl:py-4 2xl:py-6 rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:text-[16px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</Button>
+                <form className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:!gap-[32px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
+                  <input type="email" placeholder="Your email address" className="w-full xl:w-[300px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                  <Button type="submit" className="shrink-0 !inline-flex items-center justify-center w-full xl:w-[120px] 2xl:!w-[180px] py-6 xl:py-4 2xl:!py-[24px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:!text-[18px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</Button>
                 </form>
               </div>
             </section>
 
             {/* 7. CONTACT SECTION */}
-            <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:py-[60px] xl:px-6 relative items-start xl:inline-flex xl:flex-row xl:h-[calc(100vh-120px)] 2xl:h-full xl:justify-start xl:p-0 xl:w-max xl:pr-[40px] 2xl:pr-[6rem] xl:shrink-0 xl:whitespace-normal" id="contact">
-            <div className="w-full p-0 h-auto flex flex-col justify-center xl:justify-start shrink-0 xl:w-[360px] 2xl:w-[460px] xl:pl-[40px] 2xl:pl-[60px] xl:h-[calc(100vh-120px)] 2xl:h-full">
-              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
+            <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 relative items-start xl:inline-flex xl:align-top xl:flex-row xl:h-[calc(100vh-120px)] 2xl:h-full xl:justify-start xl:w-max xl:pr-[40px] 2xl:!pr-[6rem] xl:shrink-0 xl:whitespace-normal" id="contact">
+            <div className="w-full p-0 h-auto flex flex-col justify-center xl:justify-start shrink-0 xl:w-[360px] 2xl:!w-[560px] xl:pl-[40px] 2xl:!pl-[60px] xl:h-[calc(100vh-120px)] 2xl:h-full">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:!mb-[16px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z" fill="black" />
                 </svg>
-                <div className="font-serif text-[13px] xl:text-[14px] 2xl:text-2xl font-bold text-brand-purple2">GET IN TOUCH</div>
+                <div className="font-serif text-[13px] xl:text-[14px] 2xl:!text-[16px] font-bold text-brand-purple2">GET IN TOUCH</div>
               </div>
-              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] xl:text-[42px] 2xl:text-[64px] xl:mb-[16px] 2xl:mb-[24px]">Let's <span className="text-brand-purple">Talk</span></h2>
+              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[16px] 2xl:!mb-[24px] whitespace-normal 2xl:whitespace-nowrap">Let's <span className="text-brand-purple">Talk</span></h2>
 
               <form className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
-                <input type="text" placeholder="Your Name" className="w-full xl:w-[280px] 2xl:w-[380px] h-[50px] xl:h-[40px] 2xl:h-[50px] mb-[16px] xl:mb-[12px] 2xl:mb-[16px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <input type="email" placeholder="Your email address" className="w-full xl:w-[280px] 2xl:w-[380px] h-[50px] xl:h-[40px] 2xl:h-[50px] mb-[16px] xl:mb-[12px] 2xl:mb-[16px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <textarea placeholder="How can we help you?" className="w-full xl:w-[280px] 2xl:w-[380px] h-[100px] xl:h-[80px] 2xl:h-[100px] mb-[24px] xl:mb-[16px] 2xl:mb-[24px] shrink-0 rounded-[20px] border border-brand-purple2 p-[20px_24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
-                <Button type="submit" className="shrink-0 !inline-flex items-center justify-center w-full xl:w-[150px] py-6 xl:py-4 2xl:py-6 rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:text-[16px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</Button>
+                <input type="text" placeholder="Your Name" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                <input type="email" placeholder="Your email address" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                <textarea placeholder="How can we help you?" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[100px] xl:h-[80px] 2xl:!h-[140px] mb-[24px] xl:mb-[16px] 2xl:!mb-[32px] shrink-0 rounded-[20px] 2xl:!rounded-[30px] border border-brand-purple2 p-[20px_24px] 2xl:p-[20px_30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
+                <Button type="submit" className="shrink-0 !inline-flex items-center justify-center w-full xl:w-[150px] 2xl:!w-[180px] py-6 xl:py-4 2xl:!py-[24px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:!text-[18px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</Button>
               </form>
-              <div className="hidden xl:block xl:mt-auto xl:pb-[24px] font-sans text-[13px] text-brand-purple2 opacity-60">
+              <div className="hidden xl:block mt-8 xl:pb-[24px] font-sans text-[13px] 2xl:!text-[16px] text-brand-purple2 opacity-60">
                 <p>© {new Date().getFullYear()} Solomon Ayodele · Out of Office</p>
               </div>
             </div>
 
-            <div className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:w-[400px] xl:pl-[20px] 2xl:pl-[32px] xl:pt-[54px] 2xl:pt-[84px] xl:justify-start xl:gap-[24px] 2xl:gap-[30px] xl:items-start">
+            <div className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[54px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
               {/* Web detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
@@ -379,14 +379,14 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Website</span>
-                  <a href="/coming-soon" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px]">www.solomonayodele.com</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px] 2xl:!text-[24px]">Website</span>
+                  <a href="/coming-soon" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">www.solomonayodele.com</a>
                 </div>
               </div>
 
               {/* Email detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
@@ -397,15 +397,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Email</span>
-                  <a href="mailto:contact.solomonayodele@gmail.com" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px]">contact.solomonayodele@gmail.com</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px] 2xl:!text-[24px]">Email</span>
+                  <a href="mailto:contact.solomonayodele@gmail.com" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">contact.solomonayodele@gmail.com</a>
                   
                 </div>
               </div>
 
               {/* Phone detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 7V17C20 21 19 22 15 22H9C5 22 4 21 4 17V7C4 3 5 2 9 2H15C19 2 20 3 20 7Z"
                       stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -417,8 +417,8 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Phone</span>
-                  <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px]">+234 703 737 3284</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px] 2xl:!text-[24px]">Phone</span>
+                  <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">+234 703 737 3284</a>
                 </div>
               </div>
             </div>
