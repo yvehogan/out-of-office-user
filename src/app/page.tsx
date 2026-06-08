@@ -3,6 +3,9 @@
 import { useEffect, useRef } from 'react';
 import { BeyondCard } from '@/components/pages/home/beyond-card';
 import { ShopCard } from '@/components/pages/home/shop-card';
+import { Button } from '@/components/ui/button';
+import { Footer } from "@/components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLElement>(null);
@@ -16,7 +19,7 @@ export default function Home() {
     const scrollContainer = scrollContainerRef.current;
 
     const handleWheel = (e: WheelEvent) => {
-      if (scrollContainer && e.deltaY !== 0 && window.innerWidth >= 1024) {
+      if (scrollContainer && e.deltaY !== 0 && window.innerWidth >= 1280) {
         e.preventDefault();
         scrollContainer.scrollLeft += e.deltaY;
       }
@@ -35,13 +38,13 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex-1 w-full overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-smooth max-lg:relative max-lg:top-0 max-lg:flex-none max-lg:h-auto max-lg:overflow-x-visible max-lg:overflow-y-visible max-lg:whitespace-normal [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-[#f8f9fa] [&::-webkit-scrollbar-thumb]:bg-brand-purple2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-brand-purple" id="scroll-container" ref={scrollContainerRef}>
-        <div className="flex h-full w-max max-lg:!w-full max-lg:h-auto max-lg:flex-col">
+      <main className="relative top-0 flex-none h-auto w-full overflow-x-visible overflow-y-visible whitespace-normal scroll-smooth xl:flex-1 xl:overflow-x-auto xl:overflow-y-hidden xl:whitespace-nowrap [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-[#f8f9fa] [&::-webkit-scrollbar-thumb]:bg-brand-purple2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-brand-purple" id="scroll-container" ref={scrollContainerRef}>
+        <div className="flex flex-col h-auto w-full xl:!w-max xl:h-full xl:flex-row">
 
           {/* 1. HERO SECTION */}
-          <section className="h-full pt-2 shrink-0 inline-flex align-top whitespace-normal bg-white overflow-visible min-w-[100vw] w-max relative max-lg:!w-full max-lg:!h-auto max-lg:p-[60px_24px] max-lg:border-b max-lg:border-[#e9ecef] max-lg:flex max-lg:flex-col-reverse max-lg:gap-10" id="hero">
-            <div className="px-[60px] xl:pr-0 flex flex-col justify-center h-full max-lg:w-full max-lg:p-0 max-lg:h-auto">
-              <div className="flex items-center gap-[10px] mb-3 max-lg:mb-4 max-lg:gap-3">
+          <section className="relative w-full h-auto p-[60px_24px] border-b border-[#e9ecef] bg-white flex flex-col-reverse gap-10 xl:border-none xl:h-full xl:pt-2 xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max" id="hero">
+            <div className="flex flex-col justify-center w-full h-auto p-0 xl:w-auto xl:px-[60px] xl:pr-0 xl:h-full">
+              <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -51,33 +54,33 @@ export default function Home() {
                 <div className="font-serif text-[13px] font-bold text-brand-green2 xl:text-2xl">NEW BOOK AVAILABLE FOR PRE-ORDER</div>
               </div>
               <div className="max-w-[670px]">
-                <h1 className="font-serif text-[80px] font-bold leading-[1.05] text-brand-purple2 mb-5 xl:text-9xl max-lg:text-[48px] max-lg:leading-[1.1] max-lg:mb-4">
+                <h1 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-4 xl:mb-5 xl:leading-[1.05] xl:text-[80px] min-[1440px]:text-9xl">
                   <span className="text-brand-purple2">Life beyond</span><br />
                   <span className="text-brand-purple italic">the job title.</span>
                 </h1>
-                <p className="font-unageo text-base font-light leading-[1.5] text-brand-purple2 mb-7 xl:text-2xl min-[1440px]:mb-12 max-lg:text-lg max-lg:mb-[30px] max-lg:max-w-full">Out of Office is not a book about work. It is a playbook for navigating failed ventures,
+                <p className="font-unageo text-lg max-w-full font-light leading-[1.5] text-brand-purple2 mb-[30px] xl:max-w-none xl:mb-7 xl:text-base min-[1440px]:mb-12 min-[1440px]:text-2xl">Out of Office is not a book about work. It is a playbook for navigating failed ventures,
                   difficult transitions, and the courage to reinvent yourself, so you can step into the most meaningful season
                   of your life.&apos;</p>
               </div>
-              <a href="/coming-soon" className="inline-flex items-center justify-center w-[200px] py-[15px] rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 max-lg:w-full max-lg:max-w-[280px] max-lg:px-9 max-lg:py-4">Pre-order Now</a>
+              <Button render={<Link href="/coming-soon" />} className="!inline-flex items-center justify-center w-full px-9 py-4 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 xl:w-[200px] xl:py-[15px] xl:px-0">Pre-order Now</Button>
             </div>
 
-            <div className="w-[590px] h-auto flex items-center justify-center z-[1] min-[1440px]:left-[741px] min-[1440px]:w-[718px] min-[1440px]:h-[725px] max-lg:w-full max-lg:h-auto max-lg:py-5 max-lg:relative max-lg:left-auto max-lg:top-auto">
-              <img src="hero-book.png" alt="Out of Office Book Cover" className="w-full h-full object-cover transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1 max-lg:w-[260px] max-lg:h-[360px]" />
+            <div className="flex items-center justify-center z-[1] w-full h-auto py-5 relative left-auto top-auto xl:absolute xl:py-0 xl:w-[590px] min-[1440px]:left-[741px] min-[1440px]:w-[718px] min-[1440px]:h-[725px]">
+              <img src="hero-book.png" alt="Out of Office Book Cover" className="w-[260px] h-[360px] xl:w-full xl:h-full object-cover transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
             </div>
           </section>
 
           {/* 2. "THERE IS MORE" SECTION */}
-          <section className="h-full shrink-0 inline-flex align-top whitespace-normal min-w-[100vw] w-max relative mt-20 max-lg:flex-col max-lg:gap-[30px] xl:-ml-[50px] xl:mr-[40px]" id="there-is-more">
-            <div className="h-full flex max-lg:w-full max-lg:h-auto">
-              <h2 className="font-serif text-[80px] font-bold italic leading-[1.1] text-brand-purple2 max-w-[740px] max-lg:text-[38px] max-lg:leading-[1.2] max-lg:max-w-full">"There is <span className="text-brand-purple">more to life</span> than what you do for work."
+          <section className="relative mt-20 flex flex-col gap-[30px] w-full h-auto xl:min-w-[100vw] xl:w-max xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 xl:-ml-[50px] xl:mr-[40px]" id="there-is-more">
+            <div className="flex w-full h-auto xl:w-auto xl:h-full">
+              <h2 className="font-serif text-[38px] max-w-full font-bold italic leading-[1.2] text-brand-purple2 xl:text-[80px] xl:max-w-[740px] xl:leading-[1.1]">"There is <span className="text-brand-purple">more to life</span> than what you do for work."
               </h2>
             </div>
 
             <div className='relative'>
 
-              <div className="w-[580px] xl:w-[700px] px-[48px] flex flex-col h-full max-lg:w-full max-lg:p-0 max-lg:h-auto">
-                <p className="font-unageo text-[16px] xl:text-[22px] font-light leading-[1.6] text-brand-purple2 max-lg:text-[16px]">This is a playbook for young professionals, entrepreneurs, emerging leaders and leaders
+              <div className="flex flex-col w-full p-0 h-auto xl:px-[48px] xl:w-[580px] xl:h-full min-[1440px]:w-[700px]">
+                <p className="font-unageo text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[22px]">This is a playbook for young professionals, entrepreneurs, emerging leaders and leaders
                   across every space of life who are ready to take bold steps with their future. It offers unconventional
                   wisdom on how work really works, how life really unfolds, and what it takes to navigate both with clarity,
                   courage and intent.<br /><br />Inside are hard earned insights on transitions, ambition, failure and
@@ -85,16 +88,16 @@ export default function Home() {
                   that shape meaningful work, grounded success and a life that actually reflects who they are becoming.</p>
               </div>
 
-              <div className="absolute left-[-150px] bottom-[40px] w-[300px] h-[300px] pointer-events-none z-[10] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full max-lg:py-[20px] max-lg:h-auto">
+              <div className="relative left-auto top-auto w-full h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:left-[-150px] xl:bottom-[40px] xl:w-[300px] xl:h-[300px] xl:py-0">
                 <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-unset" />
               </div>
             </div>
           </section>
 
           {/* 3. BEYOND THE BOOK SECTION */}
-          <section className="h-full shrink-0 inline-flex align-top whitespace-normal min-w-[100vw] w-max flex-col xl:justify-center pr-[60px] max-lg:w-full max-lg:p-[60px_24px] max-lg:h-auto max-lg:border-r-0 max-lg:border-b max-lg:border-[#e9ecef] max-lg:flex" id="beyond-the-book">
-            <div className="pl-[60px] mb-[24px] max-lg:pl-0 max-lg:mb-[30px]">
-              <div className="flex items-center gap-[10px] mb-[12px] max-lg:mb-[16px] max-lg:gap-[12px]">
+          <section className="flex flex-col w-full h-auto p-[60px_24px] border-b border-[#e9ecef] xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="beyond-the-book">
+            <div className="pl-0 mb-[30px] xl:pl-[60px] xl:mb-[24px]">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -103,10 +106,10 @@ export default function Home() {
                 </svg>
                 <div className="font-serif text-[13px] xl:text-2xl font-bold text-brand-purple2">BEYOND THE BOOK</div>
               </div>
-              <h2 className="font-serif text-[36px] xl:text-[64px] font-bold text-brand-purple2 max-lg:text-[36px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
+              <h2 className="font-serif text-[36px] font-bold text-brand-purple2 xl:text-[64px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
             </div>
 
-            <div className="flex gap-[24px] pl-[60px] max-lg:flex-col max-lg:p-0 max-lg:gap-[30px]">
+            <div className="flex flex-col gap-[30px] p-0 xl:flex-row xl:pl-[60px] xl:gap-[24px]">
               <BeyondCard
                 href="/coming-soon"
                 image="screenshots/beyond-community.webp"
@@ -139,63 +142,59 @@ export default function Home() {
           </section>
 
           {/* 4. SHOP SECTION */}
-          <section className="h-full shrink-0 inline-flex align-top whitespace-normal bg-white overflow-visible min-w-[100vw] w-max flex-col xl:justify-center pr-[60px] max-lg:!w-full max-lg:!h-auto max-lg:p-[60px_24px] max-lg:border-b max-lg:border-[#e9ecef] max-lg:flex max-lg:flex-col max-lg:gap-10" id="shop">
-            <div className="pl-[60px] mb-[30px] max-lg:pl-0 max-lg:mb-[30px]">
-              <div className="flex items-center gap-[10px] mb-3 max-lg:mb-4 max-lg:gap-3">
+          <section className="w-full h-auto p-[60px_24px] border-b border-[#e9ecef] bg-white flex flex-col gap-10 xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="shop">
+            <div className="pl-0 mb-[30px] xl:pl-[60px]">
+              <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
                     fill="black" />
                 </svg>
-                <div className="font-cormorant text-[13px] xl:text-2xl font-bold text-brand-purple2">THE SHOP</div>
+                <div className="font-cormorant text-[13px] font-bold text-brand-purple2 xl:text-2xl">THE SHOP</div>
               </div>
-              <div className="flex items-center gap-4">
-                <h2 className="font-cormorant text-4xl xl:text-[64px] font-bold text-brand-purple2">Wear the <span className="text-brand-purple">movement</span></h2>
-                <a href="/shop" className="inline-flex items-center justify-center px-7 py-2 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-sm xl:text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white">Shop Now</a>
+              <div className="flex flex-col items-start gap-4 w-full xl:flex-row xl:items-center">
+                <h2 className="font-cormorant text-4xl font-bold text-brand-purple2 xl:text-[64px]">Wear the <span className="text-brand-purple">movement</span></h2>
+                <Button render={<Link href="/shop" />} className="!inline-flex items-center justify-center w-full px-7 py-4 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white xl:w-auto xl:py-2 xl:text-base">Shop Now</Button>
               </div>
             </div>
 
-            <div className="flex gap-6 pl-[60px] max-lg:flex-col max-lg:p-0 xl:gap-[30px]">
+            <div className="flex flex-col gap-6 p-0 w-full xl:flex-row xl:gap-[30px] xl:pl-[60px]">
               <ShopCard
                 title="Planner/Journal"
                 image="product-journal.png"
                 bgColor="bg-[#FFEEF5]"
-                price="₦20,000"
-                imagePosition="left-[70px] top-[70px]"
+                imagePosition="xl:left-[70px] xl:top-[70px]"
                 xlImagePosition="xl:left-[90px] xl:top-[90px]"
               />
               <ShopCard
                 title="T-Shirt"
                 image="product-tshirt.png"
                 bgColor="bg-[#CCF4E9]"
-                price="₦20,000"
-                imagePosition="left-[65px] top-[79px]"
+                imagePosition="xl:left-[65px] xl:top-[79px]"
                 xlImagePosition="xl:left-[85px] xl:top-[99px]"
               />
               <ShopCard
                 title="Hoodie"
                 image="product-hoodie.png"
                 bgColor="bg-[#DECCFF]"
-                price="₦20,000"
-                imagePosition="-left-[15px] -top-[14px]"
+                imagePosition="xl:-left-[15px] xl:-top-[14px]"
                 xlImagePosition="xl:-left-[20px] xl:-top-[18px]"
               />
               <ShopCard
                 title="Cap"
                 image="product-cap.png"
                 bgColor="bg-[#FEEECB]"
-                price="₦20,000"
-                imagePosition="left-[35px] top-[55px]"
+                imagePosition="xl:left-[35px] xl:top-[55px]"
                 xlImagePosition="xl:left-[45px] xl:top-[70px]"
               />
             </div>
           </section>
 
           {/* 5. AUTHOR SECTION */}
-          <section className="h-full shrink-0 inline-flex align-top whitespace-normal min-w-[100vw] w-max pr-[60px] pb-[15px] relative max-lg:flex-col max-lg:w-full max-lg:p-[60px_24px] max-lg:h-auto max-lg:border-r-0 max-lg:border-b max-lg:border-[#e9ecef] max-lg:flex max-lg:gap-[40px]" id="author">
-            <div className="w-[450px] p-[16px_0_64px_60px] flex flex-col justify-center h-full z-[1] shrink-0 max-lg:w-full max-lg:p-0 max-lg:h-auto">
-              <div className="flex items-center gap-[10px] mb-[12px] max-lg:mb-[16px] max-lg:gap-[12px]">
+          <section className="flex flex-col w-full h-auto p-[60px_24px] border-b border-[#e9ecef] gap-[40px] relative xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:pr-[60px] xl:pb-[15px] xl:border-r-0 xl:border-b-0" id="author">
+            <div className="w-full p-0 h-auto flex flex-col justify-center text-left items-start z-[1] shrink-0 xl:w-[450px] xl:p-[16px_0_64px_60px] xl:h-full">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -204,42 +203,42 @@ export default function Home() {
                 </svg>
                 <div className="font-serif text-[13px] font-bold text-brand-purple2">THE AUTHOR</div>
               </div>
-              <h2 className="font-serif text-[56px] font-bold leading-[1.08] text-brand-purple2 mb-[16px] max-lg:text-[48px] max-lg:mb-[20px]"><span className="text-[#21015F]">Solomon</span><br /><span
+              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[20px] xl:text-[56px] xl:mb-[16px]"><span className="text-[#21015F]">Solomon</span><br /><span
                 className="text-[#5700FF] italic">Ayodele</span></h2>
-              <p className="font-sans text-[16px] font-light leading-[1.68] text-brand-purple2 max-lg:text-[18px]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
+              <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[16px]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
                 social transformation converge. With over a decade of experience in product and technology within the
                 banking and financial technology ecosystem, he has built a reputation for designing and scaling
                 customer-centered solutions, leading high-impact teams, and driving meaningful business transformation where
                 people, product, process, and technology meet.</p>
             </div>
 
-            <div className="w-[400px] h-[480px] relative -top-[4px] -ml-[35px] z-[2] shrink-0 flex items-center justify-center max-lg:w-full max-lg:py-[20px] max-lg:h-auto max-lg:ml-0 max-lg:top-0">
-              <div className="w-full h-full bg-transparent overflow-hidden flex items-center justify-center max-lg:max-w-[320px] max-lg:h-[420px] max-lg:mx-auto">
+            <div className="w-full py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start xl:items-center xl:justify-center xl:w-[400px] xl:h-[480px] xl:-top-[4px] xl:-ml-[35px]">
+              <div className="w-full max-w-[320px] h-[420px] mx-0 bg-transparent overflow-hidden flex items-start justify-start xl:items-center xl:justify-center xl:w-full xl:max-w-none xl:h-full">
                 <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover block" />
               </div>
             </div>
 
-            <div className="w-[800px] flex gap-[32px] h-full z-[1] shrink-0 max-lg:w-full max-lg:flex-col max-lg:p-0 max-lg:gap-[30px] max-lg:h-auto">
-              <div className="w-[380px] flex flex-col max-lg:w-full">
-                <p className="font-sans text-[16px] font-light leading-[1.68] text-justify text-brand-purple2 max-lg:text-[18px]">His professional journey spans critical roles such as his time at Standard Bank
+            <div className="flex flex-col w-full h-auto p-0 gap-[30px] z-[1] shrink-0 xl:flex-row xl:w-[800px] xl:h-full xl:gap-[32px]">
+              <div className="w-full flex items-start flex-col xl:w-[380px]">
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[16px]">His professional journey spans critical roles such as his time at Standard Bank
                   Group, where he contributed to advancing digital strategy, led end-to-end product development, facilitated
                   enterprise-wide design thinking, and forged strategic partnerships that strengthened innovation culture
                   across the organization. He currently leads as Head of Product & Technology Innovation at Wema Bank Plc,
                   and serves as an advisory board member of three high-growth startups across Africa spanning health, legal,
                   and financial services.
                 </p>
-                <p className="font-sans text-[16px] font-light leading-[1.68] text-justify text-brand-purple2 max-lg:text-[18px]" style={{ paddingTop: '10px' }}>
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[16px]" style={{ paddingTop: '10px' }}>
                   Beyond the boardroom, Solomon is the Founder of Boys Quarters Africa, a pioneering social movement
                   committed to raising a generation of emotionally grounded, socially responsible, and purpose-driven boys
                   and men.
                 </p>
               </div>
 
-              <div className="w-[380px] flex flex-col max-lg:w-full">
-                <p className="font-sans text-[16px] font-light leading-[1.68] text-justify text-brand-purple2 max-lg:text-[18px]">Through this work, he has built a global platform for redefining masculinity and
+              <div className="w-[380px] flex flex-col w-full xl:w-auto">
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[16px]">Through this work, he has built a global platform for redefining masculinity and
                   leadership, engaging over 2 million boys and men across Africa through grassroots programs, policy
                   engagement, and community transformation initiatives.</p>
-                <p className="font-sans text-[16px] font-light leading-[1.68] text-justify text-brand-purple2 max-lg:text-[18px]" style={{ paddingTop: '10px' }}>
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[16px]" style={{ paddingTop: '10px' }}>
                   In recognition of his work, he is a two-time
                   recipient of The Future Awards Africa Prize for Intrapreneurship and for Activism and Advocacy, reflecting
                   both his influence within corporate innovation and his commitment to societal change. His life's work is
@@ -247,8 +246,8 @@ export default function Home() {
                   power of technology.
                 </p>
 
-                <div className="mt-auto flex flex-col gap-[6px] max-lg:mt-0 max-lg:gap-[16px]">
-                  <h4 className="font-sans text-[16px] font-medium leading-[1.68] text-brand-purple2 max-lg:text-[20px]">Connect with Solomon</h4>
+                <div className="mt-0 flex flex-col items-start gap-[16px] xl:mt-auto xl:gap-[6px]">
+                  <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[16px]">Connect with Solomon</h4>
                   <div className="flex gap-[16px]">
                     <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="LinkedIn">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -308,53 +307,53 @@ export default function Home() {
           </section>
 
           {/* 6. NEWSLETTER SECTION */}
-          <section className="inline-flex min-w-[100vw] w-max h-full max-lg:p-[60px_24px] max-lg:h-auto" id="newsletter">
-            <div className="w-full px-[60px] flex flex-col h-full max-lg:p-0">
-              <div className="flex items-center gap-[10px] mb-[12px] max-lg:mb-[16px] max-lg:gap-[12px]">
+          <section className="w-full h-auto p-[60px_24px] border-b border-[#e9ecef] xl:border-none inline-flex flex-col xl:min-w-[100vw] xl:w-max xl:h-full xl:p-0" id="newsletter">
+            <div className="w-full p-0 flex flex-col h-full xl:px-[60px]">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z" fill="black" />
                 </svg>
                 <div className="font-serif text-[13px] font-bold text-brand-purple2">THE NEWSLETTER</div>
               </div>
               <div className="max-w-[500px]">
-                <h2 className="font-serif text-[64px] font-bold leading-[1.08] text-brand-purple2 mb-[16px] max-lg:text-[48px] max-lg:leading-[1.1]"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
-                <p className="font-sans text-[16px] font-light leading-[1.68] text-brand-purple2 mb-[24px] max-lg:text-[18px]">Join thousands of readers who get weekly reflections on purpose, identity, and what
+                <h2 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-[16px] xl:text-[64px] xl:leading-[1.08]"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
+                <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[16px]">Join thousands of readers who get weekly reflections on purpose, identity, and what
                   it means to live a full life.</p>
               </div>
 
-              <form className="flex flex-col gap-[24px] items-start max-lg:w-full" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
-                <input type="email" placeholder="Your email address" className="w-[400px] h-[50px] rounded-[40px] max-lg:w-full border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <button type="submit" className="inline-flex items-center justify-center w-[150px] h-[50px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</button>
+              <form className="flex flex-col gap-[24px] w-full items-start xl:w-auto" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
+                <input type="email" placeholder="Your email address" className="w-full xl:w-[400px] h-[50px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] h-[50px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</Button>
               </form>
             </div>
           </section>
 
           {/* 7. CONTACT SECTION */}
-          <section className="inline-flex min-w-[100vw] w-max relative pr-[6rem] items-start h-full max-lg:flex-col max-lg:p-[60px_24px] max-lg:h-auto max-lg:w-full" id="contact">
-            <div className="w-[460px] pl-[60px] flex flex-col shrink-0 max-lg:w-full max-lg:p-0 max-lg:h-auto">
-              <div className="flex items-center gap-[10px] mb-[12px] max-lg:mb-[16px] max-lg:gap-[12px]">
+          <section className="flex flex-col w-full h-auto p-[60px_24px] relative items-start xl:inline-flex xl:flex-row xl:h-full xl:p-0 xl:min-w-[100vw] xl:w-max xl:pr-[6rem]" id="contact">
+            <div className="w-full p-0 h-auto flex flex-col shrink-0 xl:w-[460px] xl:pl-[60px] xl:h-full">
+              <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z" fill="black" />
                 </svg>
                 <div className="font-serif text-[13px] font-bold text-brand-purple2">GET IN TOUCH</div>
               </div>
-              <h2 className="font-serif text-[64px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] max-lg:text-[48px]">Let's <span className="text-brand-purple">Talk</span></h2>
+              <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] xl:text-[64px]">Let's <span className="text-brand-purple">Talk</span></h2>
 
-              <form className="flex flex-col gap-0 items-start max-lg:w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
-                <input type="text" placeholder="Your Name" className="w-[380px] h-[50px] mb-[16px] rounded-[40px] max-lg:w-full border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <input type="email" placeholder="Your email address" className="w-[380px] h-[50px] mb-[16px] rounded-[40px] max-lg:w-full border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <textarea placeholder="How can we help you?" className="w-[380px] h-[100px] mb-[24px] rounded-[20px] max-lg:w-full border border-brand-purple2 p-[20px_24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
-                <button type="submit" className="inline-flex items-center justify-center w-[150px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[14px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</button>
+              <form className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
+                <input type="text" placeholder="Your Name" className="w-full xl:w-[380px] h-[50px] mb-[16px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                <input type="email" placeholder="Your email address" className="w-full xl:w-[380px] h-[50px] mb-[16px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
+                <textarea placeholder="How can we help you?" className="w-full xl:w-[380px] h-[100px] mb-[24px] rounded-[20px] border border-brand-purple2 p-[20px_24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
+                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[14px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</Button>
               </form>
-              <div className="mt-[24px] font-sans text-[13px] text-brand-purple2 opacity-60 max-lg:relative max-lg:bottom-auto max-lg:left-auto max-lg:mt-[40px] max-lg:pt-[20px] max-lg:border-t max-lg:border-[#e9ecef]">
+              <div className="hidden xl:block xl:static xl:mt-[24px] font-sans text-[13px] text-brand-purple2 opacity-60">
                 <p>© 2026 Solomon Ayodele · Out of Office</p>
               </div>
             </div>
 
-            <div className="w-[320px] pl-[32px] pt-[64px] flex flex-col gap-[20px] shrink-0 max-lg:w-full max-lg:px-0 max-lg:pt-[40px] max-lg:h-auto max-lg:gap-[30px]">
+            <div className="flex flex-col w-full px-0 pt-[40px] gap-[30px] h-auto shrink-0 xl:w-[320px] xl:pl-[32px] xl:px-[32px] xl:pt-[64px] xl:h-full xl:gap-0">
               {/* Web detail */}
-              <div className="flex items-center gap-[10px] max-lg:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple max-lg:w-[44px] max-lg:h-[44px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
@@ -370,14 +369,14 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] max-lg:text-[18px]">Website</span>
-                  <a href="/coming-soon" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 max-lg:text-[16px]">www.solomonayodele.com</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Website</span>
+                  <a href="/coming-soon" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] xl:text-inherit">www.solomonayodele.com</a>
                 </div>
               </div>
 
               {/* Email detail */}
-              <div className="flex items-center gap-[10px] max-lg:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple max-lg:w-[44px] max-lg:h-[44px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
@@ -388,15 +387,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] max-lg:text-[18px]">Email</span>
-                  <a href="mailto:contact.solomonayodele@gmail.com" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 max-lg:text-[16px]">contact.solomonayodele@gmail.com</a>
-                  <a href="mailto:me@solomonayodele.com" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 max-lg:text-[16px]">me@solomonayodele.com</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Email</span>
+                  <a href="mailto:contact.solomonayodele@gmail.com" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] xl:text-inherit">contact.solomonayodele@gmail.com</a>
+                  
                 </div>
               </div>
 
               {/* Phone detail */}
-              <div className="flex items-center gap-[10px] max-lg:gap-[16px]">
-                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple max-lg:w-[44px] max-lg:h-[44px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
+              <div className="flex items-center gap-[16px] xl:gap-[16px]">
+                <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 7V17C20 21 19 22 15 22H9C5 22 4 21 4 17V7C4 3 5 2 9 2H15C19 2 20 3 20 7Z"
                       stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -408,13 +407,13 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] max-lg:text-[18px]">Phone</span>
-                  <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 max-lg:text-[16px]">+234 703 737 3284</a>
+                  <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px]">Phone</span>
+                  <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-brand-purple no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] xl:text-inherit">+234 703 737 3284</a>
                 </div>
               </div>
             </div>
           </section>
-
+          <div className="w-full xl:hidden"><Footer /></div>
         </div>
       </main>
 
