@@ -226,8 +226,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[600px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
-              <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[290px] 2xl:!w-[520px]">
+            <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
+              <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[330px] 2xl:!w-[520px]">
                 <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">His professional journey spans critical roles such as his time at Standard Bank
                   Group, where he contributed to advancing digital strategy, led end-to-end product development, facilitated
                   enterprise-wide design thinking, and forged strategic partnerships that strengthened innovation culture
@@ -242,7 +242,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col w-full md:w-1/2 xl:w-[290px] 2xl:!w-[520px]">
+              <div className="flex flex-col w-full md:w-1/2 xl:w-[330px] 2xl:!w-[520px]">
                 <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Through this work, he has built a global platform for redefining masculinity and
                   leadership, engaging over 2 million boys and men across Africa through grassroots programs, policy
                   engagement, and community transformation initiatives.</p>
