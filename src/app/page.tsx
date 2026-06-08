@@ -42,7 +42,7 @@ export default function Home() {
         <div className="flex flex-col h-auto w-full xl:!w-max xl:h-full xl:flex-row">
 
           {/* 1. HERO SECTION */}
-          <section className="relative w-full h-auto p-[60px_24px] border-b border-[#e9ecef] bg-white flex flex-col-reverse gap-10 xl:border-none xl:h-full xl:pt-2 xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max" id="hero">
+          <section className="relative w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 bg-white flex flex-col-reverse gap-10 xl:border-none xl:h-full xl:pt-2 xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max" id="hero">
             <div className="flex flex-col justify-center w-full h-auto p-0 xl:w-auto xl:px-[60px] xl:pr-0 xl:h-full">
               <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -62,7 +62,7 @@ export default function Home() {
                   difficult transitions, and the courage to reinvent yourself, so you can step into the most meaningful season
                   of your life.&apos;</p>
               </div>
-              <Button render={<Link href="/coming-soon" />} className="!inline-flex items-center justify-center w-full px-9 py-4 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 xl:w-[200px] xl:py-[15px] xl:px-0">Pre-order Now</Button>
+              <Button render={<Link href="/coming-soon" />} className="!inline-flex items-center justify-center w-full px-9 py-6 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:bg-brand-purple hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)] active:translate-y-0 xl:w-[200px] xl:py-[15px] xl:px-0">Pre-order Now</Button>
             </div>
 
             <div className="flex items-center justify-center z-[1] w-full h-auto py-5 relative left-auto top-auto xl:absolute xl:py-0 xl:w-[590px] min-[1440px]:left-[741px] min-[1440px]:w-[718px] min-[1440px]:h-[725px]">
@@ -71,7 +71,7 @@ export default function Home() {
           </section>
 
           {/* 2. "THERE IS MORE" SECTION */}
-          <section className="relative mt-20 flex flex-col gap-[30px] w-full h-auto xl:min-w-[100vw] xl:w-max xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 xl:-ml-[50px] xl:mr-[40px]" id="there-is-more">
+          <section className="relative mt-20 flex flex-col gap-[30px] w-full h-auto px-[24px] xl:px-0 xl:min-w-[100vw] xl:w-max xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 xl:-ml-[50px] xl:mr-[40px]" id="there-is-more">
             <div className="flex w-full h-auto xl:w-auto xl:h-full">
               <h2 className="font-serif text-[38px] max-w-full font-bold italic leading-[1.2] text-brand-purple2 xl:text-[80px] xl:max-w-[740px] xl:leading-[1.1]">"There is <span className="text-brand-purple">more to life</span> than what you do for work."
               </h2>
@@ -88,14 +88,14 @@ export default function Home() {
                   that shape meaningful work, grounded success and a life that actually reflects who they are becoming.</p>
               </div>
 
-              <div className="relative left-auto top-auto w-full h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:left-[-150px] xl:bottom-[40px] xl:w-[300px] xl:h-[300px] xl:py-0">
-                <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-unset" />
+              <div className="relative left-auto top-auto w-full max-w-[280px] mx-auto h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-[-150px] xl:bottom-[40px] xl:w-[300px] xl:h-[300px] xl:py-0">
+                <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-contain" />
               </div>
             </div>
           </section>
 
           {/* 3. BEYOND THE BOOK SECTION */}
-          <section className="flex flex-col w-full h-auto p-[60px_24px] border-b border-[#e9ecef] xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="beyond-the-book">
+          <section className="flex flex-col w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="beyond-the-book">
             <div className="pl-0 mb-[30px] xl:pl-[60px] xl:mb-[24px]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -106,7 +106,7 @@ export default function Home() {
                 </svg>
                 <div className="font-serif text-[13px] xl:text-2xl font-bold text-brand-purple2">BEYOND THE BOOK</div>
               </div>
-              <h2 className="font-serif text-[36px] font-bold text-brand-purple2 xl:text-[64px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
+              <h2 className="font-serif text-[36px] leading-[40px] font-bold text-brand-purple2 xl:text-[64px] xl:leading-[1.1]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
             </div>
 
             <div className="flex flex-col gap-[30px] p-0 xl:flex-row xl:pl-[60px] xl:gap-[24px]">
@@ -142,7 +142,7 @@ export default function Home() {
           </section>
 
           {/* 4. SHOP SECTION */}
-          <section className="w-full h-auto p-[60px_24px] border-b border-[#e9ecef] bg-white flex flex-col gap-10 xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="shop">
+          <section className="w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 bg-white flex flex-col gap-10 xl:border-none xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:min-w-[100vw] xl:w-max xl:justify-center xl:pr-[60px]" id="shop">
             <div className="pl-0 mb-[30px] xl:pl-[60px]">
               <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -155,7 +155,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-start gap-4 w-full xl:flex-row xl:items-center">
                 <h2 className="font-cormorant text-4xl font-bold text-brand-purple2 xl:text-[64px]">Wear the <span className="text-brand-purple">movement</span></h2>
-                <Button render={<Link href="/shop" />} className="!inline-flex items-center justify-center w-full px-7 py-4 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white xl:w-auto xl:py-2 xl:text-base">Shop Now</Button>
+                <Button render={<Link href="/shop" />} className="!inline-flex items-center justify-center w-full px-7 py-6 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline transition-colors duration-300 hover:bg-brand-purple hover:text-white xl:w-auto xl:py-2 xl:text-base">Shop Now</Button>
               </div>
             </div>
 
@@ -164,35 +164,35 @@ export default function Home() {
                 title="Planner/Journal"
                 image="product-journal.png"
                 bgColor="bg-[#FFEEF5]"
-                imagePosition="xl:left-[70px] xl:top-[70px]"
+                imagePosition="-bottom-2 -right-4 xl:translate-x-0 xl:bottom-auto xl:right-auto xl:left-[70px] xl:top-[70px]"
                 xlImagePosition="xl:left-[90px] xl:top-[90px]"
               />
               <ShopCard
                 title="T-Shirt"
                 image="product-tshirt.png"
                 bgColor="bg-[#CCF4E9]"
-                imagePosition="xl:left-[65px] xl:top-[79px]"
+                imagePosition="-bottom-4 -right-8 xl:translate-x-0 xl:bottom-auto xl:left-auto xl:left-[65px] xl:top-[79px]"
                 xlImagePosition="xl:left-[85px] xl:top-[99px]"
               />
               <ShopCard
                 title="Hoodie"
                 image="product-hoodie.png"
                 bgColor="bg-[#DECCFF]"
-                imagePosition="xl:-left-[15px] xl:-top-[14px]"
+                imagePosition="-bottom-3 -right-3 xl:bottom-auto xl:right-auto xl:-left-[15px] xl:-top-[14px]"
                 xlImagePosition="xl:-left-[20px] xl:-top-[18px]"
               />
               <ShopCard
                 title="Cap"
                 image="product-cap.png"
                 bgColor="bg-[#FEEECB]"
-                imagePosition="xl:left-[35px] xl:top-[55px]"
+                imagePosition="-bottom-2 -right-4 xl:bottom-auto xl:right-auto xl:left-[35px] xl:top-[55px]"
                 xlImagePosition="xl:left-[45px] xl:top-[70px]"
               />
             </div>
           </section>
 
           {/* 5. AUTHOR SECTION */}
-          <section className="flex flex-col w-full h-auto p-[60px_24px] border-b border-[#e9ecef] gap-[40px] relative xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:pr-[60px] xl:pb-[15px] xl:border-r-0 xl:border-b-0" id="author">
+          <section className="flex flex-col w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 gap-[40px] relative xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:min-w-[100vw] xl:w-max xl:pr-[60px] xl:pb-[15px] " id="author">
             <div className="w-full p-0 h-auto flex flex-col justify-center text-left items-start z-[1] shrink-0 xl:w-[450px] xl:p-[16px_0_64px_60px] xl:h-full">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -246,9 +246,9 @@ export default function Home() {
                   power of technology.
                 </p>
 
-                <div className="mt-0 flex flex-col items-start gap-[16px] xl:mt-auto xl:gap-[6px]">
+                <div className="mt-8 flex flex-col items-start gap-[10px] xl:mt-auto xl:gap-[6px]">
                   <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[16px]">Connect with Solomon</h4>
-                  <div className="flex gap-[16px]">
+                  <div className="flex gap-[10px]">
                     <a href="/coming-soon" className="group/social w-[42px] h-[36px] rounded-[18px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="LinkedIn">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -307,7 +307,7 @@ export default function Home() {
           </section>
 
           {/* 6. NEWSLETTER SECTION */}
-          <section className="w-full h-auto p-[60px_24px] border-b border-[#e9ecef] xl:border-none inline-flex flex-col xl:min-w-[100vw] xl:w-max xl:h-full xl:p-0" id="newsletter">
+          <section className="w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 xl:border-none inline-flex flex-col xl:min-w-[100vw] xl:w-max xl:h-full xl:p-0" id="newsletter">
             <div className="w-full p-0 flex flex-col h-full xl:px-[60px]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -323,13 +323,13 @@ export default function Home() {
 
               <form className="flex flex-col gap-[24px] w-full items-start xl:w-auto" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
                 <input type="email" placeholder="Your email address" className="w-full xl:w-[400px] h-[50px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
-                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] h-[50px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</Button>
+                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] py-6 rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] font-medium tracking-[-0.02em] no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Subscribe</Button>
               </form>
             </div>
           </section>
 
           {/* 7. CONTACT SECTION */}
-          <section className="flex flex-col w-full h-auto p-[60px_24px] relative items-start xl:inline-flex xl:flex-row xl:h-full xl:p-0 xl:min-w-[100vw] xl:w-max xl:pr-[6rem]" id="contact">
+          <section className="flex flex-col w-full h-auto py-10 px-6 xl:py-[60px] xl:px-6 relative items-start xl:inline-flex xl:flex-row xl:h-full xl:p-0 xl:min-w-[100vw] xl:w-max xl:pr-[6rem]" id="contact">
             <div className="w-full p-0 h-auto flex flex-col shrink-0 xl:w-[460px] xl:pl-[60px] xl:h-full">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -343,14 +343,14 @@ export default function Home() {
                 <input type="text" placeholder="Your Name" className="w-full xl:w-[380px] h-[50px] mb-[16px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <input type="email" placeholder="Your email address" className="w-full xl:w-[380px] h-[50px] mb-[16px] rounded-[40px] border border-brand-purple2 px-[24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <textarea placeholder="How can we help you?" className="w-full xl:w-[380px] h-[100px] mb-[24px] rounded-[20px] border border-brand-purple2 p-[20px_24px] font-sans text-[14px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
-                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] py-[15px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[14px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</Button>
+                <Button type="submit" className="!inline-flex items-center justify-center w-full xl:w-[150px] py-6 rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[14px] font-medium no-underline cursor-pointer overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:bg-brand-purple hover:text-white hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(87,0,255,0.2)]">Send Message</Button>
               </form>
               <div className="hidden xl:block xl:static xl:mt-[24px] font-sans text-[13px] text-brand-purple2 opacity-60">
                 <p>© 2026 Solomon Ayodele · Out of Office</p>
               </div>
             </div>
 
-            <div className="flex flex-col w-full px-0 pt-[40px] gap-[30px] h-auto shrink-0 xl:w-[320px] xl:pl-[32px] xl:px-[32px] xl:pt-[64px] xl:h-full xl:gap-0">
+            <div className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 xl:w-[320px] xl:pl-[32px] xl:px-[32px] xl:pt-[64px] xl:h-full xl:gap-0">
               {/* Web detail */}
               <div className="flex items-center gap-[16px] xl:gap-[16px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] [&>svg]:w-[24px] [&>svg]:h-[24px]">

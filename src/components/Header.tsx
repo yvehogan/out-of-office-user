@@ -41,20 +41,38 @@ export default function Header() {
           </Link>
         </div>
 
-        <button className={`bg-none border-none cursor-pointer w-9 h-9 xl:w-8 xl:h-8 min-[1440px]:w-[50px] min-[1440px]:h-[50px] flex justify-center items-center z-[1010] relative [&_svg]:w-7 [&_svg]:h-7 [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] min-[1440px]:[&_svg]:w-[50px] min-[1440px]:[&_svg]:h-[50px] ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button className={`bg-transparent border-none cursor-pointer w-9 h-9 xl:w-8 xl:h-8 min-[1440px]:w-[50px] min-[1440px]:h-[50px] flex justify-center items-center z-[1010] relative [&_svg]:w-7 [&_svg]:h-7 [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] min-[1440px]:[&_svg]:w-[50px] min-[1440px]:[&_svg]:h-[50px] ${isMenuOpen ? 'active' : ''}`} id="menu-toggle-btn" aria-label="Toggle Menu" onClick={toggleMenu}>
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none">
             <rect x="2" y="11" width="47" height="10" rx="5" fill="#5700FF" />
             <rect x="2" y="29" width="47" height="10" rx="5" fill="#5700FF" />
           </svg>
         </button>
       </header>
 
-      <nav className={`fixed top-[90px] w-full h-[calc(100vh-90px)] p-[40px_24px] bg-white shadow-[-10px_0_30px_rgba(33,1,95,0.05)] transition-[right] duration-[0.4s] ease-[cubic-bezier(0.4,0,0.2,1)] z-[999] flex flex-col xl:top-[84px] xl:w-[400px] xl:h-[calc(100vh-84px)] xl:p-[60px_50px] xl:border-l border-[#e9ecef] min-[1440px]:top-[103px] min-[1440px]:h-[calc(100vh-103px)] ${isMenuOpen ? 'right-0' : '-right-full'}`} id="nav-dropdown">
-        <ul className="list-none flex flex-col gap-[30px] xl:gap-10">
-          <li><Link href="/shop" className="font-serif text-[28px] xl:text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5" onClick={closeMenu}>Books</Link></li>
-          <li><Link href="/insights" className="font-serif text-[28px] xl:text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5" onClick={closeMenu}>Insights</Link></li>
-          <li><Link href="/shop" className="font-serif text-[28px] xl:text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5" onClick={closeMenu}>Shop</Link></li>
-          <li><Link href="/events" className="font-serif text-[28px] xl:text-4xl font-bold text-brand-purple2 no-underline transition-all duration-300 flex items-center gap-4 hover:text-brand-purple hover:pl-2.5" onClick={closeMenu}>Events</Link></li>
+      <nav className={`fixed inset-0 w-full h-[100dvh] bg-black/5 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-[1050] flex flex-col items-center justify-center xl:items-end xl:pr-[20vw] ${isMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`} id="nav-dropdown">
+        <button onClick={closeMenu} className="absolute top-6 right-6 xl:top-8 xl:right-[60px] bg-transparent border-none cursor-pointer p-2 flex items-center justify-center text-white hover:opacity-80 transition-opacity active:scale-95 z-[1060] drop-shadow-[0_0_15px_rgba(87,0,255,1)]" aria-label="Close menu">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12.4185" y="4.92761" width="47" height="10" rx="5" transform="rotate(45 12.4185 4.92761)" fill="white"/>
+            <rect x="5.34766" y="38.6616" width="47" height="10" rx="5" transform="rotate(-45 5.34766 38.6616)" fill="white"/>
+          </svg>
+        </button>
+        <ul className="list-none w-full xl:w-auto flex flex-col items-center xl:items-start gap-8 xl:gap-[40px] relative z-[1060]">
+          <li><Link href="/shop" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
+            <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+            Books
+          </Link></li>
+          <li><Link href="/insights" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
+            <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+            Insights
+          </Link></li>
+          <li><Link href="/shop" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
+            <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+            Shop
+          </Link></li>
+          <li><Link href="/events" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
+            <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+            Events
+          </Link></li>
         </ul>
       </nav>
     </>
