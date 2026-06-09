@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { BeyondCard } from '@/components/pages/home/beyond-card';
 import { ShopCard } from '@/components/pages/home/shop-card';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,16 @@ export default function Home() {
   useEffect(() => {
     document.body.classList.add('landing-page');
     return () => { document.body.classList.remove('landing-page'); };
+  }, []);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      const timer = setTimeout(() => {
+        scrollContainer.classList.remove('hide-scrollbar');
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   useEffect(() => {
@@ -38,13 +49,18 @@ export default function Home() {
 
   return (
     <>
-      <main className="relative top-0 flex-none h-auto w-full overflow-x-hidden overflow-y-visible whitespace-normal scroll-smooth xl:flex-1 xl:overflow-x-auto xl:overflow-y-hidden xl:whitespace-nowrap [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-[#f8f9fa] [&::-webkit-scrollbar-thumb]:bg-brand-purple2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-brand-purple" id="scroll-container" ref={scrollContainerRef}>
+      <main className="hide-scrollbar relative top-0 flex-none h-auto w-full overflow-x-hidden overflow-y-visible whitespace-normal scroll-smooth xl:flex-1 xl:overflow-x-auto xl:overflow-y-hidden xl:whitespace-nowrap [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-[#f8f9fa] [&::-webkit-scrollbar-thumb]:bg-brand-purple2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-brand-purple" id="scroll-container" ref={scrollContainerRef}>
         <div className="flex flex-col h-auto w-full xl:!w-max xl:h-full xl:flex-row">
 
           {/* 1. HERO SECTION */}
           <section className="relative w-full h-auto py-10 px-6 md:px-12 md:flex-row md:items-center xl:py-[60px] xl:px-0 bg-white flex flex-col-reverse gap-0 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:pt-0 xl:shrink-0 xl:inline-flex xl:flex-row xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max 2xl:w-max xl:gap-[30px] 2xl:gap-[80px]" id="hero">
             <div className="flex flex-col justify-center w-full h-auto p-0 md:w-1/2 md:pr-0 xl:w-[500px] 2xl:!w-[680px] xl:pl-[60px] 2xl:!pl-[100px] xl:pr-0 xl:h-full relative z-10 xl:shrink-0 xl:pt-[64px] 2xl:pt-0">
-              <div className="flex flex-row items-center md:flex-col lg:flex-row md:items-start lg:items-center md:gap-2 gap-3 mb-4 mt-8 md:mt-0 xl:gap-[15px] xl:mb-[20px] 2xl:mb-[30px] xl:mt-0">
+              
+              <motion.div 
+                initial={{ opacity: 0, x: -80, scale: 0.3, transformOrigin: "left center" }}
+                animate={{ opacity: 1, x: 0, scale: [0.3, 1.08, 1] }}
+                transition={{ duration: 1.5, delay: 1, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}
+                className="flex flex-row items-center md:flex-col lg:flex-row md:items-start lg:items-center md:gap-2 gap-3 mb-4 mt-8 md:mt-0 xl:gap-[15px] xl:mb-[20px] 2xl:mb-[30px] xl:mt-0">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -52,8 +68,13 @@ export default function Home() {
                     fill="black" />
                 </svg>
                 <div className="font-serif text-[13px] font-bold text-brand-green2 xl:text-[14px] 2xl:!text-[16px] uppercase tracking-wider whitespace-nowrap">NEW BOOK AVAILABLE FOR PRE-ORDER</div>
-              </div>
-              <div className="w-full">
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: -80, scale: 0.3, transformOrigin: "left center" }}
+                animate={{ opacity: 1, x: 0, scale: [0.3, 1.08, 1] }}
+                transition={{ duration: 1.5, delay: 1, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}
+                className="w-full">
                 <h1 className="font-serif text-[48px] md:text-[56px] font-bold leading-[1.1] text-brand-purple2 mb-4 xl:mb-5 xl:leading-[1.05] xl:text-[64px] 2xl:!text-[96px] whitespace-nowrap">
                   <span className="text-brand-purple2">Life beyond</span><br />
                   <span className="text-brand-purple italic">the job title.</span>
@@ -61,15 +82,25 @@ export default function Home() {
                 <p className="font-unageo text-lg md:text-[17px] w-full font-light leading-[1.5] text-brand-purple2 mb-[30px] xl:mb-7 xl:text-[16px] 2xl:mb-12 2xl:!text-[22px] whitespace-normal xl:w-full 2xl:w-full">Out of Office is not a book about work. It is a playbook for navigating failed ventures,
                   difficult transitions, and the courage to reinvent yourself, so you can step into the most meaningful season
                   of your life.&apos;</p>
-              </div>
-              <Button render={<Link href="/shop/work-in-progress-0-0" />} className="group !inline-flex items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)] md:w-[200px] xl:w-[160px] 2xl:!w-[220px] xl:py-4 2xl:!py-6 xl:text-sm 2xl:!text-lg">
-                <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
-                <span className="relative z-10 group-hover:text-white transition-colors duration-300">Pre-order Now</span>
-              </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -80, scale: 0.3, transformOrigin: "left center" }}
+                animate={{ opacity: 1, x: 0, scale: [0.3, 1.08, 1] }}
+                transition={{ duration: 1.5, delay: 1, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}>
+                <Button render={<Link href="/shop/work-in-progress-0-0" />} className="group !inline-flex items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)] md:w-[200px] xl:w-[160px] 2xl:!w-[220px] xl:py-4 2xl:!py-6 xl:text-sm 2xl:!text-lg">
+                  <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
+                  <span className="relative z-10 group-hover:text-white transition-colors duration-300">Pre-order Now</span>
+                </Button>
+              </motion.div>
             </div>
 
             <div className="flex items-center justify-start z-[1] w-full h-auto relative left-auto top-auto md:w-1/2 md:justify-center xl:relative xl:py-0 xl:w-[500px] 2xl:!w-[650px] xl:left-auto xl:h-full xl:shrink-0 xl:items-center xl:justify-center xl:-ml-[60px] xl:mr-[20px]">
-              <img src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
+              <motion.img 
+                initial={{ opacity: 0, x: 80, y: 80, scale: 0.3, transformOrigin: "bottom right" }}
+                animate={{ opacity: 1, x: [80, -6, 0], y: [80, -6, 0], scale: [0.3, 1.08, 1], transformOrigin: "center" }}
+                transition={{ duration: 1.5, delay: 1, x: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, y: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}
+                src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
             </div>
           </section>
 

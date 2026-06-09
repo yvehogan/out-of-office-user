@@ -190,6 +190,14 @@ body.landing-page {
   font-family: var(--font-sans);
 }
 
+#scroll-container.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+#scroll-container.hide-scrollbar {
+  scrollbar-width: none;
+}
+
 @media (min-width: 1280px) {
   body.landing-page {
     display: flex;
