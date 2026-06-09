@@ -200,6 +200,40 @@ useEffect(() => {
 
 ---
 
+## Section 5: Author — Scroll-Triggered Scale-In ✅ (Complete)
+
+### Concept
+The "Solomon Ayodele" heading stays static. The bio text block scales in from the top-left. The portrait image scales in from the bottom-left with a gentler starting scale (not as dramatically small as other animations).
+
+### Scroll Tracking Setup
+```ts
+const { scrollXProgress: authorScrollProgress } = useScroll({
+  target: authorRef,
+  container: scrollContainerRef,
+  axis: "x",
+  offset: ["start end", "start center"]
+});
+```
+
+### Text Block Animation (top-left origin)
+- **Scale:** `[0.3, 1]` over `[0, 1]`
+- **X:** `[-80, 0]` — enters from the left
+- **Y:** `[-60, 0]` — enters from above
+- **Opacity:** `[0, 1]`
+- **Transform Origin:** `top left`
+
+### Image Animation (bottom-left origin, gentle scale)
+- **Scale:** `[0.6, 1]` over `[0, 1]` — starts at 60%, not 30% like other elements
+- **X:** `[-60, 0]` — enters from the left
+- **Y:** `[40, 0]` — enters from below
+- **Opacity:** `[0, 1]`
+- **Transform Origin:** `bottom left`
+
+### Key Decision
+- Image uses a gentler starting scale (`0.6` instead of `0.3`) because a portrait shrinking too small looks unnatural and jarring. The subtle grow-in feels more polished.
+
+---
+
 ## Section 6: Newsletter — Scroll-Triggered Scale-In ✅ (Complete)
 
 ### Concept
@@ -275,6 +309,7 @@ const { scrollXProgress: contactScrollProgress } = useScroll({
 | `thereIsMoreRef` | Section 2 target for scroll progress tracking |
 | `shopRef` | Shop section target for scroll progress tracking |
 | `beyondRef` | Beyond the Book section target for scroll progress tracking |
+| `authorRef` | Author section target for scroll progress tracking |
 | `newsletterRef` | Newsletter section target for scroll progress tracking |
 | `contactRef` | Contact section target for scroll progress tracking |
 | `bookRef` | Hero book image — used to add CSS transition classes after animation completes |
