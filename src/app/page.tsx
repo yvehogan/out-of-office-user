@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { BeyondCard } from '@/components/pages/home/beyond-card';
 import { ShopCard } from '@/components/pages/home/shop-card';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,51 @@ import Link from "next/link";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLElement>(null);
+  const thereIsMoreRef = useRef<HTMLElement>(null);
+  const bookRef = useRef<HTMLImageElement>(null);
+  const shopRef = useRef<HTMLElement>(null);
+  const [isLargeDesktop, setIsLargeDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsLargeDesktop(window.innerWidth >= 1400);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const { scrollXProgress } = useScroll({
+    target: thereIsMoreRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start end", "center center"]
+  });
+
+  // Icon animation: green starts lower (between red/purple in a line), gets pushed up as they come together
+  const greenY = useTransform(scrollXProgress, [0, 1], [60, 0]);
+  const purpleX = useTransform(scrollXProgress, [0, 1], [150, 0]);
+  const redX = useTransform(scrollXProgress, [0, 1], [-150, 0]);
+
+  // Text block animation: comes from bottom-right diagonally to top-left
+  const textOpacity = useTransform(scrollXProgress, [0.4, 0.85], [0, 1]);
+  const textScale = useTransform(scrollXProgress, [0.4, 0.85, 1], [0.3, 1.08, 1]);
+  const textX = useTransform(scrollXProgress, [0.4, 0.85], [80, 0]);
+  const textY = useTransform(scrollXProgress, [0.4, 0.85], [60, 0]);
+
+  // Shop section scroll tracking
+  const { scrollXProgress: shopScrollProgress } = useScroll({
+    target: shopRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start center", "center center"]
+  });
+
+  // Shop cards: stacked at Planner's position (left). Cap on top. Spread RIGHT as user scrolls.
+  // Smaller desktop (1280): tighter offsets. Larger desktop (1400+): wider offsets.
+  const shopOffset = isLargeDesktop ? { card2: -367, card3: -733, card4: -1100 } : { card2: -277, card3: -553, card4: -830 };
+  const shopCard1X = useTransform(shopScrollProgress, [0, 1], [0, 0]);
+  const shopCard2X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card2, 0]);
+  const shopCard3X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card3, 0]);
+  const shopCard4X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card4, 0]);
 
   useEffect(() => {
     document.body.classList.add('landing-page');
@@ -22,6 +67,16 @@ export default function Home() {
       const timer = setTimeout(() => {
         scrollContainer.classList.remove('hide-scrollbar');
       }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  useEffect(() => {
+    const book = bookRef.current;
+    if (book) {
+      const timer = setTimeout(() => {
+        book.classList.add('transition-transform', 'duration-300');
+      }, 2600);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -100,25 +155,44 @@ export default function Home() {
                 initial={{ opacity: 0, x: 80, y: 80, scale: 0.3, transformOrigin: "bottom right" }}
                 animate={{ opacity: 1, x: [80, -6, 0], y: [80, -6, 0], scale: [0.3, 1.08, 1], transformOrigin: "center" }}
                 transition={{ duration: 1.5, delay: 1, x: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, y: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}
-                src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 transition-transform duration-300 hover:-translate-y-2.5 hover:-rotate-1" />
+                ref={bookRef}
+                src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 hover:-translate-y-2.5 hover:-rotate-1" />
             </div>
           </section>
 
           {/* 2. "THERE IS MORE" SECTION */}
-          <section className="relative mt-20 flex flex-col md:flex-row md:items-start gap-[30px] w-full h-auto px-[24px] md:px-12 xl:px-0 xl:w-max 2xl:w-max xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 2xl:gap-0 xl:-ml-[50px] 2xl:!-ml-[80px] xl:mr-[10px] 2xl:mr-[120px] xl:mt-0 xl:pt-[80px] 2xl:!pt-[125px]" id="there-is-more">
+          <section className="relative mt-20 flex flex-col md:flex-row md:items-start gap-[30px] w-full h-auto px-[24px] md:px-12 xl:px-0 xl:w-max 2xl:w-max xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:flex-row xl:gap-0 2xl:gap-0 xl:-ml-[50px] 2xl:!-ml-[80px] xl:mr-[10px] 2xl:mr-[120px] xl:mt-0 xl:pt-[80px] 2xl:!pt-[125px]" id="there-is-more" ref={thereIsMoreRef}>
             <div className="flex flex-col w-full h-auto md:w-1/2 md:pr-10 xl:pr-0 xl:w-[560px] 2xl:!w-[800px] 2xl:!pr-0 xl:h-full xl:shrink-0 relative">
               <h2 className="font-serif text-[38px] max-w-full font-bold italic leading-[1.2] text-brand-purple2 xl:text-[56px] 2xl:!text-[82px] xl:leading-[1.1] 2xl:!leading-[1.1]">
                 "There is <span className="text-brand-purple">more to life</span><br className="hidden xl:block 2xl:hidden" /> than what you do for<br className="hidden xl:block 2xl:hidden" /> work."
               </h2>
               
-              {/* Tablet/Desktop Icon (Hidden on mobile) */}
-              <div className="relative left-auto top-auto w-full max-w-[220px] md:max-w-[180px] mx-auto md:mx-0 mt-8 h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-auto xl:-right-[60px] 2xl:!-right-[110px] xl:-bottom-[100px] 2xl:!-bottom-[110px] xl:w-[220px] 2xl:!w-[340px] xl:h-auto 2xl:!h-[340px] xl:py-0 hidden md:block">
-                <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-contain" />
+              {/* Tablet/Desktop Icon (Hidden on mobile) - Animated */}
+              <div className="relative left-auto top-auto w-full max-w-[220px] md:max-w-[180px] mx-auto md:mx-0 mt-8 h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-auto xl:-right-[60px] 2xl:!-right-[110px] xl:-bottom-[100px] 2xl:!-bottom-[110px] xl:w-[220px] 2xl:!w-[340px] xl:h-auto 2xl:!h-[340px] xl:py-0 hidden md:block overflow-visible">
+                <svg width="374" height="387" viewBox="0 0 374 387" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-contain overflow-visible">
+                  {/* Red circle - full circle + white inner square */}
+                  <motion.g style={{ x: redX }}>
+                    <circle cx="101.3" cy="257.1" r="86" fill="#FF0000"/>
+                    <path d="M144.582 253.259L119.245 297.027C116.379 301.985 110.036 303.68 105.067 300.812L61.2988 275.475C56.3408 272.609 54.6458 266.266 57.512 261.308L82.8511 217.528C85.7173 212.57 92.0601 210.875 97.0181 213.742L140.798 239.081C145.756 241.947 147.451 248.29 144.582 253.259Z" fill="white"/>
+                  </motion.g>
+                  {/* Green circle - full circle + white inner square */}
+                  <motion.g style={{ y: greenY }}>
+                    <circle cx="146.7" cy="101" r="83" fill="#00CC8D"/>
+                    <path d="M180.599 129.843L131.668 142.617C126.129 144.066 120.46 140.745 119.013 135.195L106.239 86.2641C104.789 80.7254 108.11 75.0562 113.66 73.6091L162.591 60.8349C168.13 59.3854 173.799 62.7062 175.246 68.2564L188.02 117.188C189.47 122.726 186.149 128.395 180.599 129.843Z" fill="white"/>
+                  </motion.g>
+                  {/* Purple circle - full circle + white inner square */}
+                  <motion.g style={{ x: purpleX }}>
+                    <circle cx="258.4" cy="213.3" r="83" fill="#5700FF"/>
+                    <path d="M302.554 210.584L275.497 253.312C272.426 258.157 266.015 259.598 261.181 256.53L218.454 229.473C213.609 226.402 212.167 219.991 215.236 215.157L242.292 172.43C245.363 167.585 251.775 166.143 256.608 169.212L299.336 196.268C304.181 199.339 305.622 205.751 302.554 210.584Z" fill="white"/>
+                  </motion.g>
+                </svg>
               </div>
             </div>
 
             <div className='relative md:w-1/2 xl:w-[450px] 2xl:!w-[650px] xl:shrink-0'>
-              <div className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-[12px] 2xl:!pt-[24px]">
+              <motion.div 
+                style={{ opacity: textOpacity, scale: textScale, x: textX, y: textY, transformOrigin: "bottom right" }}
+                className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-[12px] 2xl:!pt-[24px]">
                 <p className="font-unageo text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[16px] 2xl:!text-[22px] 2xl:!leading-[1.6] text-left">
                   This is a playbook for young professionals, entrepreneurs, emerging leaders and leaders
                   across every space of life who are ready to take bold steps with their future. It offers unconventional
@@ -127,7 +201,7 @@ export default function Home() {
                   reinvention. It is a guide for those who refuse to drift through life and are ready to make deliberate moves
                   that shape meaningful work, grounded success and a life that actually reflects who they are becoming.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Mobile Icon (Hidden on tablet/desktop) */}
               <div className="relative left-auto top-auto w-full max-w-[220px] mx-auto mt-8 h-auto py-[20px] pointer-events-none z-[10] block md:hidden">
@@ -184,7 +258,7 @@ export default function Home() {
           </section>
 
           {/* 4. SHOP SECTION */}
-          <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 bg-white flex flex-col gap-[6px] xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max xl:justify-start xl:pr-[60px]" id="shop">
+          <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 bg-white flex flex-col gap-[6px] xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:overflow-visible xl:w-max xl:justify-start xl:pr-[60px]" id="shop" ref={shopRef}>
             <div className="pl-0 mb-[30px] xl:pl-[24px] 2xl:!pl-[100px] xl:mb-[16px] 2xl:mb-[40px]">
               <div className="flex items-center gap-3 mb-4 xl:gap-[10px] xl:mb-[8px] 2xl:mb-3">
                 <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -205,34 +279,38 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col md:grid md:grid-cols-2 gap-6 p-0 w-full xl:flex xl:flex-row xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] xl:pl-[24px] 2xl:!pl-[100px]">
-              <ShopCard
-                title="Planner/Journal"
-                image="product-journal.png"
-                bgColor="bg-[#FFEEF5]"
-                imagePosition="-bottom-2 -right-4"
-                // xlImagePosition="2xl:left-[90px] 2xl:top-[90px]"
-              />
-              <ShopCard
-                title="T-Shirt"
-                image="product-tshirt.png"
-                bgColor="bg-[#CCF4E9]"
-                imagePosition="-bottom-4 -right-8"
-                // xlImagePosition="2xl:left-[85px] 2xl:top-[99px]"
-              />
-              <ShopCard
-                title="Hoodie"
-                image="product-hoodie.png"
-                bgColor="bg-[#DECCFF]"
-                imagePosition="-bottom-3 -right-3"
-                // xlImagePosition="2xl:-left-[20px] 2xl:-top-[18px]"
-              />
-              <ShopCard
-                title="Cap"
-                image="product-cap.png"
-                bgColor="bg-[#FEEECB]"
-                imagePosition="-bottom-2 -right-4"
-                // xlImagePosition="2xl:left-[45px] 2xl:top-[70px]"
-              />
+              <motion.div style={{ x: shopCard1X }} className="relative z-[1]">
+                <ShopCard
+                  title="Planner/Journal"
+                  image="product-journal.png"
+                  bgColor="bg-[#FFEEF5]"
+                  imagePosition="-bottom-2 -right-4"
+                />
+              </motion.div>
+              <motion.div style={{ x: shopCard2X }} className="relative z-[2]">
+                <ShopCard
+                  title="T-Shirt"
+                  image="product-tshirt.png"
+                  bgColor="bg-[#CCF4E9]"
+                  imagePosition="-bottom-4 -right-8"
+                />
+              </motion.div>
+              <motion.div style={{ x: shopCard3X }} className="relative z-[3]">
+                <ShopCard
+                  title="Hoodie"
+                  image="product-hoodie.png"
+                  bgColor="bg-[#DECCFF]"
+                  imagePosition="-bottom-3 -right-3"
+                />
+              </motion.div>
+              <motion.div style={{ x: shopCard4X }} className="relative z-[4]">
+                <ShopCard
+                  title="Cap"
+                  image="product-cap.png"
+                  bgColor="bg-[#FEEECB]"
+                  imagePosition="-bottom-2 -right-4"
+                />
+              </motion.div>
             </div>
           </section>
 
