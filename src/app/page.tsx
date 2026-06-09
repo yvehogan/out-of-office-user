@@ -13,6 +13,9 @@ export default function Home() {
   const thereIsMoreRef = useRef<HTMLElement>(null);
   const bookRef = useRef<HTMLImageElement>(null);
   const shopRef = useRef<HTMLElement>(null);
+  const beyondRef = useRef<HTMLElement>(null);
+  const newsletterRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
   const [isLargeDesktop, setIsLargeDesktop] = useState(false);
 
   useEffect(() => {
@@ -49,12 +52,60 @@ export default function Home() {
   });
 
   // Shop cards: stacked at Planner's position (left). Cap on top. Spread RIGHT as user scrolls.
-  // Smaller desktop (1280): tighter offsets. Larger desktop (1400+): wider offsets.
   const shopOffset = isLargeDesktop ? { card2: -367, card3: -733, card4: -1100 } : { card2: -277, card3: -553, card4: -830 };
   const shopCard1X = useTransform(shopScrollProgress, [0, 1], [0, 0]);
   const shopCard2X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card2, 0]);
   const shopCard3X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card3, 0]);
   const shopCard4X = useTransform(shopScrollProgress, [0, 1], [shopOffset.card4, 0]);
+
+  // Beyond section scroll tracking
+  const { scrollXProgress: beyondScrollProgress } = useScroll({
+    target: beyondRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start end", "start center"]
+  });
+
+  // Cards 2-4 start stacked behind card 1 (small + offset left), scale out simultaneously
+  const beyondCardOffset = isLargeDesktop ? { card2: -430, card3: -860, card4: -1290 } : { card2: -296, card3: -592, card4: -888 };
+  const beyondCard2X = useTransform(beyondScrollProgress, [0, 1], [beyondCardOffset.card2, 0]);
+  const beyondCard3X = useTransform(beyondScrollProgress, [0, 1], [beyondCardOffset.card3, 0]);
+  const beyondCard4X = useTransform(beyondScrollProgress, [0, 1], [beyondCardOffset.card4, 0]);
+  const beyondCardsScale = useTransform(beyondScrollProgress, [0, 1], [0.3, 1]);
+
+  // Newsletter section scroll tracking
+  const { scrollXProgress: newsletterScrollProgress } = useScroll({
+    target: newsletterRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start end", "start center"]
+  });
+
+  // Newsletter description + form: scales in from top-right
+  const newsletterScale = useTransform(newsletterScrollProgress, [0, 1], [0.3, 1]);
+  const newsletterX = useTransform(newsletterScrollProgress, [0, 1], [80, 0]);
+  const newsletterY = useTransform(newsletterScrollProgress, [0, 1], [-60, 0]);
+  const newsletterOpacity = useTransform(newsletterScrollProgress, [0, 1], [0, 1]);
+
+  // Contact section scroll tracking
+  const { scrollXProgress: contactScrollProgress } = useScroll({
+    target: contactRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start end", "start center"]
+  });
+
+  // Contact form: scales in from bottom-left
+  const contactFormScale = useTransform(contactScrollProgress, [0, 1], [0.3, 1]);
+  const contactFormX = useTransform(contactScrollProgress, [0, 1], [-80, 0]);
+  const contactFormY = useTransform(contactScrollProgress, [0, 1], [60, 0]);
+  const contactFormOpacity = useTransform(contactScrollProgress, [0, 1], [0, 1]);
+
+  // Contact info: scales in from top-right
+  const contactInfoScale = useTransform(contactScrollProgress, [0, 1], [0.3, 1]);
+  const contactInfoX = useTransform(contactScrollProgress, [0, 1], [80, 0]);
+  const contactInfoY = useTransform(contactScrollProgress, [0, 1], [-60, 0]);
+  const contactInfoOpacity = useTransform(contactScrollProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     document.body.classList.add('landing-page');
@@ -211,7 +262,7 @@ export default function Home() {
           </section>
 
           {/* 3. BEYOND THE BOOK SECTION */}
-          <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:py-[60px] xl:px-6 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:justify-start xl:pr-[40px] 2xl:pr-[60px]" id="beyond-the-book">
+          <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:py-[60px] xl:px-6 xl:border-none xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:justify-start xl:pr-[40px] 2xl:pr-[60px]" id="beyond-the-book" ref={beyondRef}>
             <div className="pl-0 mb-[30px] xl:pl-[60px] xl:mb-[24px] 2xl:mb-[40px] 2xl:!pl-[100px]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[16px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -226,34 +277,42 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px]">
-              <BeyondCard
-                href="/coming-soon"
-                image="screenshots/beyond-community.webp"
-                clipId="beyond-clip-1"
-                title="Out of Office Community"
-                description="Join a growing space for thinkers, builders, and bold professionals who are redefining success beyond the desk."
-              />
-              <BeyondCard
-                href="/coming-soon"
-                image="screenshots/beyond-podcast.webp"
-                clipId="beyond-clip-2"
-                title="Out of Office Podcast"
-                description="Real conversations on work, life, purpose, and the in between. Stories from people who stepped outside the expected."
-              />
-              <BeyondCard
-                href="/coming-soon"
-                image="screenshots/beyond-tours.webp"
-                clipId="beyond-clip-3"
-                title="Out of Office Tour"
-                description="A live experience that moves across cities, gathering leaders to rethink life, work, and what it means to truly live fully."
-              />
-              <BeyondCard
-                href="/coming-soon"
-                image="screenshots/beyond-newsletter.webp"
-                clipId="beyond-clip-4"
-                title="Out of Office Newsletter"
-                description="A weekly dose of unconventional wisdom, honest insights, and practical perspective for people choosing a different path."
-              />
+              <div className="relative z-[4]">
+                <BeyondCard
+                  href="/coming-soon"
+                  image="screenshots/beyond-community.webp"
+                  clipId="beyond-clip-1"
+                  title="Out of Office Community"
+                  description="Join a growing space for thinkers, builders, and bold professionals who are redefining success beyond the desk."
+                />
+              </div>
+              <motion.div style={{ x: beyondCard2X, scale: beyondCardsScale }} className="origin-left relative z-[3]">
+                <BeyondCard
+                  href="/coming-soon"
+                  image="screenshots/beyond-podcast.webp"
+                  clipId="beyond-clip-2"
+                  title="Out of Office Podcast"
+                  description="Real conversations on work, life, purpose, and the in between. Stories from people who stepped outside the expected."
+                />
+              </motion.div>
+              <motion.div style={{ x: beyondCard3X, scale: beyondCardsScale }} className="origin-left relative z-[2]">
+                <BeyondCard
+                  href="/coming-soon"
+                  image="screenshots/beyond-tours.webp"
+                  clipId="beyond-clip-3"
+                  title="Out of Office Tour"
+                  description="A live experience that moves across cities, gathering leaders to rethink life, work, and what it means to truly live fully."
+                />
+              </motion.div>
+              <motion.div style={{ x: beyondCard4X, scale: beyondCardsScale }} className="origin-left relative z-[1]">
+                <BeyondCard
+                  href="/coming-soon"
+                  image="screenshots/beyond-newsletter.webp"
+                  clipId="beyond-clip-4"
+                  title="Out of Office Newsletter"
+                  description="A weekly dose of unconventional wisdom, honest insights, and practical perspective for people choosing a different path."
+                />
+              </motion.div>
             </div>
           </section>
 
@@ -432,7 +491,7 @@ export default function Home() {
           {/* Newsletter and Contact Tablet Wrapper */}
           <div className="w-full flex flex-col xl:contents">
             {/* 6. NEWSLETTER SECTION */}
-            <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 xl:border-none xl:inline-flex xl:align-top flex-col xl:h-[calc(100vh-120px)] 2xl:h-full xl:w-[450px] 2xl:!w-[750px] xl:shrink-0 xl:whitespace-normal" id="newsletter">
+            <section className="w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 xl:border-none xl:inline-flex xl:align-top flex-col xl:h-[calc(100vh-120px)] 2xl:h-full xl:w-[450px] 2xl:!w-[750px] xl:shrink-0 xl:whitespace-normal" id="newsletter" ref={newsletterRef}>
               <div className="w-full p-0 flex flex-col h-full xl:justify-start xl:px-[40px] 2xl:!pl-[100px] 2xl:!pr-[40px]">
                 <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:!mb-[16px]">
                   <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -442,22 +501,22 @@ export default function Home() {
                 </div>
                 <div className="max-w-[500px] 2xl:!max-w-[700px]">
                   <h2 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-[16px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[12px] 2xl:!mb-[24px] xl:leading-[1.08] whitespace-normal 2xl:whitespace-nowrap"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
-                  <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:!text-[22px] 2xl:!mb-[40px] 2xl:!leading-[1.6]">Join thousands of readers who get weekly reflections on purpose, identity, and what
-                    it means to live a full life.</p>
+                  <motion.p style={{ opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" }} className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:!text-[22px] 2xl:!mb-[40px] 2xl:!leading-[1.6]">Join thousands of readers who get weekly reflections on purpose, identity, and what
+                    it means to live a full life.</motion.p>
                 </div>
 
-                <form className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:!gap-[32px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
+                <motion.form style={{ opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" }} className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:!gap-[32px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
                   <input type="email" placeholder="Your email address" className="w-full xl:w-[300px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                   <Button type="submit" className="group shrink-0 !inline-flex items-center justify-center w-full xl:w-[120px] 2xl:!w-[180px] py-6 xl:py-4 2xl:!py-[24px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:!text-[18px] font-medium tracking-[-0.02em] no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)]">
                     <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
                     <span className="relative z-10 group-hover:text-white transition-colors duration-300">Subscribe</span>
                   </Button>
-                </form>
+                </motion.form>
               </div>
             </section>
 
             {/* 7. CONTACT SECTION */}
-            <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 relative items-start xl:inline-flex xl:align-top xl:flex-row xl:h-[calc(100vh-120px)] 2xl:h-full xl:justify-start xl:w-max xl:pr-[40px] 2xl:!pr-[6rem] xl:shrink-0 xl:whitespace-normal" id="contact">
+            <section className="flex flex-col w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] xl:pb-[16px] 2xl:!py-[40px] xl:px-0 relative items-start xl:inline-flex xl:align-top xl:flex-row xl:h-[calc(100vh-120px)] 2xl:h-full xl:justify-start xl:w-max xl:pr-[40px] 2xl:!pr-[6rem] xl:shrink-0 xl:whitespace-normal" id="contact" ref={contactRef}>
             <div className="w-full p-0 h-auto flex flex-col justify-center xl:justify-start shrink-0 xl:w-[360px] 2xl:!w-[560px] xl:pl-[40px] 2xl:!pl-[60px] xl:h-[calc(100vh-120px)] 2xl:h-full">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:!mb-[16px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -467,7 +526,7 @@ export default function Home() {
               </div>
               <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[16px] 2xl:!mb-[24px] whitespace-normal 2xl:whitespace-nowrap">Let's <span className="text-brand-purple">Talk</span></h2>
 
-              <form className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
+              <motion.form style={{ opacity: contactFormOpacity, scale: contactFormScale, x: contactFormX, y: contactFormY, transformOrigin: "bottom left" }} className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
                 <input type="text" placeholder="Your Name" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <input type="email" placeholder="Your email address" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <textarea placeholder="How can we help you?" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[100px] xl:h-[80px] 2xl:!h-[140px] mb-[24px] xl:mb-[16px] 2xl:!mb-[32px] shrink-0 rounded-[20px] 2xl:!rounded-[30px] border border-brand-purple2 p-[20px_24px] 2xl:p-[20px_30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
@@ -475,13 +534,13 @@ export default function Home() {
                   <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
                   <span className="relative z-10 group-hover:text-white transition-colors duration-300">Send Message</span>
                 </Button>
-              </form>
-              <div className="hidden xl:block mt-8 xl:pb-[24px] font-sans text-[13px] 2xl:!text-[16px] text-brand-purple2 opacity-60">
+              </motion.form>
+              <div className="hidden xl:block xl:mt-auto xl:pb-[24px] font-sans text-[13px] 2xl:!text-[16px] text-brand-purple2 opacity-60">
                 <p>© {new Date().getFullYear()} Solomon Ayodele · Out of Office</p>
               </div>
             </div>
 
-            <div className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[36px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
+            <motion.div style={{ opacity: contactInfoOpacity, scale: contactInfoScale, x: contactInfoX, y: contactInfoY, transformOrigin: "top right" }} className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[36px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
               {/* Web detail */}
               <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
@@ -542,7 +601,7 @@ export default function Home() {
                   <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">+234 703 737 3284</a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </section>
           </div>
           <div className="w-full xl:hidden"><Footer /></div>
