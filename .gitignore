@@ -34,3 +34,7 @@ dist-ssr
 PROJECT_STATUS.md
 animation-implementation-notes.md
 principal-engineer-review.md
+better.mp4
+*.mp4
+public/screenshots/figma_*
+public/screenshots/*.png
