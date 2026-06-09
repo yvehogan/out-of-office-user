@@ -16,6 +16,7 @@ export default function Home() {
   const beyondRef = useRef<HTMLElement>(null);
   const newsletterRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  const authorRef = useRef<HTMLElement>(null);
   const [isLargeDesktop, setIsLargeDesktop] = useState(false);
 
   useEffect(() => {
@@ -86,6 +87,26 @@ export default function Home() {
   const newsletterX = useTransform(newsletterScrollProgress, [0, 1], [80, 0]);
   const newsletterY = useTransform(newsletterScrollProgress, [0, 1], [-60, 0]);
   const newsletterOpacity = useTransform(newsletterScrollProgress, [0, 1], [0, 1]);
+
+  // Author section scroll tracking
+  const { scrollXProgress: authorScrollProgress } = useScroll({
+    target: authorRef,
+    container: scrollContainerRef,
+    axis: "x",
+    offset: ["start end", "start center"]
+  });
+
+  // Author text: scales in from top-left
+  const authorTextScale = useTransform(authorScrollProgress, [0, 1], [0.3, 1]);
+  const authorTextX = useTransform(authorScrollProgress, [0, 1], [-80, 0]);
+  const authorTextY = useTransform(authorScrollProgress, [0, 1], [-60, 0]);
+  const authorTextOpacity = useTransform(authorScrollProgress, [0, 1], [0, 1]);
+
+  // Author image: scales in from bottom-left (gentle scale, not too small)
+  const authorImageScale = useTransform(authorScrollProgress, [0, 1], [0.6, 1]);
+  const authorImageX = useTransform(authorScrollProgress, [0, 1], [-60, 0]);
+  const authorImageY = useTransform(authorScrollProgress, [0, 1], [40, 0]);
+  const authorImageOpacity = useTransform(authorScrollProgress, [0, 1], [0, 1]);
 
   // Contact section scroll tracking
   const { scrollXProgress: contactScrollProgress } = useScroll({
@@ -374,7 +395,7 @@ export default function Home() {
           </section>
 
           {/* 5. AUTHOR SECTION */}
-          <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-[15px] xl:flex-nowrap" id="author">
+          <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-[15px] xl:flex-nowrap" id="author" ref={authorRef}>
             <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-[calc(100vh-120px)]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
@@ -387,18 +408,18 @@ export default function Home() {
               </div>
               <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[20px] xl:text-[42px] 2xl:!text-[52px] xl:mb-[16px] 2xl:!mb-[40px]"><span className="text-[#21015F]">Solomon</span><br /><span
                 className="text-[#5700FF] italic">Ayodele</span></h2>
-              <p className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
+              <motion.p style={{ opacity: authorTextOpacity, scale: authorTextScale, x: authorTextX, y: authorTextY, transformOrigin: "top left" }} className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
                 social transformation converge. With over a decade of experience in product and technology within the
                 banking and financial technology ecosystem, he has built a reputation for designing and scaling
                 customer-centered solutions, leading high-impact teams, and driving meaningful business transformation where
-                people, product, process, and technology meet.</p>
+                people, product, process, and technology meet.</motion.p>
             </div>
 
-            <div className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
+            <motion.div style={{ opacity: authorImageOpacity, scale: authorImageScale, x: authorImageX, y: authorImageY, transformOrigin: "bottom left" }} className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
               <div className="w-full max-w-[320px] h-[420px] mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
                 <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain" />
               </div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
               <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[330px] 2xl:!w-[520px]">
