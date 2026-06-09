@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] border-b border-[#e9ecef] sticky top-0 h-[90px] px-6 md:px-12 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 2xl:!px-[100px]" id="site-header">
+      <header className="shrink-0 w-full bg-white flex justify-between items-center z-[1000] sticky top-0 h-[90px] px-6 md:px-12 py-0 xl:static xl:h-auto xl:px-[60px] xl:py-5 2xl:!px-[100px]" id="site-header">
         <div className="flex items-center">
           <Link href="/" className="block font-serif text-[28px] font-bold text-brand-purple2 no-underline tracking-[-0.5px] w-[110px] h-[50px] xl:w-[100px] xl:h-[45px] 2xl:!w-[139px] 2xl:!h-[63px]" aria-label="Out of Office Home">
             <svg className="w-full h-full" viewBox="0 0 139 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,9 +57,9 @@ export default function Header() {
           </svg>
         </button>
         <ul className="list-none w-full xl:w-auto flex flex-col items-center xl:items-start gap-8 xl:gap-[40px] relative z-[1060]">
-          <li><Link href="/shop" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
+          <li><Link href="/events" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
             <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
-            Books
+            Events
           </Link></li>
           <li><Link href="/insights" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
             <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
@@ -68,10 +68,6 @@ export default function Header() {
           <li><Link href="/shop" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
             <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
             Shop
-          </Link></li>
-          <li><Link href="/events" className="relative group font-serif text-[48px] xl:text-[80px] font-bold text-white tracking-wide transition-all duration-300 drop-shadow-md hover:text-gray-200 flex items-center" onClick={closeMenu}>
-            <span className="absolute -left-12 xl:-left-16 w-6 h-6 xl:w-8 xl:h-8 bg-[#FF0000] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
-            Events
           </Link></li>
         </ul>
       </nav>
