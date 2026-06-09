@@ -17,9 +17,13 @@ export default function Home() {
   const newsletterRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const [isLargeDesktop, setIsLargeDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsLargeDesktop(window.innerWidth >= 1400);
+    const check = () => {
+      setIsLargeDesktop(window.innerWidth >= 1400);
+      setIsDesktop(window.innerWidth >= 1280);
+    };
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
@@ -222,17 +226,29 @@ export default function Home() {
               <div className="relative left-auto top-auto w-full max-w-[220px] md:max-w-[180px] mx-auto md:mx-0 mt-8 h-auto py-[20px] pointer-events-none z-[10] xl:absolute xl:max-w-none xl:mx-0 xl:left-auto xl:-right-[60px] 2xl:!-right-[110px] xl:-bottom-[100px] 2xl:!-bottom-[110px] xl:w-[220px] 2xl:!w-[340px] xl:h-auto 2xl:!h-[340px] xl:py-0 hidden md:block overflow-visible">
                 <svg width="374" height="387" viewBox="0 0 374 387" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-contain overflow-visible">
                   {/* Red circle - full circle + white inner square */}
-                  <motion.g style={{ x: redX }}>
+                  <motion.g
+                    {...(isDesktop
+                      ? { style: { x: redX } }
+                      : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
+                    )}>
                     <circle cx="101.3" cy="257.1" r="86" fill="#FF0000"/>
                     <path d="M144.582 253.259L119.245 297.027C116.379 301.985 110.036 303.68 105.067 300.812L61.2988 275.475C56.3408 272.609 54.6458 266.266 57.512 261.308L82.8511 217.528C85.7173 212.57 92.0601 210.875 97.0181 213.742L140.798 239.081C145.756 241.947 147.451 248.29 144.582 253.259Z" fill="white"/>
                   </motion.g>
                   {/* Green circle - full circle + white inner square */}
-                  <motion.g style={{ y: greenY }}>
+                  <motion.g
+                    {...(isDesktop
+                      ? { style: { y: greenY } }
+                      : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0 } }
+                    )}>
                     <circle cx="146.7" cy="101" r="83" fill="#00CC8D"/>
                     <path d="M180.599 129.843L131.668 142.617C126.129 144.066 120.46 140.745 119.013 135.195L106.239 86.2641C104.789 80.7254 108.11 75.0562 113.66 73.6091L162.591 60.8349C168.13 59.3854 173.799 62.7062 175.246 68.2564L188.02 117.188C189.47 122.726 186.149 128.395 180.599 129.843Z" fill="white"/>
                   </motion.g>
                   {/* Purple circle - full circle + white inner square */}
-                  <motion.g style={{ x: purpleX }}>
+                  <motion.g
+                    {...(isDesktop
+                      ? { style: { x: purpleX } }
+                      : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0.4 } }
+                    )}>
                     <circle cx="258.4" cy="213.3" r="83" fill="#5700FF"/>
                     <path d="M302.554 210.584L275.497 253.312C272.426 258.157 266.015 259.598 261.181 256.53L218.454 229.473C213.609 226.402 212.167 219.991 215.236 215.157L242.292 172.43C245.363 167.585 251.775 166.143 256.608 169.212L299.336 196.268C304.181 199.339 305.622 205.751 302.554 210.584Z" fill="white"/>
                   </motion.g>
@@ -242,7 +258,10 @@ export default function Home() {
 
             <div className='relative md:w-1/2 xl:w-[450px] 2xl:!w-[650px] xl:shrink-0'>
               <motion.div 
-                style={{ opacity: textOpacity, scale: textScale, x: textX, y: textY, transformOrigin: "bottom right" }}
+                {...(isDesktop
+                  ? { style: { opacity: textOpacity, scale: textScale, x: textX, y: textY, transformOrigin: "bottom right" } }
+                  : { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } }
+                )}
                 className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-[12px] 2xl:!pt-[24px]">
                 <p className="font-unageo text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[16px] 2xl:!text-[22px] 2xl:!leading-[1.6] text-left">
                   This is a playbook for young professionals, entrepreneurs, emerging leaders and leaders
@@ -255,8 +274,33 @@ export default function Home() {
               </motion.div>
 
               {/* Mobile Icon (Hidden on tablet/desktop) */}
-              <div className="relative left-auto top-auto w-full max-w-[220px] mx-auto mt-8 h-auto py-[20px] pointer-events-none z-[10] block md:hidden">
-                <img src="screenshots/brand_ornament.svg" alt="Brand Ornament" className="w-full h-full object-contain" />
+              <div className="relative left-auto top-auto w-full max-w-[220px] mx-auto mt-8 h-auto py-[20px] pointer-events-none z-[10] block md:hidden overflow-visible">
+                <svg width="374" height="387" viewBox="0 0 374 387" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-contain overflow-visible">
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}>
+                    <circle cx="101.3" cy="257.1" r="86" fill="#FF0000"/>
+                    <path d="M144.582 253.259L119.245 297.027C116.379 301.985 110.036 303.68 105.067 300.812L61.2988 275.475C56.3408 272.609 54.6458 266.266 57.512 261.308L82.8511 217.528C85.7173 212.57 92.0601 210.875 97.0181 213.742L140.798 239.081C145.756 241.947 147.451 248.29 144.582 253.259Z" fill="white"/>
+                  </motion.g>
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0 }}>
+                    <circle cx="146.7" cy="101" r="83" fill="#00CC8D"/>
+                    <path d="M180.599 129.843L131.668 142.617C126.129 144.066 120.46 140.745 119.013 135.195L106.239 86.2641C104.789 80.7254 108.11 75.0562 113.66 73.6091L162.591 60.8349C168.13 59.3854 173.799 62.7062 175.246 68.2564L188.02 117.188C189.47 122.726 186.149 128.395 180.599 129.843Z" fill="white"/>
+                  </motion.g>
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.4 }}>
+                    <circle cx="258.4" cy="213.3" r="83" fill="#5700FF"/>
+                    <path d="M302.554 210.584L275.497 253.312C272.426 258.157 266.015 259.598 261.181 256.53L218.454 229.473C213.609 226.402 212.167 219.991 215.236 215.157L242.292 172.43C245.363 167.585 251.775 166.143 256.608 169.212L299.336 196.268C304.181 199.339 305.622 205.751 302.554 210.584Z" fill="white"/>
+                  </motion.g>
+                </svg>
               </div>
             </div>
           </section>
@@ -286,7 +330,12 @@ export default function Home() {
                   description="Join a growing space for thinkers, builders, and bold professionals who are redefining success beyond the desk."
                 />
               </div>
-              <motion.div style={{ x: beyondCard2X, scale: beyondCardsScale }} className="origin-left relative z-[3]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: beyondCard2X, scale: beyondCardsScale } }
+                  : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
+                )}
+                className="origin-left relative z-[3]">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-podcast.webp"
@@ -295,7 +344,12 @@ export default function Home() {
                   description="Real conversations on work, life, purpose, and the in between. Stories from people who stepped outside the expected."
                 />
               </motion.div>
-              <motion.div style={{ x: beyondCard3X, scale: beyondCardsScale }} className="origin-left relative z-[2]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: beyondCard3X, scale: beyondCardsScale } }
+                  : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
+                )}
+                className="origin-left relative z-[2]">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-tours.webp"
@@ -304,7 +358,12 @@ export default function Home() {
                   description="A live experience that moves across cities, gathering leaders to rethink life, work, and what it means to truly live fully."
                 />
               </motion.div>
-              <motion.div style={{ x: beyondCard4X, scale: beyondCardsScale }} className="origin-left relative z-[1]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: beyondCard4X, scale: beyondCardsScale } }
+                  : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
+                )}
+                className="origin-left relative z-[1]">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-newsletter.webp"
@@ -338,7 +397,12 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col md:grid md:grid-cols-2 gap-6 p-0 w-full xl:flex xl:flex-row xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] xl:pl-[24px] 2xl:!pl-[100px]">
-              <motion.div style={{ x: shopCard1X }} className="relative z-[1]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: shopCard1X } }
+                  : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1 } }
+                )}
+                className="relative z-[1]">
                 <ShopCard
                   title="Planner/Journal"
                   image="product-journal.png"
@@ -346,7 +410,12 @@ export default function Home() {
                   imagePosition="-bottom-2 -right-4"
                 />
               </motion.div>
-              <motion.div style={{ x: shopCard2X }} className="relative z-[2]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: shopCard2X } }
+                  : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
+                )}
+                className="relative z-[2]">
                 <ShopCard
                   title="T-Shirt"
                   image="product-tshirt.png"
@@ -354,7 +423,12 @@ export default function Home() {
                   imagePosition="-bottom-4 -right-8"
                 />
               </motion.div>
-              <motion.div style={{ x: shopCard3X }} className="relative z-[3]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: shopCard3X } }
+                  : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
+                )}
+                className="relative z-[3]">
                 <ShopCard
                   title="Hoodie"
                   image="product-hoodie.png"
@@ -362,7 +436,12 @@ export default function Home() {
                   imagePosition="-bottom-3 -right-3"
                 />
               </motion.div>
-              <motion.div style={{ x: shopCard4X }} className="relative z-[4]">
+              <motion.div
+                {...(isDesktop
+                  ? { style: { x: shopCard4X } }
+                  : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
+                )}
+                className="relative z-[4]">
                 <ShopCard
                   title="Cap"
                   image="product-cap.png"
@@ -375,7 +454,9 @@ export default function Home() {
 
           {/* 5. AUTHOR SECTION */}
           <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-[15px] xl:flex-nowrap" id="author">
-            <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-[calc(100vh-120px)]">
+            <motion.div
+              {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } } : {})}
+              className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-[calc(100vh-120px)]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -392,15 +473,19 @@ export default function Home() {
                 banking and financial technology ecosystem, he has built a reputation for designing and scaling
                 customer-centered solutions, leading high-impact teams, and driving meaningful business transformation where
                 people, product, process, and technology meet.</p>
-            </div>
+            </motion.div>
 
-            <div className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
+            <motion.div
+              {...(!isDesktop ? { initial: { clipPath: "inset(0 50% 0 50%)" }, whileInView: { clipPath: "inset(0 0% 0 0%)" }, viewport: { once: true }, transition: { duration: 5, ease: "easeOut" } } : {})}
+              className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
               <div className="w-full max-w-[320px] h-[420px] mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
                 <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain" />
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
+            <motion.div
+              {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } } : {})}
+              className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
               <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[330px] 2xl:!w-[520px]">
                 <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">His professional journey spans critical roles such as his time at Standard Bank
                   Group, where he contributed to advancing digital strategy, led end-to-end product development, facilitated
@@ -428,7 +513,9 @@ export default function Home() {
                   power of technology.
                 </p>
 
-                <div className="mt-8 flex flex-col items-start gap-[10px] xl:mt-8 xl:gap-[6px] 2xl:!gap-[16px]">
+                <motion.div
+                  {...(!isDesktop ? { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } } : {})}
+                  className="mt-8 flex flex-col items-start gap-[10px] xl:mt-8 xl:gap-[6px] 2xl:!gap-[16px]">
                   <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[14px] 2xl:!text-[24px]">Connect with Solomon</h4>
                   <div className="flex gap-[10px] 2xl:!gap-[16px]">
                     <a href="https://www.linkedin.com/in/soar/" target="_blank" rel="noopener noreferrer" className="group/social w-[42px] h-[36px] rounded-[18px] 2xl:!w-[56px] 2xl:!h-[48px] 2xl:!rounded-[24px] border border-brand-purple bg-transparent text-brand-purple flex items-center justify-center cursor-pointer no-underline transition-all duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[2px] hover:bg-brand-purple hover:text-white hover:border-brand-purple [&>svg]:w-[18px] [&>svg]:h-[18px] 2xl:![&>svg]:w-[24px] 2xl:![&>svg]:h-[24px] hover:[&_.ig-inner]:fill-brand-purple" aria-label="LinkedIn">
@@ -483,9 +570,9 @@ export default function Home() {
                       </svg>
                     </a>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </section>
 
           {/* Newsletter and Contact Tablet Wrapper */}
@@ -501,11 +588,21 @@ export default function Home() {
                 </div>
                 <div className="max-w-[500px] 2xl:!max-w-[700px]">
                   <h2 className="font-serif text-[48px] font-bold leading-[1.1] text-brand-purple2 mb-[16px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[12px] 2xl:!mb-[24px] xl:leading-[1.08] whitespace-normal 2xl:whitespace-nowrap"><span style={{ color: "#21015F" }}>Stay in</span> <span style={{ color: "#5700FF" }}>the loop</span></h2>
-                  <motion.p style={{ opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" }} className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:!text-[22px] 2xl:!mb-[40px] 2xl:!leading-[1.6]">Join thousands of readers who get weekly reflections on purpose, identity, and what
+                  <motion.p 
+                    {...(isDesktop
+                      ? { style: { opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" } }
+                      : { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } }
+                    )}
+                    className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-[24px] xl:text-[14px] 2xl:!text-[22px] 2xl:!mb-[40px] 2xl:!leading-[1.6]">Join thousands of readers who get weekly reflections on purpose, identity, and what
                     it means to live a full life.</motion.p>
                 </div>
 
-                <motion.form style={{ opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" }} className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:!gap-[32px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
+                <motion.form 
+                  {...(isDesktop
+                    ? { style: { opacity: newsletterOpacity, scale: newsletterScale, x: newsletterX, y: newsletterY, transformOrigin: "top right" } }
+                    : { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } }
+                  )}
+                  className="flex flex-col gap-[24px] w-full items-start xl:w-auto xl:gap-[16px] 2xl:!gap-[32px]" onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }}>
                   <input type="email" placeholder="Your email address" className="w-full xl:w-[300px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                   <Button type="submit" className="group shrink-0 !inline-flex items-center justify-center w-full xl:w-[120px] 2xl:!w-[180px] py-6 xl:py-4 2xl:!py-[24px] rounded-[47px] bg-[#00CC8D] text-brand-purple2 font-ui text-[16px] xl:text-[14px] 2xl:!text-[18px] font-medium tracking-[-0.02em] no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 ease-[ease] shadow-[0_4px_14px_rgba(33,1,95,0.15)] hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)]">
                     <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
@@ -526,7 +623,12 @@ export default function Home() {
               </div>
               <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[24px] xl:text-[42px] 2xl:!text-[96px] xl:mb-[16px] 2xl:!mb-[24px] whitespace-normal 2xl:whitespace-nowrap">Let's <span className="text-brand-purple">Talk</span></h2>
 
-              <motion.form style={{ opacity: contactFormOpacity, scale: contactFormScale, x: contactFormX, y: contactFormY, transformOrigin: "bottom left" }} className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
+              <motion.form 
+                {...(isDesktop 
+                  ? { style: { opacity: contactFormOpacity, scale: contactFormScale, x: contactFormX, y: contactFormY, transformOrigin: "bottom left" } }
+                  : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } }
+                )}
+                className="flex flex-col gap-0 items-start w-full" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
                 <input type="text" placeholder="Your Name" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <input type="email" placeholder="Your email address" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[50px] xl:h-[40px] 2xl:!h-[60px] mb-[16px] xl:mb-[12px] 2xl:!mb-[24px] shrink-0 rounded-[40px] border border-brand-purple2 px-[24px] 2xl:!px-[30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required />
                 <textarea placeholder="How can we help you?" className="w-full xl:w-[280px] 2xl:!w-[480px] h-[100px] xl:h-[80px] 2xl:!h-[140px] mb-[24px] xl:mb-[16px] 2xl:!mb-[32px] shrink-0 rounded-[20px] 2xl:!rounded-[30px] border border-brand-purple2 p-[20px_24px] 2xl:p-[20px_30px] font-sans text-[14px] 2xl:!text-[18px] text-brand-purple2 bg-transparent outline-none resize-none transition-all duration-300 ease focus:border-brand-purple focus:shadow-[0_0_0_3px_rgba(87,0,255,0.1)]" required></textarea>
@@ -540,9 +642,16 @@ export default function Home() {
               </div>
             </div>
 
-            <motion.div style={{ opacity: contactInfoOpacity, scale: contactInfoScale, x: contactInfoX, y: contactInfoY, transformOrigin: "top right" }} className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[36px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
+            <motion.div 
+              {...(isDesktop 
+                ? { style: { opacity: contactInfoOpacity, scale: contactInfoScale, x: contactInfoX, y: contactInfoY, transformOrigin: "top right" } }
+                : { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: { once: true }, transition: { duration: 1 } }
+              )}
+              className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[36px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
               {/* Web detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+              <motion.div
+                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0 } })}
+                className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -562,10 +671,12 @@ export default function Home() {
                   <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px] 2xl:!text-[24px]">Website</span>
                   <a href="https://www.solomonayodele.com/" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]" target="_blank" rel="noopener noreferrer">www.solomonayodele.com</a>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Email detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+              <motion.div
+                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } })}
+                className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -581,10 +692,12 @@ export default function Home() {
                   <a href="mailto:contact.solomonayodele@gmail.com" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">contact.solomonayodele@gmail.com</a>
                   <a href="mailto:me@solomonayodele.com" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">me@solomonayodele.com</a>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Phone detail */}
-              <div className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
+              <motion.div
+                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } })}
+                className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 7V17C20 21 19 22 15 22H9C5 22 4 21 4 17V7C4 3 5 2 9 2H15C19 2 20 3 20 7Z"
@@ -600,7 +713,7 @@ export default function Home() {
                   <span className="font-serif text-[16px] font-bold text-brand-purple2 leading-[1.2] text-[18px] xl:text-[16px] 2xl:!text-[24px]">Phone</span>
                   <a href="tel:+2347037373284" className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 text-[16px] 2xl:!text-[24px]">+234 703 737 3284</a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </section>
           </div>
