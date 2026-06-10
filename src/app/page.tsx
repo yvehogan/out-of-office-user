@@ -232,7 +232,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: [80, -6, 0], y: [80, -6, 0], scale: [0.3, 1.08, 1], transformOrigin: "center" }}
                 transition={{ duration: 1.5, delay: 1, x: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, y: { duration: 1.5, delay: 1, times: [0, 0.82, 1] }, scale: { duration: 1.5, delay: 1, times: [0, 0.82, 1] } }}
                 ref={bookRef}
-                src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100 hover:-translate-y-2.5 hover:-rotate-1" />
+                src="hero-book.png" alt="Out of Office Book Cover" className="w-[120%] max-w-[400px] -ml-6 md:w-[130%] md:max-w-none md:scale-[1.15] lg:scale-[1.05] md:-mr-12 md:-ml-12 lg:-ml-20 h-auto xl:w-[125%] 2xl:!w-[140%] xl:h-auto xl:max-h-[105%] 2xl:!max-h-[110%] xl:object-contain xl:-ml-[20px] xl:mt-[140px] 2xl:!mt-[100px] xl:scale-100 2xl:!scale-100" />
             </div>
           </section>
 
@@ -249,7 +249,7 @@ export default function Home() {
                   {/* Red circle - full circle + white inner square */}
                   <motion.g
                     {...(isDesktop
-                      ? { style: { x: redX } }
+                      ? { style: { x: redX }, animate: { opacity: 1, scale: 1 } }
                       : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
                     )}>
                     <circle cx="101.3" cy="257.1" r="86" fill="#FF0000"/>
@@ -258,7 +258,7 @@ export default function Home() {
                   {/* Green circle - full circle + white inner square */}
                   <motion.g
                     {...(isDesktop
-                      ? { style: { y: greenY } }
+                      ? { style: { y: greenY }, animate: { opacity: 1, scale: 1 } }
                       : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0 } }
                     )}>
                     <circle cx="146.7" cy="101" r="83" fill="#00CC8D"/>
@@ -267,7 +267,7 @@ export default function Home() {
                   {/* Purple circle - full circle + white inner square */}
                   <motion.g
                     {...(isDesktop
-                      ? { style: { x: purpleX } }
+                      ? { style: { x: purpleX }, animate: { opacity: 1, scale: 1 } }
                       : { initial: { opacity: 0, scale: 0 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true }, transition: { duration: 1, delay: 0.4 } }
                     )}>
                     <circle cx="258.4" cy="213.3" r="83" fill="#5700FF"/>
@@ -353,7 +353,7 @@ export default function Home() {
               </div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard2X, scale: beyondCardsScale } }
+                  ? { style: { x: beyondCard2X, scale: beyondCardsScale }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
                 )}
                 className="origin-left relative z-[3]">
@@ -367,7 +367,7 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard3X, scale: beyondCardsScale } }
+                  ? { style: { x: beyondCard3X, scale: beyondCardsScale }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
                 )}
                 className="origin-left relative z-[2]">
@@ -381,7 +381,7 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard4X, scale: beyondCardsScale } }
+                  ? { style: { x: beyondCard4X, scale: beyondCardsScale }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
                 )}
                 className="origin-left relative z-[1]">
@@ -420,7 +420,7 @@ export default function Home() {
             <div className="flex flex-col md:grid md:grid-cols-2 gap-6 p-0 w-full xl:flex xl:flex-row xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] xl:pl-[24px] 2xl:!pl-[100px]">
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: shopCard1X } }
+                  ? { style: { x: shopCard1X }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1 } }
                 )}
                 className="relative z-[1]">
@@ -433,7 +433,7 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: shopCard2X } }
+                  ? { style: { x: shopCard2X }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
                 )}
                 className="relative z-[2]">
@@ -446,7 +446,7 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: shopCard3X } }
+                  ? { style: { x: shopCard3X }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
                 )}
                 className="relative z-[3]">
@@ -459,7 +459,7 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: shopCard4X } }
+                  ? { style: { x: shopCard4X }, animate: { opacity: 1 } }
                   : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
                 )}
                 className="relative z-[4]">
@@ -487,21 +487,31 @@ export default function Home() {
               </div>
               <h2 className="font-serif text-[48px] font-bold leading-[1.08] text-brand-purple2 mb-[20px] xl:text-[42px] 2xl:!text-[52px] xl:mb-[16px] 2xl:!mb-[40px]"><span className="text-[#21015F]">Solomon</span><br /><span
                 className="text-[#5700FF] italic">Ayodele</span></h2>
-              <motion.p style={{ opacity: authorTextOpacity, scale: authorTextScale, x: authorTextX, y: authorTextY, transformOrigin: "top left" }} className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
+              <motion.p 
+                {...(isDesktop 
+                  ? { style: { opacity: authorTextOpacity, scale: authorTextScale, x: authorTextX, y: authorTextY, transformOrigin: "top left" } }
+                  : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } }
+                )}
+                className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">Solomon O. Ayodele is one of Africa's leading voices where innovation, leadership, and
                 social transformation converge. With over a decade of experience in product and technology within the
                 banking and financial technology ecosystem, he has built a reputation for designing and scaling
                 customer-centered solutions, leading high-impact teams, and driving meaningful business transformation where
                 people, product, process, and technology meet.</motion.p>
             </div>
 
-            <motion.div style={{ opacity: authorImageOpacity, scale: authorImageScale, x: authorImageX, y: authorImageY, transformOrigin: "bottom left" }} className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
+            <motion.div 
+              {...(isDesktop 
+                ? { style: { opacity: authorImageOpacity, scale: authorImageScale, x: authorImageX, y: authorImageY, transformOrigin: "bottom left" } }
+                : { initial: { opacity: 0, y: 30, scale: 0.8 }, whileInView: { opacity: 1, y: 0, scale: 1 }, viewport: { once: true }, transition: { duration: 1 } }
+              )}
+              className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
               <div className="w-full max-w-[320px] h-[420px] mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
                 <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain" />
               </div>
             </motion.div>
 
             <motion.div
-              {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } } : {})}
+              {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } } : { animate: { opacity: 1, y: 0 } })}
               className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
               <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[330px] 2xl:!w-[520px]">
                 <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">His professional journey spans critical roles such as his time at Standard Bank
@@ -531,7 +541,7 @@ export default function Home() {
                 </p>
 
                 <motion.div
-                  {...(!isDesktop ? { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } } : {})}
+                  {...(!isDesktop ? { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } } : { animate: { opacity: 1, x: 0 } })}
                   className="mt-8 flex flex-col items-start gap-[10px] xl:mt-8 xl:gap-[6px] 2xl:!gap-[16px]">
                   <h4 className="font-sans text-[20px] font-medium leading-[1.68] text-brand-purple2 xl:text-[14px] 2xl:!text-[24px]">Connect with Solomon</h4>
                   <div className="flex gap-[10px] 2xl:!gap-[16px]">
@@ -667,7 +677,7 @@ export default function Home() {
               className="flex flex-col w-full px-0 pt-[60px] gap-[30px] h-auto shrink-0 md:items-start xl:w-[320px] 2xl:!w-[460px] xl:pl-[20px] 2xl:!pl-[60px] xl:pt-[36px] 2xl:!pt-[55px] xl:justify-start xl:gap-[24px] 2xl:!gap-[40px] xl:items-start">
               {/* Web detail */}
               <motion.div
-                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0 } })}
+                {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0 } } : { animate: { opacity: 1, y: 0 } })}
                 className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -692,7 +702,7 @@ export default function Home() {
 
               {/* Email detail */}
               <motion.div
-                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } })}
+                {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } } : { animate: { opacity: 1, y: 0 } })}
                 className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -713,7 +723,7 @@ export default function Home() {
 
               {/* Phone detail */}
               <motion.div
-                {...(!isDesktop && { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } })}
+                {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } } : { animate: { opacity: 1, y: 0 } })}
                 className="flex items-center gap-[16px] xl:gap-[16px] 2xl:!gap-[24px]">
                 <div className="w-[42px] h-[42px] rounded-[12px] bg-[rgba(87,0,255,0.078)] border-none flex items-center justify-center shrink-0 text-brand-purple w-[44px] xl:w-[42px] h-[44px] xl:h-[42px] 2xl:!w-[64px] 2xl:!h-[64px] 2xl:!rounded-[20px] [&>svg]:w-[24px] [&>svg]:h-[24px] 2xl:![&>svg]:w-[32px] 2xl:![&>svg]:h-[32px]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
