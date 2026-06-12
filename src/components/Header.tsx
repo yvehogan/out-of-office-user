@@ -50,22 +50,22 @@ export default function Header() {
       </header>
 
       <nav className={`fixed inset-0 w-full h-[100dvh] bg-black/10 backdrop-blur-[5px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-[1050] flex flex-col items-center justify-center xl:items-end xl:pr-[20vw] ${isMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`} id="nav-dropdown">
-        <button onClick={closeMenu} className="absolute top-6 right-6 xl:top-8 xl:right-[60px] bg-transparent border-none cursor-pointer p-2 flex items-center justify-center text-white hover:opacity-80 transition-opacity active:scale-95 z-[1060] drop-shadow-[0_0_15px_rgba(87,0,255,1)]" aria-label="Close menu">
+        <button onClick={closeMenu} className="absolute top-[20px] right-[20px] xl:top-[10px] xl:right-[44px] bg-transparent border-none cursor-pointer p-2 flex items-center justify-center text-white hover:opacity-80 transition-opacity active:scale-95 z-[1060] drop-shadow-[0_0_15px_rgba(87,0,255,1)]" aria-label="Close menu">
           <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[50px] xl:h-[50px]">
             <rect x="12.4185" y="4.92761" width="47" height="10" rx="5" transform="rotate(45 12.4185 4.92761)" fill="white"/>
             <rect x="5.34766" y="38.6616" width="47" height="10" rx="5" transform="rotate(-45 5.34766 38.6616)" fill="white"/>
           </svg>
         </button>
         <ul className="list-none w-full xl:w-auto flex flex-col items-center xl:items-start gap-8 xl:gap-[40px] relative z-[1060]">
-          <li><Link href="/events" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[80px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
+          <li><Link href="/events" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[96px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
             <img src="/images/book-icon.png" alt="" className="absolute left-0 md:-left-1 xl:-left-2 bottom-2 md:bottom-3 xl:bottom-4 w-7 h-7 xl:w-9 xl:h-9 rotate-[-15deg] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out pointer-events-none -z-10" />
             Events
           </Link></li>
-          <li><Link href="/insights" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[80px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
+          <li><Link href="/insights" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[96px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
             <img src="/images/book-icon.png" alt="" className="absolute left-0 md:-left-1 xl:-left-2 bottom-2 md:bottom-3 xl:bottom-4 w-7 h-7 xl:w-9 xl:h-9 rotate-[-15deg] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out pointer-events-none -z-10" />
             Insights
           </Link></li>
-          <li><Link href="/shop" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[80px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
+          <li><Link href="/shop" className="relative group font-serif text-[48px] md:text-[64px] xl:text-[96px] font-bold text-white tracking-wide drop-shadow-md flex items-center" onClick={closeMenu}>
             <img src="/images/book-icon.png" alt="" className="absolute left-0 md:-left-1 xl:-left-2 bottom-2 md:bottom-3 xl:bottom-4 w-7 h-7 xl:w-9 xl:h-9 rotate-[-15deg] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out pointer-events-none -z-10" />
             Shop
           </Link></li>
