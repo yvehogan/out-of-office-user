@@ -341,8 +341,8 @@ export default function Home() {
               <h2 className="font-serif text-[36px] leading-[40px] font-bold text-brand-purple2 xl:text-[36px] 2xl:!text-[48px] xl:leading-[1.1] 2xl:!leading-[1.05] 2xl:pb-[18px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
             </div>
 
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px]">
-              <div className="relative z-[4]">
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] items-start">
+              <div className="relative z-[4] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-community.webp"
@@ -353,10 +353,10 @@ export default function Home() {
               </div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard2X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard2X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
                 )}
-                className="origin-left relative z-[3]">
+                className="relative z-[3] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-podcast.webp"
@@ -367,10 +367,10 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard3X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard3X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
                 )}
-                className="origin-left relative z-[2]">
+                className="relative z-[2] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-tours.webp"
@@ -381,10 +381,10 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard4X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard4X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
                 )}
-                className="origin-left relative z-[1]">
+                className="relative z-[1] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-newsletter.webp"
@@ -474,8 +474,8 @@ export default function Home() {
           </section>
 
           {/* 5. AUTHOR SECTION */}
-          <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-[calc(100vh-120px)] 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-[15px] xl:flex-nowrap" id="author" ref={authorRef}>
-            <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-[calc(100vh-120px)]">
+          <section className="flex flex-col md:flex-row md:flex-wrap md:items-center xl:items-start w-full h-auto py-10 px-6 md:px-12 xl:pt-[24px] 2xl:py-[60px] xl:px-6 gap-[40px] xl:gap-[0px] 2xl:gap-[40px] relative xl:h-full 2xl:h-full xl:shrink-0 xl:inline-flex xl:align-top xl:whitespace-normal xl:w-max xl:pr-[24px] 2xl:pr-[60px] xl:pb-0 2xl:pb-0 xl:flex-nowrap" id="author" ref={authorRef}>
+            <div className="w-full md:w-[45%] md:pr-0 p-0 h-auto flex flex-col justify-center xl:justify-start text-left items-start z-[1] shrink-0 xl:w-[350px] 2xl:!w-[600px] xl:p-[16px_0_16px_24px] 2xl:!p-[16px_0_64px_100px] xl:h-full">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[12px]">
                 <svg className="" width="50" height="6" viewBox="0 0 50 6" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -504,15 +504,15 @@ export default function Home() {
                 ? { style: { opacity: authorImageOpacity, scale: authorImageScale, x: authorImageX, y: authorImageY, transformOrigin: "bottom left" } }
                 : { initial: { opacity: 0, y: 30, scale: 0.8 }, whileInView: { opacity: 1, y: 0, scale: 1 }, viewport: { once: true }, transition: { duration: 1 } }
               )}
-              className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-center xl:w-[320px] 2xl:!w-[550px] xl:h-[calc(100vh-120px)] 2xl:!h-[650px] xl:top-0 xl:-ml-[20px] xl:mr-[20px] xl:py-0 2xl:py-[20px] 2xl:top-auto 2xl:!-ml-[20px] 2xl:mr-[0px]">
+              className="w-full md:w-[45%] py-[20px] h-auto ml-0 top-0 relative z-[2] shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-end xl:w-[350px] 2xl:!w-[550px] xl:h-full 2xl:!h-full xl:top-0 xl:ml-0 xl:mr-[20px] xl:py-0 2xl:py-0 2xl:top-auto 2xl:!ml-0 2xl:mr-[0px]">
               <div className="w-full max-w-[320px] h-[420px] mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
-                <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain" />
+                <img src="author-portrait.png" alt="Solomon Ayodele" className="w-full h-full object-cover object-bottom block xl:w-auto xl:h-full xl:max-h-full xl:object-contain xl:object-bottom" />
               </div>
             </motion.div>
 
             <motion.div
               {...(!isDesktop ? { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.15 } } : { animate: { opacity: 1, y: 0 } })}
-              className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-[calc(100vh-120px)] 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
+              className="flex flex-col w-full md:w-full h-auto p-0 gap-[30px] z-[1] shrink-0 md:flex-row md:mt-0 xl:w-[680px] 2xl:!w-[1100px] xl:h-full 2xl:h-full xl:gap-[20px] 2xl:!gap-[40px] xl:pt-[16px] xl:flex-row xl:self-center xl:ml-[20px] 2xl:!ml-0">
               <div className="w-full md:w-1/2 flex items-start flex-col xl:w-[330px] 2xl:!w-[520px]">
                 <p className="font-sans text-[18px] font-light leading-[1.68] text-left xl:text-justify text-brand-purple2 xl:text-[14px] 2xl:!text-[22px] 2xl:!leading-[1.6]">His professional journey spans critical roles such as his time at Standard Bank
                   Group, where he contributed to advancing digital strategy, led end-to-end product development, facilitated
@@ -664,7 +664,7 @@ export default function Home() {
                   <span className="relative z-10 group-hover:text-white transition-colors duration-300">Send Message</span>
                 </Button>
               </motion.form>
-              <div className="hidden xl:block xl:mt-auto xl:pb-[24px] font-sans text-[13px] 2xl:!text-[16px] text-brand-purple2 opacity-60">
+              <div className="hidden xl:block xl:mt-auto xl:pb-[24px] xl:mb-[8px] font-sans text-[13px] 2xl:!text-[16px] text-brand-purple2 opacity-60">
                 <p>© {new Date().getFullYear()} Solomon Ayodele · Out of Office</p>
               </div>
             </div>
