@@ -341,8 +341,8 @@ export default function Home() {
               <h2 className="font-serif text-[36px] leading-[40px] font-bold text-brand-purple2 xl:text-[36px] 2xl:!text-[48px] xl:leading-[1.1] 2xl:!leading-[1.05] 2xl:pb-[18px]">The OUT OF OFFICE <span className="text-brand-purple">Experience</span></h2>
             </div>
 
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px]">
-              <div className="relative z-[4]">
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-[30px] p-0 xl:flex xl:flex-row xl:pl-[60px] 2xl:!pl-[100px] xl:h-full xl:min-h-0 xl:gap-[16px] 2xl:!gap-[30px] items-start">
+              <div className="relative z-[4] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-community.webp"
@@ -353,10 +353,10 @@ export default function Home() {
               </div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard2X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard2X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
                 )}
-                className="origin-left relative z-[3]">
+                className="relative z-[3] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-podcast.webp"
@@ -367,10 +367,10 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard3X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard3X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
                 )}
-                className="origin-left relative z-[2]">
+                className="relative z-[2] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-tours.webp"
@@ -381,10 +381,10 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: beyondCard4X, scale: beyondCardsScale }, animate: { opacity: 1 } }
+                  ? { style: { x: beyondCard4X, scale: beyondCardsScale, transformOrigin: "top left", y: 0 }, animate: { opacity: 1, y: 0 } }
                   : { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.3 } }
                 )}
-                className="origin-left relative z-[1]">
+                className="relative z-[1] flex-shrink-0">
                 <BeyondCard
                   href="/coming-soon"
                   image="screenshots/beyond-newsletter.webp"
