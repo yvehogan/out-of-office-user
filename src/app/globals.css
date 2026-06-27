@@ -98,7 +98,8 @@
   --color-grey-light: #f8f9fa;
   --color-grey-border: #e9ecef;
   --font-serif: var(--font-cormorant), Georgia, serif;
-  --font-sans: var(--font-unageo), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans:
+    var(--font-unageo), "Inter", system-ui, -apple-system, sans-serif;
   --font-ui: var(--font-dm-sans), sans-serif;
 
   --background: oklch(1 0 0);
@@ -214,4 +215,3 @@ body.landing-page {
     height: auto;
   }
 } */
-

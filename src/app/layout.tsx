@@ -38,17 +38,73 @@ const unageo = localfont({
   variable: "--font-unageo",
 });
 
+const cormorantGaramond = localfont({
+  src: [
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-LightItalic.ttf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-MediumItalic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-SemiBoldItalic.ttf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/cormorant/CormorantGaramond-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-cormorant",
+});
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-dm-sans",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-cormorant",
-});
+// const cormorantGaramond = Cormorant_Garamond({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+//   variable: "--font-cormorant",
+// });
 
 export default function RootLayout({
   children,
@@ -56,7 +112,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", unageo.variable, dmSans.variable, cormorantGaramond.variable)}>
+    <html
+      lang="en"
+      className={cn(
+        "font-sans",
+        unageo.variable,
+        dmSans.variable,
+        cormorantGaramond.variable,
+      )}
+    >
       <body className={unageo.className}>
         <Header />
         {children}

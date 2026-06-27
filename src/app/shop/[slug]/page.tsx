@@ -174,7 +174,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     ₦24,000
                   </span>
                   <Link
-                    href={`/shop/${product.slug}`}
+                    href={`/cart?id=${product.slug}`}
+                    // href={`/shop/${product.slug}`}
                     className="relative overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
                   >
                     <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
@@ -209,8 +210,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
         {/* other products */}
         <div className="mt-6 ">
           <h3 className="font-cormorant font-semibold text-black text-[40px] mb-6">
-            {product.title.toLowerCase() === "work in progress" ? (
+            {/* {product.title.toLowerCase() === "work in progress" ? (
               <>
+                {" "}
                 Others who pre-ordered also grabbed this{" "}
                 <span className="text-brand-purple">experience</span>
               </>
@@ -219,7 +221,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 Complete the{" "}
                 <span className="text-brand-purple">experience</span>
               </>
-            )}
+            )} */}
+            Others who pre-ordered also grabbed this{" "}
+            <span className="text-brand-purple">experience</span>
           </h3>
           <section id="products-grid" className="scroll-mt-6">
             {ALL_PRODUCTS.length > 0 ? (

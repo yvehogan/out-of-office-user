@@ -164,3 +164,42 @@ export function getPaginatedProducts(
 export function getProductBySlug(slug: string): Product | undefined {
   return ALL_PRODUCTS.find((p) => p.slug === slug);
 }
+
+export interface CartItemType {
+  id: number;
+  product: string;
+  price: number;
+  quantity: number;
+  options: string[];
+}
+
+export const cartData: CartItemType[] = [
+  {
+    id: 1,
+    product: "Out of Office",
+    price: 24000,
+    quantity: 1,
+    options: [],
+  },
+  {
+    id: 2,
+    product: "Out of Office Shirt",
+    price: 15000,
+    quantity: 1,
+    options: ["XL", "Black"],
+  },
+  {
+    id: 3,
+    product: "Journal",
+    price: 5000,
+    quantity: 1,
+    options: ["Green"],
+  },
+  {
+    id: 4,
+    product: "Mumuniche",
+    price: 10000,
+    quantity: 1,
+    options: [],
+  },
+];
