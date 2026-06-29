@@ -1,4 +1,4 @@
-import wipImg from "@/assets/images/wip.png";
+import wipImg from "@/assets/images/oneFace.png";
 import journalImg from "@/assets/images/journal.png";
 import shirtImg from "@/assets/images/shirt.png";
 

@@ -4,6 +4,7 @@ import localfont from "next/font/local";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
+import Providers from "@/app/providers";
 
 // const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -122,8 +123,10 @@ export default function RootLayout({
       )}
     >
       <body className={unageo.className}>
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

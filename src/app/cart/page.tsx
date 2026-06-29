@@ -2,50 +2,45 @@
 
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { ALL_PRODUCTS, cartData } from "@/lib/data/shop-data";
+import { ALL_PRODUCTS } from "@/lib/data/shop-data";
 import CartTable from "@/components/pages/cart/cart-table";
 import { ProductCard } from "@/components/pages/shop/product-card";
 import { formatCurrency } from "@/lib/utils";
 import { Footer } from "@/components/Footer";
+import { useCart, useUpdateCartItem, useRemoveCartItem } from "@/hooks/use-cart";
 
 const CartPage = () => {
   const searchParams = useSearchParams();
-
   const id = searchParams.get("id");
 
-  const [cart, setCart] = useState(cartData);
+  const { data: cartResponse, isLoading, error } = useCart();
+  const updateCartItemMutation = useUpdateCartItem();
+  const removeCartItemMutation = useRemoveCartItem();
 
-  const increase = (id: number) => {
-    setCart((items) =>
-      items.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
-      ),
-    );
+  const cart = cartResponse?.data?.items || [];
+  const total = cartResponse?.data?.total || 0;
+
+  const increase = (itemId: string, currentQty: number) => {
+    updateCartItemMutation.mutate({
+      id: itemId,
+      payload: { quantity: currentQty + 1 },
+    });
   };
 
-  const decrease = (id: number) => {
-    setCart((items) =>
-      items.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: Math.max(1, item.quantity - 1),
-            }
-          : item,
-      ),
-    );
+  const decrease = (itemId: string, currentQty: number) => {
+    if (currentQty > 1) {
+      updateCartItemMutation.mutate({
+        id: itemId,
+        payload: { quantity: currentQty - 1 },
+      });
+    }
   };
 
-  const remove = (id: number) => {
-    setCart((items) => items.filter((item) => item.id !== id));
+  const remove = (itemId: string) => {
+    removeCartItemMutation.mutate(itemId);
   };
-
-  const total = useMemo(
-    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [cart],
-  );
 
   return (
     <div className="min-h-screen flex flex-col bg-white animate-slide-up">
@@ -81,29 +76,41 @@ const CartPage = () => {
           </nav>
         </div>
         <div className="max-w-260  mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <CartTable
-            cart={cart}
-            increase={increase}
-            decrease={decrease}
-            remove={remove}
-          />
-
-          <div className="flex justify-end font-unageo">
-            <div className="flex items-center mt-6 gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 w-fit">
-              <span className="text-brand-purple2 font-semibold text-xl sm:text-2xl">
-                Total: {formatCurrency(total)}
-              </span>
-              <Link
-                href={`/checkout?id=${id}`}
-                className="relative overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
-              >
-                <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
-                <span className="relative font-medium z-10 group-hover:text-white transition-colors duration-300">
-                  Proceed to Checkout
-                </span>
-              </Link>
+          {isLoading ? (
+            <div className="py-24 text-center text-brand-purple text-lg font-medium">
+              Loading your cart...
             </div>
-          </div>
+          ) : error ? (
+            <div className="py-24 text-center text-red-500 text-lg font-medium">
+              Failed to load cart. Please try again.
+            </div>
+          ) : (
+            <>
+              <CartTable
+                cart={cart}
+                increase={increase}
+                decrease={decrease}
+                remove={remove}
+              />
+
+              <div className="flex justify-end font-unageo">
+                <div className="flex items-center mt-6 gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 w-fit">
+                  <span className="text-brand-purple2 font-semibold text-xl sm:text-2xl">
+                    Total: {formatCurrency(total)}
+                  </span>
+                  <Link
+                    href={`/checkout?id=${id}`}
+                    className="relative overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
+                  >
+                    <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
+                    <span className="relative font-medium z-10 group-hover:text-white transition-colors duration-300">
+                      Proceed to Checkout
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* other products */}

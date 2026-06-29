@@ -92,7 +92,7 @@ export default function OrderSummary() {
           {scrollIndex < maxScroll && (
             <button
               onClick={handleNext}
-              className="absolute cursor-pointer -right-4 top-1/3 -translate-y-1/2 bg-white rounded-2xl shadow-md w-15 h-15 flex items-center justify-center  transition-colors z-10"
+              className="absolute cursor-pointer -right-4 top-1/3 -translate-y-1/2 bg-white rounded-2xl shadow-md w-15 h-15 flex items-center justify-center hover:bg-[#00CC8D]  transition-colors z-10"
             >
               <ChevronRight size={16} className="text-gray-600" />
             </button>
@@ -100,7 +100,7 @@ export default function OrderSummary() {
           {scrollIndex > 0 && (
             <button
               onClick={handlePrev}
-              className="absolute cursor-pointer -left-4 top-1/3 -translate-y-1/2 bg-white rounded-2xl shadow-md w-15 h-15 flex items-center justify-centertransition-colors z-10"
+              className="absolute cursor-pointer hover:bg-[#00CC8D]  -left-4 top-1/3 -translate-y-1/2 bg-white rounded-2xl shadow-md w-15 h-15 flex items-center justify-center transition-colors z-10"
             >
               <ChevronLeft size={14} className="text-gray-600" />
             </button>

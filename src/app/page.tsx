@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import ReviewsSection from "@/components/pages/review/review-section";
+import CountryConfirmationModal from "@/components/Modal/country-confirmationModal";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLElement>(null);
@@ -22,6 +23,7 @@ export default function Home() {
   const [isLargeDesktop, setIsLargeDesktop] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const insightRef = useRef<HTMLImageElement>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const check = () => {
@@ -278,7 +280,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div>
       <main
         className="hide-scrollbar relative top-0 flex-none h-auto w-full overflow-x-hidden overflow-y-visible whitespace-normal xl:flex-1 xl:overflow-x-auto xl:overflow-y-hidden xl:whitespace-nowrap [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-[#f8f9fa] [&::-webkit-scrollbar-thumb]:bg-brand-purple2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb:hover]:bg-brand-purple"
         id="scroll-container"
@@ -366,7 +368,8 @@ export default function Home() {
                 }}
               >
                 <Button
-                  render={<Link href="/shop/work-in-progress-0-0" />}
+                  // render={<Link href="/shop/work-in-progress-0-0" />}
+                  onClick={() => setOpenModal(true)}
                   className="group inline-flex! items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)] md:w-50 xl:w-40 2xl:w-55! xl:py-4 2xl:py-6! xl:text-sm 2xl:text-lg!"
                 >
                   <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
@@ -674,7 +677,8 @@ export default function Home() {
                 }}
               >
                 <Button
-                  render={<Link href="/shop/work-in-progress-0-0" />}
+                  onClick={() => setOpenModal(true)}
+                  // render={<Link href="/shop/work-in-progress-0-0" />}
                   className="group inline-flex! items-center justify-center w-full px-9 py-6 xl:px-0 rounded-[47px] bg-brand-green text-brand-purple2 font-ui text-base font-medium no-underline border-none cursor-pointer relative overflow-hidden transition-all duration-300 shadow-[0_4px_14px_rgba(0,204,141,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,204,141,0.4)] md:w-50 xl:w-40 2xl:w-55! xl:py-4 2xl:py-6! xl:text-sm 2xl:text-lg!"
                 >
                   <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
@@ -1625,6 +1629,11 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </>
+
+      <CountryConfirmationModal
+        isOpen={openModal}
+        onDone={() => setOpenModal(false)}
+      />
+    </div>
   );
 }

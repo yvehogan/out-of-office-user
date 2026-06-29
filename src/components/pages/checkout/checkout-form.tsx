@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PhoneInput from "@/components/phone-input";
 
 type DeliveryType = "pickup" | "doorstep";
 
@@ -71,7 +72,7 @@ interface FormData {
   city: string;
 }
 
-function InputField({
+export function InputField({
   placeholder,
   type = "text",
   value,
@@ -179,12 +180,18 @@ export default function CheckoutForm() {
             onChange={set("email")}
             required
           />
-          <InputField
+          {/* <InputField
             placeholder="Phone Number"
             type="tel"
             value={form.phone}
             onChange={set("phone")}
             required
+          /> */}
+
+          <PhoneInput
+            value={form.phone}
+            onChange={(phone: string) => setForm({ ...form, phone })}
+            defaultCountry="NG"
           />
         </div>
       </section>

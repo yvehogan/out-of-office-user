@@ -1,11 +1,11 @@
-import { CartItemType } from "@/lib/data/shop-data";
-import CartItem from "./cart-item";
+import { CartItem } from "@/lib/types";
+import CartItemComponent from "./cart-item";
 
 interface Props {
-  cart: CartItemType[];
-  increase: (id: number) => void;
-  decrease: (id: number) => void;
-  remove: (id: number) => void;
+  cart: CartItem[];
+  increase: (id: string, quantity: number) => void;
+  decrease: (id: string, quantity: number) => void;
+  remove: (id: string) => void;
 }
 
 export default function CartTable({ cart, increase, decrease, remove }: Props) {
@@ -40,12 +40,12 @@ export default function CartTable({ cart, increase, decrease, remove }: Props) {
 
         <tbody>
           {cart.map((item, index) => (
-            <CartItem
+            <CartItemComponent
               key={item.id}
               index={index}
               item={item}
-              increase={() => increase(item.id)}
-              decrease={() => decrease(item.id)}
+              increase={() => increase(item.id, item.quantity)}
+              decrease={() => decrease(item.id, item.quantity)}
               remove={() => remove(item.id)}
             />
           ))}

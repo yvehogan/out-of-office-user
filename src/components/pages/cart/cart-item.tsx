@@ -1,11 +1,11 @@
-import { CartItemType } from "@/lib/data/shop-data";
+import { CartItem } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import { Pencil, Trash2 } from "lucide-react";
 import QuantityControl from "./quantity";
 
 interface Props {
   index: number;
-  item: CartItemType;
+  item: CartItem;
   increase: () => void;
   decrease: () => void;
   remove: () => void;
@@ -18,6 +18,8 @@ export default function CartItem({
   decrease,
   remove,
 }: Props) {
+  const options = [item.color, item.size, item.variant].filter(Boolean);
+
   return (
     <tr className="bg-[#EDF1F680] rounded-xl">
       <td className="rounded-tl-[40px] rounded-bl-[40px] p-4 text-brand-purple2 text-sm  font-unageo">
@@ -25,7 +27,7 @@ export default function CartItem({
       </td>
 
       <td className=" p-4 text-brand-purple2 text-sm  font-unageo">
-        {item.product}
+        {item.title}
       </td>
 
       <td className=" p-4 text-brand-purple2 text-sm  font-unageo">
@@ -34,8 +36,8 @@ export default function CartItem({
 
       <td className="p-4 text-brand-purple2 text-sm  font-unageo">
         <div className="flex gap-2 flex-wrap">
-          {item.options.length
-            ? item.options.map((option) => (
+          {options.length
+            ? options.map((option) => (
                 <span
                   key={option}
                   className="px-2 font-light py-1 bg-[#0000000A] rounded-full text-sm"
