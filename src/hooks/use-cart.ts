@@ -12,6 +12,7 @@ import type {
   AddToCartPayload,
   UpdateCartItemPayload,
 } from "@/lib/types";
+import { getCartKey } from "@/lib/cart-key";
 
 /**
  * Fetch the current cart.
@@ -20,6 +21,7 @@ export function useCart() {
   return useQuery({
     queryKey: queryKeys.cart.all,
     queryFn: getCart,
+    enabled: !!getCartKey(),
   });
 }
 
@@ -36,8 +38,9 @@ export function useAddToCart() {
     onMutate: async () => {
       // Cancel any in-flight cart fetches so they don't overwrite our optimistic update
       await queryClient.cancelQueries({ queryKey: queryKeys.cart.all });
-      const previous =
-        queryClient.getQueryData<ApiResponse<Cart>>(queryKeys.cart.all);
+      const previous = queryClient.getQueryData<ApiResponse<Cart>>(
+        queryKeys.cart.all,
+      );
       return { previous };
     },
 
@@ -73,8 +76,9 @@ export function useUpdateCartItem() {
 
     onMutate: async ({ id, payload }) => {
       await queryClient.cancelQueries({ queryKey: queryKeys.cart.all });
-      const previous =
-        queryClient.getQueryData<ApiResponse<Cart>>(queryKeys.cart.all);
+      const previous = queryClient.getQueryData<ApiResponse<Cart>>(
+        queryKeys.cart.all,
+      );
 
       // Optimistic update: patch the item's quantity
       if (previous) {
@@ -117,8 +121,9 @@ export function useRemoveCartItem() {
 
     onMutate: async (id) => {
       await queryClient.cancelQueries({ queryKey: queryKeys.cart.all });
-      const previous =
-        queryClient.getQueryData<ApiResponse<Cart>>(queryKeys.cart.all);
+      const previous = queryClient.getQueryData<ApiResponse<Cart>>(
+        queryKeys.cart.all,
+      );
 
       // Optimistic update: remove the item
       if (previous) {

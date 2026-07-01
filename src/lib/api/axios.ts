@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "@/components/ui/toast";
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -25,17 +26,32 @@ apiClient.interceptors.request.use(
 );
 
 // ── Response Interceptor ──
-// Centralised error handling so individual services don't have to repeat it.
+// Centralised error and success notifications for API responses.
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Automatically trigger success toast for mutating methods (POST, PUT, DELETE)
+    // if the API returned a descriptive success message in response.data.message
+    const method = response.config.method?.toLowerCase();
+    if (method && method !== "get" && response.data?.message) {
+      toast.success(response.data.message);
+    }
+    return response;
+  },
   (error) => {
+    let errorMessage = "An unexpected error occurred.";
+
     if (error.response) {
-      const { status } = error.response;
+      const { status, data } = error.response;
+      
+      // Parse custom error messages returned by API
+      if (data && typeof data === "object") {
+        errorMessage = data.message || data.error || `Error ${status}: Something went wrong.`;
+      } else {
+        errorMessage = `Error ${status}: Something went wrong.`;
+      }
 
       switch (status) {
         case 401:
-          // Redirect to login or clear stored credentials
-          // window.location.href = "/login";
           console.log("[API] Unauthorized — redirect to login");
           break;
         case 403:
@@ -48,15 +64,17 @@ apiClient.interceptors.response.use(
           console.log("[API] Internal server error");
           break;
         default:
-          console.log(`[API] Error ${status}:`, error.response.data);
+          console.log(`[API] Error ${status}:`, data);
       }
     } else if (error.request) {
-      // Network error — no response received
+      errorMessage = "Network error. Please check your internet connection.";
       console.log("[API] Network error — no response received");
     } else {
+      errorMessage = error.message || "Request setup error.";
       console.log("[API] Request setup error:", error.message);
     }
 
+    toast.error(errorMessage);
     return Promise.reject(error);
   },
 );

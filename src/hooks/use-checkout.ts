@@ -11,7 +11,13 @@ export function useCreateOrder() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (payload: CheckoutPayload) => createOrder(payload),
+    mutationFn: ({
+      cartKey,
+      payload,
+    }: {
+      cartKey: string;
+      payload: CheckoutPayload;
+    }) => createOrder(cartKey, payload),
 
     onSuccess: () => {
       // Clear the cart cache — the cart is now empty after a successful order

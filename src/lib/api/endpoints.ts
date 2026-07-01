@@ -5,8 +5,11 @@
 export const ENDPOINTS = {
   // ── Products ──
   PRODUCTS: "/products",
-  PRODUCT_DETAIL: (slug: string) => `/products/${slug}` as const,
-  DELETE_PRODUCT: (slug: string) => `/products/${slug}` as const,
+  PRODUCT_DETAIL: (id: string) => `/products/${id}` as const,
+  DELETE_PRODUCT: (id: string) => `/products/${id}` as const,
+
+  //Product Categories
+  PRODUCT_CATEGORIES: "/categories",
 
   // ── Events ──
   EVENTS: "/events",
@@ -26,8 +29,10 @@ export const ENDPOINTS = {
     `/cart/${cartKey}/items/${cartItemId}` as const,
 
   // ── Checkout / Orders ──
-  ORDERS: "/orders",
+  GET_ORDERS: "/orders/summary",
+  ORDER_SUMMARY: (id: string) => `/orders/${id}` as const,
+  CHECKOUT_ORDER: (cartKey: string) => `/checkout/${cartKey}` as const,
 
   // ── Waitlist ──
-  WAITLIST: "/waitlist",
+  WAITLIST: "/waitlist/join",
 } as const;

@@ -2,12 +2,7 @@ import wipImg from "@/assets/images/oneFace.png";
 import journalImg from "@/assets/images/journal.png";
 import shirtImg from "@/assets/images/shirt.png";
 
-export type ProductCategory =
-  | "All"
-  | "Books"
-  | "T-shirts"
-  | "Hoodies"
-  | "Journals";
+export type ProductCategory = string;
 
 export interface Product {
   id: string;

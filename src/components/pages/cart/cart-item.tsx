@@ -1,11 +1,13 @@
-import { CartItem } from "@/lib/types";
+"use client";
+
+import type { CartItem as CartItemType } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
 import { Pencil, Trash2 } from "lucide-react";
 import QuantityControl from "./quantity";
 
 interface Props {
   index: number;
-  item: CartItem;
+  item: CartItemType;
   increase: () => void;
   decrease: () => void;
   remove: () => void;
@@ -18,7 +20,14 @@ export default function CartItem({
   decrease,
   remove,
 }: Props) {
-  const options = [item.color, item.size, item.variant].filter(Boolean);
+  // Converts "Sizes:Medium, Colours:Green" → [{ label: "Sizes", value: "Medium" }, { label: "Colours", value: "Green" }]
+  function parseSelectedOptions(selectedOptions: string) {
+    if (!selectedOptions) return [];
+    return selectedOptions.split(",").map((opt) => {
+      const [label, value] = opt.trim().split(":");
+      return { label, value };
+    });
+  }
 
   return (
     <tr className="bg-[#EDF1F680] rounded-xl">
@@ -27,24 +36,26 @@ export default function CartItem({
       </td>
 
       <td className=" p-4 text-brand-purple2 text-sm  font-unageo">
-        {item.title}
+        {item.productName}
       </td>
 
       <td className=" p-4 text-brand-purple2 text-sm  font-unageo">
-        {formatCurrency(item.price)}
+        {formatCurrency(item.unitPrice)}
       </td>
 
       <td className="p-4 text-brand-purple2 text-sm  font-unageo">
         <div className="flex gap-2 flex-wrap">
-          {options.length
-            ? options.map((option) => (
-                <span
-                  key={option}
-                  className="px-2 font-light py-1 bg-[#0000000A] rounded-full text-sm"
-                >
-                  {option}
-                </span>
-              ))
+          {item.selectedOptions
+            ? parseSelectedOptions(item.selectedOptions).map(
+                ({ label, value }) => (
+                  <span
+                    key={label}
+                    className="px-2 font-light py-1 bg-[#0000000A] rounded-full text-sm"
+                  >
+                    {value}
+                  </span>
+                ),
+              )
             : "-"}
         </div>
       </td>
@@ -58,14 +69,14 @@ export default function CartItem({
       </td>
 
       <td className=" p-4 text-brand-purple2 text-sm  font-unageo">
-        {formatCurrency(item.quantity * item.price)}
+        {formatCurrency(item.quantity * item.unitPrice)}
       </td>
 
       <td className="rounded-tr-[40px] rounded-br-[40px] p-4 text-brand-purple2 text-sm  font-unageo">
         <div className="flex gap-3">
-          <button className="bg-[#0000000D] cursor-pointer flex justify-center items-center rounded-[40px]  h-8  p-4">
+          {/* <button className="bg-[#0000000D] cursor-pointer flex justify-center items-center rounded-[40px]  h-8  p-4">
             Edit
-          </button>
+          </button> */}
 
           <button
             onClick={remove}

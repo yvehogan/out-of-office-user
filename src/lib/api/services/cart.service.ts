@@ -35,7 +35,7 @@ export async function updateCartItem(
   payload: UpdateCartItemPayload,
 ): Promise<ApiResponse<CartItem>> {
   const cartKey = getCartKey();
-  const { data } = await apiClient.patch<ApiResponse<CartItem>>(
+  const { data } = await apiClient.put<ApiResponse<CartItem>>(
     ENDPOINTS.UPDATE_CART_ITEM_QUANTITY(cartKey, id),
     payload,
   );

@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useCart } from "@/hooks/use-cart";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const { data: cartResponse, isLoading, error } = useCart();
+
+  const cartLength = cartResponse?.data?.items?.length ?? 0;
 
   return (
     <>
@@ -127,9 +132,12 @@ export default function Header() {
                 fill="white"
               />
             </svg>
-            <div className="bg-white h-4 w-4 rounded-full flex items-center justify-center text-brand-purple2 font-medium font-sans text-xs absolute -top-1 -right-1">
-              4
-            </div>
+
+            {cartLength > 0 && (
+              <div className="bg-white h-4 w-4 rounded-full flex items-center justify-center text-brand-purple2 font-medium font-sans text-xs absolute -top-1 -right-1">
+                {cartLength}
+              </div>
+            )}
           </Link>
           <button
             className={`bg-transparent border-none cursor-pointer w-9 h-9 xl:w-8 xl:h-8 2xl:!w-[50px] 2xl:!h-[50px] flex justify-center items-center z-[1010] relative [&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)] ${isMenuOpen ? "active" : ""}`}

@@ -2,65 +2,14 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import PhoneInput from "@/components/phone-input";
+import { useCreateOrder } from "@/hooks/use-checkout";
+import { useRouter } from "next/navigation";
+import { toast } from "@/components/ui/toast";
+import { clearCartKey } from "@/lib/cart-key";
+import { lagosCities, nigerianStates } from "@/lib/data/countries-data";
 
 type DeliveryType = "pickup" | "doorstep";
-
-const nigerianStates = [
-  "Abia",
-  "Adamawa",
-  "Akwa Ibom",
-  "Anambra",
-  "Bauchi",
-  "Bayelsa",
-  "Benue",
-  "Borno",
-  "Cross River",
-  "Delta",
-  "Ebonyi",
-  "Edo",
-  "Ekiti",
-  "Enugu",
-  "FCT",
-  "Gombe",
-  "Imo",
-  "Jigawa",
-  "Kaduna",
-  "Kano",
-  "Katsina",
-  "Kebbi",
-  "Kogi",
-  "Kwara",
-  "Lagos",
-  "Nasarawa",
-  "Niger",
-  "Ogun",
-  "Ondo",
-  "Osun",
-  "Oyo",
-  "Plateau",
-  "Rivers",
-  "Sokoto",
-  "Taraba",
-  "Yobe",
-  "Zamfara",
-];
-
-const lagosCities = [
-  "Ikeja",
-  "Lekki",
-  "Victoria Island",
-  "Surulere",
-  "Yaba",
-  "Ikoyi",
-  "Ajah",
-  "Alimosho",
-  "Badagry",
-  "Epe",
-  "Ibeju-Lekki",
-  "Mushin",
-];
 
 interface FormData {
   fullName: string;
@@ -78,12 +27,14 @@ export function InputField({
   value,
   onChange,
   required = false,
+  error,
 }: {
   placeholder: string;
   type?: string;
   value: string;
   onChange: (v: string) => void;
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div className="relative">
@@ -93,8 +44,13 @@ export function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="w-full h-12.5 p-4 cursor-pointer rounded-[40px] border border-[#667085] bg-white text-sm text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none focus:border-brand-purple focus:ring-2 focus:ring-brand-purple  hover:border-brand-purple hover:ring-2 hover:ring-brand-purple  transition-all"
+        className={`w-full h-12.5 p-4 cursor-pointer rounded-[40px] border bg-white text-sm text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none transition-all ${
+          error
+            ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+            : "border-[#667085] focus:border-brand-purple focus:ring-2 focus:ring-brand-purple hover:border-brand-purple hover:ring-2 hover:ring-brand-purple"
+        }`}
       />
+      {error && <p className="mt-1.5 text-xs text-red-500 px-4">{error}</p>}
     </div>
   );
 }
@@ -105,12 +61,14 @@ function SelectField({
   onChange,
   options,
   required = false,
+  error,
 }: {
   placeholder: string;
   value: string;
   onChange: (v: string) => void;
   options: string[];
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div className="relative">
@@ -118,9 +76,11 @@ function SelectField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className={`w-full h-12.5 p-4 pr-12 rounded-[40px] border border-[#667085] bg-white text-sm appearance-none focus:outline-none focus:border-brand-purple focus:ring-2 focus:ring-brand-purple hover:border-brand-purple hover:ring-2 hover:ring-brand-purple transition-all cursor-pointer ${
-          value === "" ? "text-[#9CA3AF]" : "text-[#1A1A1A]"
-        }`}
+        className={`w-full h-12.5 p-4 pr-12 rounded-[40px] border bg-white text-sm appearance-none focus:outline-none transition-all cursor-pointer ${
+          error
+            ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+            : "border-[#667085] focus:border-brand-purple focus:ring-2 focus:ring-brand-purple hover:border-brand-purple hover:ring-2 hover:ring-brand-purple"
+        } ${value === "" ? "text-[#9CA3AF]" : "text-[#1A1A1A]"}`}
       >
         <option value="" disabled className="text-[#9CA3AF]! font-light!">
           {placeholder + (required ? " *" : "")}
@@ -135,11 +95,17 @@ function SelectField({
         size={18}
         className="absolute right-5 top-1/2 -translate-y-1/2 text-[#9CA3AF] pointer-events-none"
       />
+      {error && <p className="mt-1.5 text-xs text-red-500 px-4">{error}</p>}
     </div>
   );
 }
 
-export default function CheckoutForm() {
+type CheckoutFormProps = {
+  cartId: string | undefined;
+};
+
+export default function CheckoutForm({ cartId }: CheckoutFormProps) {
+  const router = useRouter();
   const [delivery, setDelivery] = useState<DeliveryType>("pickup");
   const [form, setForm] = useState<FormData>({
     fullName: "",
@@ -150,17 +116,118 @@ export default function CheckoutForm() {
     state: "",
     city: "",
   });
+  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const set = (key: keyof FormData) => (value: string) =>
+  const set = (key: keyof FormData) => (value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
+    if (errors[key]) {
+      setErrors((prev) => ({ ...prev, [key]: "" }));
+    }
+  };
 
-  const handleSubmit = () => {
-    // Handle form submission
-    alert("Order placed successfully!");
+  const createOrderMutation = useCreateOrder();
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<FormData> = {};
+
+    if (!form.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    }
+
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    }
+
+    // Validate delivery-specific fields
+    if (delivery === "doorstep") {
+      if (!form.shippingAddress.trim()) {
+        newErrors.shippingAddress = "Shipping address is required";
+      }
+      if (!form.state) {
+        newErrors.state = "State is required";
+      }
+      if (!form.city) {
+        newErrors.city = "City is required";
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!cartId) {
+      toast.error("No cart found. Please add items to your cart first.");
+      return;
+    }
+
+    if (!validateForm()) {
+      toast.error("Please fill in all required fields correctly");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        customerName: form.fullName,
+        customerEmail: form.email,
+        customerPhone: form.phone,
+        deliveryType: delivery,
+        // redirectUrl: `${window.location.origin}/checkout/success`,
+        redirectUrl: `https://out-of-office-coral.vercel.app/insights`,
+
+        ...(delivery === "doorstep" && {
+          shippingAddress: form.shippingAddress,
+          landmark: form.landmark,
+          state: form.state,
+          city: form.city,
+        }),
+        ...(delivery === "pickup" && {
+          pickupLocation: " 231, Hebert Macaulay Way, Yaba Lagos",
+        }),
+      };
+
+      const response = await createOrderMutation.mutateAsync({
+        cartKey: cartId,
+        payload,
+      });
+
+      // Clear the cart key after successful order
+      clearCartKey();
+
+      // Success toast is automatically shown by axios interceptor
+      toast.success("Order placed successfully!");
+
+      // Redirect to success page or payment page
+      // If your API returns a payment URL, redirect there
+      if (response.data && "paymentUrl" in response.data) {
+        window.location.href = (response.data as any).paymentUrl;
+      } else {
+        router.push(`/checkout/success?orderId=${response.data.id}`);
+      }
+    } catch (error: any) {
+      console.error("Checkout error:", error);
+
+      if (!error?.response?.data?.message) {
+        toast.error("Failed to process checkout. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
       {/* Contact Information */}
       <section>
         <h2 className="font-cormorant font-semibold text-3xl md:text-[40px] text-[#000000] mb-6">
@@ -172,6 +239,7 @@ export default function CheckoutForm() {
             value={form.fullName}
             onChange={set("fullName")}
             required
+            error={errors.fullName}
           />
           <InputField
             placeholder="Email Address"
@@ -179,20 +247,24 @@ export default function CheckoutForm() {
             value={form.email}
             onChange={set("email")}
             required
+            error={errors.email}
           />
-          {/* <InputField
-            placeholder="Phone Number"
-            type="tel"
-            value={form.phone}
-            onChange={set("phone")}
-            required
-          /> */}
 
-          <PhoneInput
-            value={form.phone}
-            onChange={(phone: string) => setForm({ ...form, phone })}
-            defaultCountry="NG"
-          />
+          <div className="relative">
+            <PhoneInput
+              value={form.phone}
+              onChange={(phone: string) => {
+                setForm({ ...form, phone });
+                if (errors.phone) {
+                  setErrors((prev) => ({ ...prev, phone: "" }));
+                }
+              }}
+              defaultCountry="NG"
+            />
+            {errors.phone && (
+              <p className="mt-1.5 text-xs text-red-500 px-4">{errors.phone}</p>
+            )}
+          </div>
         </div>
       </section>
 
@@ -233,6 +305,7 @@ export default function CheckoutForm() {
               value={form.shippingAddress}
               onChange={set("shippingAddress")}
               required
+              error={errors.shippingAddress}
             />
             <InputField
               placeholder="Landmark"
@@ -245,6 +318,7 @@ export default function CheckoutForm() {
               onChange={set("state")}
               options={nigerianStates}
               required
+              error={errors.state}
             />
             <SelectField
               placeholder="City"
@@ -252,13 +326,14 @@ export default function CheckoutForm() {
               onChange={set("city")}
               options={lagosCities}
               required
+              error={errors.city}
             />
           </div>
         </section>
       )}
 
       {delivery === "pickup" && (
-        <section className="">
+        <section className="w-fit">
           <h2 className="font-cormorant font-semibold text-3xl md:text-4xl text-[#1A1A1A] mb-5">
             Delivery Information
           </h2>
@@ -270,14 +345,21 @@ export default function CheckoutForm() {
       )}
 
       <button
-        onClick={handleSubmit}
-        className="relative w-46.25 mt-6 overflow-hidden bg-[#00CC8D] cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
+        type="submit"
+        disabled={isSubmitting || !cartId}
+        className={`relative w-46.25 mt-6 overflow-hidden cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] transition-all flex items-center justify-center group ${
+          isSubmitting || !cartId
+            ? "bg-gray-300 cursor-not-allowed"
+            : "bg-[#00CC8D] active:scale-95"
+        }`}
       >
-        <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
+        {!isSubmitting && (
+          <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
+        )}
         <span className="relative font-medium z-10 group-hover:text-white transition-colors duration-300">
-          Checkout
+          {isSubmitting ? "Processing..." : "Checkout"}
         </span>
       </button>
-    </div>
+    </form>
   );
 }

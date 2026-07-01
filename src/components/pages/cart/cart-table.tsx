@@ -39,16 +39,27 @@ export default function CartTable({ cart, increase, decrease, remove }: Props) {
         </thead>
 
         <tbody>
-          {cart.map((item, index) => (
-            <CartItemComponent
-              key={item.id}
-              index={index}
-              item={item}
-              increase={() => increase(item.id, item.quantity)}
-              decrease={() => decrease(item.id, item.quantity)}
-              remove={() => remove(item.id)}
-            />
-          ))}
+          {cart.length === 0 ? (
+            <tr>
+              <td
+                colSpan={7}
+                className="p-8 font-cormorant py-20  text-center text-brand-purple2 text-3xl"
+              >
+                Your cart is empty
+              </td>
+            </tr>
+          ) : (
+            cart.map((item, index) => (
+              <CartItemComponent
+                key={item.id}
+                index={index}
+                item={item}
+                increase={() => increase(item.id, item.quantity)}
+                decrease={() => decrease(item.id, item.quantity)}
+                remove={() => remove(item.id)}
+              />
+            ))
+          )}
         </tbody>
       </table>
     </div>

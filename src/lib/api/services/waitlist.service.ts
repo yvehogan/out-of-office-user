@@ -1,15 +1,14 @@
 import apiClient from "@/lib/api/axios";
 import { ENDPOINTS } from "@/lib/api/endpoints";
-import type { ApiResponse, CheckoutPayload, Order } from "@/lib/types";
+import type { ApiResponse, Order, WaitlistPayload } from "@/lib/types";
 
 // ── Service Functions ──
 
-export async function createOrder(
-  cartKey: string,
-  payload: CheckoutPayload,
+export async function createWaitlistEntry(
+  payload: WaitlistPayload,
 ): Promise<ApiResponse<Order>> {
   const { data } = await apiClient.post<ApiResponse<Order>>(
-    ENDPOINTS.CHECKOUT_ORDER(cartKey),
+    ENDPOINTS.WAITLIST,
     payload,
   );
   return data;

@@ -138,7 +138,17 @@ function PhoneInput({
           inputMode="numeric"
           //   placeholder="Phone number"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            // Only allow numeric characters
+            const numericValue = e.target.value.replace(/\D/g, "");
+            onChange(numericValue);
+          }}
+          onKeyPress={(e) => {
+            // Prevent non-numeric key presses
+            if (!/[0-9]/.test(e.key)) {
+              e.preventDefault();
+            }
+          }}
           className="flex-1 min-w-0 bg-transparent pr-4 py-4 text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
         />
       </div>

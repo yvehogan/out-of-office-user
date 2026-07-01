@@ -104,7 +104,7 @@ export function Pagination({
               className={cn(
                 "w-9 h-9 flex items-center justify-center rounded-full text-sm font-medium transition-all",
                 page === currentPage
-                  ? "bg-white text-[#0C111D] border border-brand-green2 shadow-sm"
+                  ? "bg-white text-[#0C111D] border border-[#5700FF] shadow-sm"
                   : "text-[#0C111D] hover:bg-gray-100 cursor-pointer",
               )}
             >

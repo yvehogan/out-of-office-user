@@ -5,14 +5,27 @@ import OrderSummary from "@/components/pages/checkout/order-summary";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import divider from "@/assets/images/Divider.svg";
 import Image from "next/image";
+import { useCart } from "@/hooks/use-cart";
 
-const Checkout = () => {
+const CheckoutContent = () => {
   const searchParams = useSearchParams();
 
+  const { data: cartResponse, isLoading, error } = useCart();
+
+  const cart = cartResponse?.data;
+
   const id = searchParams.get("id");
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className="min-h-screen flex flex-col bg-white animate-slide-up">
@@ -54,9 +67,9 @@ const Checkout = () => {
       </div>
 
       <main className="flex-1 max-w-310  mx-auto w-full px-6 sm:px-10 lg:px-14 pb-10 pt-6">
-        <div className="flex flex-col lg:grid lg:grid-cols-[460px_600px] lg:justify-center lg:gap-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-[460px_600px] lg:justify-center gap-12">
           <div className="order-2 lg:order-1">
-            <CheckoutForm />
+            <CheckoutForm cartId={cartResponse?.data?.cartKey} />
           </div>
 
           <div className="relative order-1 lg:order-2 lg:pl-8">
@@ -71,7 +84,7 @@ const Checkout = () => {
             </div>
 
             <div className="lg:sticky lg:top-8">
-              <OrderSummary />
+              <OrderSummary cart={cart} isLoading={isLoading} />
             </div>
           </div>
         </div>
@@ -80,4 +93,16 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default function Checkout() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-white">
+          <div className="w-8 h-8 border-2 border-brand-purple border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      }
+    >
+      <CheckoutContent />
+    </Suspense>
+  );
+}
