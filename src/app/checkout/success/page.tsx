@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
-export default function CheckoutSuccess() {
+const CheckoutSuccessContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
@@ -94,5 +94,19 @@ export default function CheckoutSuccess() {
         </div>
       </div>
     </div>
+  );
+};
+
+export default function CheckoutSuccess() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-white">
+          <div className="w-8 h-8 border-2 border-brand-purple border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      }
+    >
+      <CheckoutSuccessContent />
+    </Suspense>
   );
 }

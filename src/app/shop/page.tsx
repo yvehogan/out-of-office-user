@@ -88,7 +88,7 @@ export default function ShopPage() {
 
       <main className="flex-1 max-w-350 mx-auto w-full px-4 sm:px-6 lg:px-8  -mt-6">
         <div className="w-full  flex items-center justify-between">
-          <div className="rounded-full p-4 h-[53px] flex items-center border border-[#0C111D] min-w-[340px] ">
+          <div className="rounded-full p-4 h-13.25 flex items-center border border-[#0C111D] min-w-85 ">
             <Search className="mr-2" size={14} />
             <input
               type="text"
