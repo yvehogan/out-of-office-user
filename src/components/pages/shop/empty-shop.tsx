@@ -2,7 +2,7 @@ import React from "react";
 
 const EmptyShop = () => {
   return (
-    <div className="flex -mt-6 flex-col gap-4 justify-center items-center">
+    <div className="flex mt-6! flex-col gap-4 justify-center items-center">
       <svg
         width="220"
         height="234"

@@ -16,9 +16,11 @@ export function ProductCard({ product }: ProductCardProps) {
       ? product.minVariantPrice
       : product.price;
 
+  const isOutOfStock = product.stockStatus === "OutOfStock";
+
   return (
     <article
-      className="bg-white  flex flex-col rounded-[40px] p-6 overflow-hidden"
+      className={`${isOutOfStock && "opacity-45"} bg-white  flex flex-col rounded-[40px] p-6 overflow-hidden`}
       style={{ boxShadow: "0px 4px 17.6px 0px #0000001A" }}
     >
       {/* Image area — square, white background  */}
@@ -69,15 +71,24 @@ export function ProductCard({ product }: ProductCardProps) {
           <span className="text-brand-purple2 font-semibold text-xl">
             {formatNaira(displayPrice)}
           </span>
-          <Link
-            href={`/shop/${product.id}`}
-            className="relative whitespace-nowrap overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
-          >
-            <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-              Pre-order Now
-            </span>
-          </Link>
+          {isOutOfStock ? (
+            <button
+              disabled
+              className="relative whitespace-nowrap overflow-hidden bg-gray-300 cursor-not-allowed font-sans text-base text-gray-500 h-12.25 font-medium px-10 py-5 rounded-[47px] flex items-center justify-center"
+            >
+              <span className="relative z-10">Out of Stock</span>
+            </button>
+          ) : (
+            <Link
+              href={`/shop/${product.id}`}
+              className="relative whitespace-nowrap overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
+            >
+              <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                Pre-order Now
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </article>
