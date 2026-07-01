@@ -30,7 +30,7 @@ export default function CartItem({
   }
 
   return (
-    <tr className="bg-[#EDF1F680] rounded-xl">
+    <tr className="bg-[#EDF1F680] rounded-xl whitespace-nowrap">
       <td className="rounded-tl-[40px] rounded-bl-[40px] p-4 text-brand-purple2 text-sm  font-unageo">
         {String(index + 1).padStart(2, "0")}
       </td>

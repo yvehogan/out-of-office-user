@@ -127,14 +127,14 @@ const CartPageContent = () => {
                   />
 
                   {cart.length > 0 && (
-                    <div className="flex justify-end font-unageo">
-                      <div className="flex items-center mt-6 gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 w-fit">
-                        <span className="text-brand-purple2 font-semibold text-xl sm:text-2xl">
+                    <div className="flex justify-end font-unageo ">
+                      <div className="flex items-center whitespace-nowrap mt-20! gap-4 sm:gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 w-fit">
+                        <span className="text-brand-purple2 font-semibold text-lg sm:text-2xl">
                           Total: {formatCurrency(total)}
                         </span>
                         <Link
                           href={`/checkout`}
-                          className="relative overflow-hidden bg-brand-green cursor-pointer font-sans text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
+                          className="relative  text-sm overflow-hidden bg-brand-green cursor-pointer sm:text-base text-brand-navy h-12.25 font-medium px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
                         >
                           <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
                           <span className="relative font-medium z-10 group-hover:text-white transition-colors duration-300">

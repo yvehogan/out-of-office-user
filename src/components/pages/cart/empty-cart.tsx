@@ -209,11 +209,11 @@ const EmptyCart = () => {
           fill="#F0F1F5"
         />
       </svg>
-      <h1 className="text-brand-purple2 font-bold font-cormorant text-[64px]">
+      <h1 className="text-brand-purple2 text-center font-bold font-cormorant text-3xl lg:text-[64px]">
         Your Cart is Empty
       </h1>
 
-      <p className="text-brand-purple2 text-sm font-unageo">
+      <p className="text-brand-purple2 text-center text-sm font-unageo">
         Looks like you haven&apos;t added anything yet
       </p>
     </div>

@@ -86,25 +86,31 @@ export default function ShopPage() {
         </nav>
       </div>
 
-      <main className="flex-1 max-w-350 mx-auto w-full px-4 sm:px-6 lg:px-8  -mt-6">
-        <div className="w-full  flex items-center justify-between">
-          <div className="rounded-full p-4 h-13.25 flex items-center border border-[#0C111D] min-w-85 ">
-            <Search className="mr-2" size={14} />
-            <input
-              type="text"
-              placeholder="Search products...."
-              className="focus:outline-none placeholder:text-[#475467] placeholder:text-sm placeholder:font-light"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+      <main className="flex-1 max-w-350 mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-6">
+        <div className="w-full flex  flex-col  sm:flex-row  justify-between gap-4 sm:gap-6 mb-8">
+          {/* Search Bar */}
+          <div className="w-full sm:w-auto">
+            <div className="rounded-full p-4 h-13.25 flex items-center border border-[#0C111D] w-full sm:min-w-85">
+              <Search className="mr-2 shrink-0" size={14} />
+              <input
+                type="text"
+                placeholder="Search products...."
+                className="w-full focus:outline-none placeholder:text-[#475467] placeholder:text-sm placeholder:font-light"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
           </div>
+
+          {/* Category Filter */}
           <CategoryFilter
             active={activeCategoryName}
             onChange={handleCategoryChange}
             categories={categories.map((c) => c.name)}
           />
         </div>
-        <section id="products-grid" className="mt-8 pb-10">
+
+        <section id="products-grid" className="pb-10">
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mb-12">
               {Array.from({ length: PAGE_SIZE }).map((_, i) => (

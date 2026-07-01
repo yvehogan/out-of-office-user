@@ -46,21 +46,23 @@ export function CategoryFilter({
   categories,
 }: CategoryFilterProps) {
   return (
-    <div className="flex items-center justify-center gap-2 flex-wrap rounded-[40px] border py-2 px-3">
-      {categories.map((cat) => (
-        <button
-          key={cat}
-          onClick={() => onChange(cat)}
-          className={cn(
-            "px-5 py-2 rounded-3xl cursor-pointer text-base font-semibold transition-all duration-200",
-            active === cat
-              ? "bg-brand-purple  text-white "
-              : "text-brand-purple2 ",
-          )}
-        >
-          {cat}
-        </button>
-      ))}
+    <div className="w-full sm:w-fit lg:w-auto overflow-x-auto scrollbar-hide">
+      <div className="flex items-center gap-2 rounded-[40px] border py-2 px-3 min-w-fit">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => onChange(cat)}
+            className={cn(
+              "px-4 sm:px-5 py-2 rounded-3xl cursor-pointer text-sm sm:text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0",
+              active === cat
+                ? "bg-brand-purple text-white"
+                : "text-brand-purple2 ",
+            )}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

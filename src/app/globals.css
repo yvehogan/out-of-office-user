@@ -184,6 +184,25 @@
   html {
     @apply font-sans;
   }
+
+  .animate-slide-up,
+  .animate-slide-right,
+  [class*="group-hover"],
+  [class*="hover:scale"],
+  [class*="hover:translate"],
+  [class*="transition-transform"] {
+    will-change: transform;
+  }
+
+  /* Hide scrollbars while maintaining scroll functionality */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 body.landing-page {

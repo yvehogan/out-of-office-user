@@ -967,7 +967,7 @@ export default function Home() {
               >
                 <BeyondCard
                   href="/coming-soon"
-                  image="images/subtract.png"
+                  image="screenshots/Subtract.webp"
                   clipId="beyond-clip-4"
                   title="Out of Office Newsletter"
                   titleColor="text-brand-purple"
