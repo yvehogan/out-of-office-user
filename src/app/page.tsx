@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { BeyondCard } from '@/components/pages/home/beyond-card';
-import { ShopCard } from '@/components/pages/home/shop-card';
-import { Button } from '@/components/ui/button';
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { BeyondCard } from "@/components/pages/home/beyond-card";
+import { ShopCard } from "@/components/pages/home/shop-card";
+import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import CountryConfirmationModal from "@/components/Modal/country-confirmationModal";
-import ReviewCard from '@/components/pages/home/review-card';
+import ReviewCard from "@/components/pages/home/review-card";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLElement>(null);
@@ -208,20 +208,19 @@ export default function Home() {
     [0, 1],
   );
 
-
   // Reviews section scroll tracking
   const { scrollXProgress: reviewsScrollProgress } = useScroll({
     target: reviewsRef,
     container: scrollContainerRef,
     axis: "x",
-    offset: ["start end", "start center"]
+    offset: ["start end", "start center"],
   });
 
   // Apply useSpring to smooth out the scroll progress
   const smoothReviewsProgress = useSpring(reviewsScrollProgress, {
     stiffness: 80,
     damping: 25,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const reviewsOpacity = useTransform(smoothReviewsProgress, [0, 1], [0, 1]);
@@ -229,11 +228,31 @@ export default function Home() {
 
   // Two cards after the first come into view from bottom left with a bounce
   // We widened the bounce range from [0, 0.85, 1] to [0, 0.7, 1] so it feels less abrupt
-  const reviewCard2X = useTransform(smoothReviewsProgress, [0, 0.7, 1], [-200, 0, 0]);
-  const reviewCard2Y = useTransform(smoothReviewsProgress, [0, 0.7, 1], [200, 0, 0]);
-  const reviewCard3X = useTransform(smoothReviewsProgress, [0, 0.7, 1], [-400, 0, 0]);
-  const reviewCard3Y = useTransform(smoothReviewsProgress, [0, 0.7, 1], [400, 0, 0]);
-  const reviewCardsScale = useTransform(smoothReviewsProgress, [0, 0.7, 1], [0.3, 1.05, 1]);
+  const reviewCard2X = useTransform(
+    smoothReviewsProgress,
+    [0, 0.7, 1],
+    [-200, 0, 0],
+  );
+  const reviewCard2Y = useTransform(
+    smoothReviewsProgress,
+    [0, 0.7, 1],
+    [200, 0, 0],
+  );
+  const reviewCard3X = useTransform(
+    smoothReviewsProgress,
+    [0, 0.7, 1],
+    [-400, 0, 0],
+  );
+  const reviewCard3Y = useTransform(
+    smoothReviewsProgress,
+    [0, 0.7, 1],
+    [400, 0, 0],
+  );
+  const reviewCardsScale = useTransform(
+    smoothReviewsProgress,
+    [0, 0.7, 1],
+    [0.3, 1.05, 1],
+  );
 
   useEffect(() => {
     document.body.classList.add("landing-page");
@@ -468,15 +487,15 @@ export default function Home() {
                   <motion.g
                     {...(isDesktop
                       ? {
-                        style: { x: redX },
-                        animate: { opacity: 1, scale: 1 },
-                      }
+                          style: { x: redX },
+                          animate: { opacity: 1, scale: 1 },
+                        }
                       : {
-                        initial: { opacity: 0, scale: 0 },
-                        whileInView: { opacity: 1, scale: 1 },
-                        viewport: { once: true },
-                        transition: { duration: 1, delay: 0.2 },
-                      })}
+                          initial: { opacity: 0, scale: 0 },
+                          whileInView: { opacity: 1, scale: 1 },
+                          viewport: { once: true },
+                          transition: { duration: 1, delay: 0.2 },
+                        })}
                   >
                     <circle cx="101.3" cy="257.1" r="86" fill="#FF0000" />
                     <path
@@ -488,15 +507,15 @@ export default function Home() {
                   <motion.g
                     {...(isDesktop
                       ? {
-                        style: { y: greenY },
-                        animate: { opacity: 1, scale: 1 },
-                      }
+                          style: { y: greenY },
+                          animate: { opacity: 1, scale: 1 },
+                        }
                       : {
-                        initial: { opacity: 0, scale: 0 },
-                        whileInView: { opacity: 1, scale: 1 },
-                        viewport: { once: true },
-                        transition: { duration: 1, delay: 0 },
-                      })}
+                          initial: { opacity: 0, scale: 0 },
+                          whileInView: { opacity: 1, scale: 1 },
+                          viewport: { once: true },
+                          transition: { duration: 1, delay: 0 },
+                        })}
                   >
                     <circle cx="146.7" cy="101" r="83" fill="#00CC8D" />
                     <path
@@ -508,15 +527,15 @@ export default function Home() {
                   <motion.g
                     {...(isDesktop
                       ? {
-                        style: { x: purpleX },
-                        animate: { opacity: 1, scale: 1 },
-                      }
+                          style: { x: purpleX },
+                          animate: { opacity: 1, scale: 1 },
+                        }
                       : {
-                        initial: { opacity: 0, scale: 0 },
-                        whileInView: { opacity: 1, scale: 1 },
-                        viewport: { once: true },
-                        transition: { duration: 1, delay: 0.4 },
-                      })}
+                          initial: { opacity: 0, scale: 0 },
+                          whileInView: { opacity: 1, scale: 1 },
+                          viewport: { once: true },
+                          transition: { duration: 1, delay: 0.4 },
+                        })}
                   >
                     <circle cx="258.4" cy="213.3" r="83" fill="#5700FF" />
                     <path
@@ -535,20 +554,20 @@ export default function Home() {
               <motion.div
                 {...(isDesktop
                   ? {
-                    style: {
-                      opacity: textOpacity,
-                      scale: textScale,
-                      x: textX,
-                      y: textY,
-                      transformOrigin: "bottom right",
-                    },
-                  }
+                      style: {
+                        opacity: textOpacity,
+                        scale: textScale,
+                        x: textX,
+                        y: textY,
+                        transformOrigin: "bottom right",
+                      },
+                    }
                   : {
-                    initial: { opacity: 0, y: 20 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1 },
-                  })}
+                      initial: { opacity: 0, y: 20 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1 },
+                    })}
                 className="flex flex-col w-full p-0 h-auto xl:h-full xl:pt-3 2xl:pt-6!"
               >
                 <p className="font-unageo  lg:-mt-16! lg:max-w-75 text-[16px] font-light leading-[1.6] text-brand-purple2 xl:text-[24px] 2xl:text-[24px]! 2xl:leading-[1.6]! text-left">
@@ -661,8 +680,6 @@ export default function Home() {
               //xl:w-125 2xl:w-170!
               className=" flex flex-col justify-center w-full h-auto p-0 md:w-1/2 md:pr-0  xl:pl-10 xl:pr-0 xl:h-full relative z-10 xl:shrink-0 xl:pt-16 2xl:pt-0"
             >
-
-
               <motion.div
                 initial={{ opacity: 0, x: 100, y: -100 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -681,8 +698,6 @@ export default function Home() {
                   actually reflects who they are becoming.
                 </p>
               </motion.div>
-
-
 
               <motion.div
                 initial={{
@@ -721,31 +736,38 @@ export default function Home() {
             {/* Header portion */}
             <div className="pl-0 xl:pl-16 mb-[30px] xl:mb-0 2xl:mb-[40px]">
               <div className="flex items-center gap-[12px] mb-[16px] xl:gap-[10px] xl:mb-[8px] 2xl:mb-[16px]">
-                <svg width="50" height="6" viewBox="0 0 50 6" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="50"
+                  height="6"
+                  viewBox="0 0 50 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M44.3333 2.66699C44.3333 4.13975 45.5272 5.33366 47 5.33366C48.4728 5.33366 49.6667 4.13975 49.6667 2.66699C49.6667 1.19423 48.4728 0.000325441 47 0.000325441C45.5272 0.000325441 44.3333 1.19423 44.3333 2.66699ZM0 2.66699V3.16699H47V2.66699V2.16699H0V2.66699Z"
-                    fill="#21015f" />
+                    fill="#21015f"
+                  />
                 </svg>
                 <div className="font-serif text-[14px] 2xl:text-[16px] font-bold text-[#21015f] tracking-wider uppercase">
                   REVIEWS
                 </div>
               </div>
               <h2 className="font-serif text-[36px] 2xl:text-[48px] leading-[40px] font-bold text-[#21015f]  xl:leading-[1.08]">
-                Words from Industry <span className="text-[#5700ff]">Leaders.</span>
+                Words from Industry{" "}
+                <span className="text-[#5700ff]">Leaders.</span>
               </h2>
             </div>
 
             {/* Testimonials List */}
-            <div
-              className="flex flex-col md:grid md:grid-cols-1 gap-[40px] p-0 xl:flex xl:flex-row xl:pl-[64px] xl:h-full xl:min-h-0 items-start pb-10 xl:pb-0"
-            >
+            <div className="flex flex-col md:grid md:grid-cols-1 gap-[40px] p-0 xl:flex xl:flex-row xl:pl-[64px] xl:h-full xl:min-h-0 items-start pb-10 xl:pb-0">
               <div className="relative z-[3] flex-shrink-0">
                 <ReviewCard
                   name="Adaobi Igwe-Okerekeocha"
                   title="Chief Innovation Officer, Interswitch"
                   text="What really stood out to me in this book is how honest it feels and how grounded the storytelling is. It’s not the usual “look how successful I became” story. It’s full of choices, mistakes, people, and the quiet lessons you only learn the hard way. Things we can all relate to."
-                  fullText={"What really stood out to me in this book is how honest it feels and how grounded the storytelling is. It’s not the usual “look how successful I became” story. It’s full of choices, mistakes, people, and the quiet lessons you only learn the hard way. Things we can all relate to.\n\nThe Wigwe chapter hit me the most. Saying no to that kind of money, prestige, and access is not something you see every day. It shows the value of knowing what really matters to you and being able to walk away even when everything looks perfect on the surface. That spoke to me.\n\nSolomon doesn’t skip over the difficult parts. The failed businesses, the tough bosses, the personal loss – they’re all in there, but he doesn’t stop at the pain. He shows how those seasons shaped him. That line about being “grace-sponsored and people-raised” stayed with me. It’s true. None of us gets to where we are by ourselves.\n\nWhat I see throughout the whole story is the reminder that purpose, people, and impact last longer than titles or paychecks. His time building innovation at WEMA shows that change is never smooth, but persistence and vision can still shift culture. And his take on leadership being about empathy, service, and giving people space to grow rings true for me."}
+                  fullText={
+                    "What really stood out to me in this book is how honest it feels and how grounded the storytelling is. It’s not the usual “look how successful I became” story. It’s full of choices, mistakes, people, and the quiet lessons you only learn the hard way. Things we can all relate to.\n\nThe Wigwe chapter hit me the most. Saying no to that kind of money, prestige, and access is not something you see every day. It shows the value of knowing what really matters to you and being able to walk away even when everything looks perfect on the surface. That spoke to me.\n\nSolomon doesn’t skip over the difficult parts. The failed businesses, the tough bosses, the personal loss – they’re all in there, but he doesn’t stop at the pain. He shows how those seasons shaped him. That line about being “grace-sponsored and people-raised” stayed with me. It’s true. None of us gets to where we are by ourselves.\n\nWhat I see throughout the whole story is the reminder that purpose, people, and impact last longer than titles or paychecks. His time building innovation at WEMA shows that change is never smooth, but persistence and vision can still shift culture. And his take on leadership being about empathy, service, and giving people space to grow rings true for me."
+                  }
                   imageSrc="/reviewer-adaobi.png"
                   imageWidth={308}
                   imageWidthClass="w-[308px] xl:w-[181px] 2xl:!w-[312px]"
@@ -756,15 +778,30 @@ export default function Home() {
               </div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: reviewCard2X, y: reviewCard2Y, scale: reviewCardsScale, transformOrigin: "bottom left" }, animate: { opacity: 1 } }
-                  : { initial: { opacity: 0, x: 50 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.1 } }
-                )}
-                className="relative z-[2] flex-shrink-0">
+                  ? {
+                      style: {
+                        x: reviewCard2X,
+                        y: reviewCard2Y,
+                        scale: reviewCardsScale,
+                        transformOrigin: "bottom left",
+                      },
+                      animate: { opacity: 1 },
+                    }
+                  : {
+                      initial: { opacity: 0, x: 50 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.1 },
+                    })}
+                className="relative z-[2] flex-shrink-0"
+              >
                 <ReviewCard
                   name="Toyin Ogunmola"
                   title="Chief Data Officer, Stanbic IBTC Holdings"
                   text="I devoured the first section, 'What is my greatest achievement in life,' the same day you shared the manuscript with me, and I instantly knew this work isn't just a book; it’s an inspiration. Since then, I have turned its pages, nodding my head and sometimes becoming momentarily lost in thought about my own journey through life."
-                  fullText={"I devoured the first section, 'What is my greatest achievement in life,' the same day you shared the manuscript with me, and I instantly knew this work isn't just a book; it’s an inspiration. Since then, I have turned its pages, nodding my head and sometimes becoming momentarily lost in thought about my own journey through life. In response to your request for thoughts, I must say that your depth of reflection on life's journey is exceptional.\n\nAs I immersed myself in its pages, I saw mirrored images of my own triumphs and trials, victories and mistakes, alongside echoes of others' experiences vividly painted across its canvas. The storytelling is compelling, and the reflections coupled with the wisdom keys added at the end of each chapter are utterly captivating.\n\nThis book has the power to jolt anyone from passivity and sideline living into seizing divine moments, nudging readers to look inward to discover their 'gusto'—in harmony with their unique divine wiring. It strongly elevates the power of relationship, the dignity of labour, the power of wisdom, the essence of leadership, and the providence of God. It is simply a classic."}
+                  fullText={
+                    "I devoured the first section, 'What is my greatest achievement in life,' the same day you shared the manuscript with me, and I instantly knew this work isn't just a book; it’s an inspiration. Since then, I have turned its pages, nodding my head and sometimes becoming momentarily lost in thought about my own journey through life. In response to your request for thoughts, I must say that your depth of reflection on life's journey is exceptional.\n\nAs I immersed myself in its pages, I saw mirrored images of my own triumphs and trials, victories and mistakes, alongside echoes of others' experiences vividly painted across its canvas. The storytelling is compelling, and the reflections coupled with the wisdom keys added at the end of each chapter are utterly captivating.\n\nThis book has the power to jolt anyone from passivity and sideline living into seizing divine moments, nudging readers to look inward to discover their 'gusto'—in harmony with their unique divine wiring. It strongly elevates the power of relationship, the dignity of labour, the power of wisdom, the essence of leadership, and the providence of God. It is simply a classic."
+                  }
                   imageSrc="/reviewer-toyin.png"
                   imageWidth={259}
                   imageWidthClass="w-[259px] xl:w-[153px] 2xl:!w-[264px]"
@@ -775,15 +812,30 @@ export default function Home() {
               </motion.div>
               <motion.div
                 {...(isDesktop
-                  ? { style: { x: reviewCard3X, y: reviewCard3Y, scale: reviewCardsScale, transformOrigin: "bottom left" }, animate: { opacity: 1 } }
-                  : { initial: { opacity: 0, x: 50 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 1, delay: 0.2 } }
-                )}
-                className="relative z-[1] flex-shrink-0">
+                  ? {
+                      style: {
+                        x: reviewCard3X,
+                        y: reviewCard3Y,
+                        scale: reviewCardsScale,
+                        transformOrigin: "bottom left",
+                      },
+                      animate: { opacity: 1 },
+                    }
+                  : {
+                      initial: { opacity: 0, x: 50 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.2 },
+                    })}
+                className="relative z-[1] flex-shrink-0"
+              >
                 <ReviewCard
                   name="Topsy Kola-Oyeneyin"
                   title="Partner, Augmentum Advisory | Board Member, MTN Nigeria"
                   text="Out of Office is not another career memoir; it is a call back to what truly accelerates growth: relationships, service, and purpose. Solomon shows us that the real thread of success is not luck or strategy, but the genuineness of people who believe in you, and the choices you make to keep adding value even when no one is watching."
-                  fullText={"Out of Office is not another career memoir; it is a call back to what truly accelerates growth: relationships, service, and purpose. Solomon shows us that the real thread of success is not luck or strategy, but the genuineness of people who believe in you, and the choices you make to keep adding value even when no one is watching.\n\nHis story confirms that every experience counts. Every season refines. Sometimes you’ll give your best, and there will be no applause. Give it anyway, and focus on building the assets that compound: character, competence, and community.\n\nI strongly recommend Out of Office to every young professional navigating the world of work, wrestling with decisions, and seeking the real secrets of growth. You will laugh, sigh, and nod in recognition, but most importantly, you will be reminded that the fastest path up is often found by going deep: into service, into relationships, into purpose."}
+                  fullText={
+                    "Out of Office is not another career memoir; it is a call back to what truly accelerates growth: relationships, service, and purpose. Solomon shows us that the real thread of success is not luck or strategy, but the genuineness of people who believe in you, and the choices you make to keep adding value even when no one is watching.\n\nHis story confirms that every experience counts. Every season refines. Sometimes you’ll give your best, and there will be no applause. Give it anyway, and focus on building the assets that compound: character, competence, and community.\n\nI strongly recommend Out of Office to every young professional navigating the world of work, wrestling with decisions, and seeking the real secrets of growth. You will laugh, sigh, and nod in recognition, but most importantly, you will be reminded that the fastest path up is often found by going deep: into service, into relationships, into purpose."
+                  }
                   imageSrc="/reviewer-topsy.png"
                   imageWidth={308}
                   imageWidthClass="w-[308px] xl:w-[181px] 2xl:!w-[312px]"
@@ -841,20 +893,20 @@ export default function Home() {
                 ref={insightsTextRef}
                 {...(isDesktop
                   ? {
-                    style: {
-                      x: beyondCard2X,
-                      scale: beyondCardsScale,
-                      transformOrigin: "top left",
-                      y: 0,
-                    },
-                    animate: { opacity: 1, y: 0 },
-                  }
+                      style: {
+                        x: beyondCard2X,
+                        scale: beyondCardsScale,
+                        transformOrigin: "top left",
+                        y: 0,
+                      },
+                      animate: { opacity: 1, y: 0 },
+                    }
                   : {
-                    initial: { opacity: 0, y: 30 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.1 },
-                  })}
+                      initial: { opacity: 0, y: 30 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.1 },
+                    })}
                 className="relative z-3 shrink-0"
               >
                 <BeyondCard
@@ -869,20 +921,20 @@ export default function Home() {
               <motion.div
                 {...(isDesktop
                   ? {
-                    style: {
-                      x: beyondCard3X,
-                      scale: beyondCardsScale,
-                      transformOrigin: "top left",
-                      y: 0,
-                    },
-                    animate: { opacity: 1, y: 0 },
-                  }
+                      style: {
+                        x: beyondCard3X,
+                        scale: beyondCardsScale,
+                        transformOrigin: "top left",
+                        y: 0,
+                      },
+                      animate: { opacity: 1, y: 0 },
+                    }
                   : {
-                    initial: { opacity: 0, y: 30 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.2 },
-                  })}
+                      initial: { opacity: 0, y: 30 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.2 },
+                    })}
                 className="relative z-2 shrink-0"
               >
                 <BeyondCard
@@ -897,25 +949,25 @@ export default function Home() {
               <motion.div
                 {...(isDesktop
                   ? {
-                    style: {
-                      x: beyondCard4X,
-                      scale: beyondCardsScale,
-                      transformOrigin: "top left",
-                      y: 0,
-                    },
-                    animate: { opacity: 1, y: 0 },
-                  }
+                      style: {
+                        x: beyondCard4X,
+                        scale: beyondCardsScale,
+                        transformOrigin: "top left",
+                        y: 0,
+                      },
+                      animate: { opacity: 1, y: 0 },
+                    }
                   : {
-                    initial: { opacity: 0, y: 30 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.3 },
-                  })}
+                      initial: { opacity: 0, y: 30 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.3 },
+                    })}
                 className="relative z-1 shrink-0"
               >
                 <BeyondCard
                   href="/coming-soon"
-                  image="screenshots/subtract.png"
+                  image="images/subtract.png"
                   clipId="beyond-clip-4"
                   title="Out of Office Newsletter"
                   titleColor="text-brand-purple"
@@ -958,20 +1010,20 @@ export default function Home() {
               <motion.p
                 {...(isDesktop
                   ? {
-                    style: {
-                      opacity: authorTextOpacity,
-                      scale: authorTextScale,
-                      x: authorTextX,
-                      y: authorTextY,
-                      transformOrigin: "top left",
-                    },
-                  }
+                      style: {
+                        opacity: authorTextOpacity,
+                        scale: authorTextScale,
+                        x: authorTextX,
+                        y: authorTextY,
+                        transformOrigin: "top left",
+                      },
+                    }
                   : {
-                    initial: { opacity: 0, y: 30 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1 },
-                  })}
+                      initial: { opacity: 0, y: 30 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1 },
+                    })}
                 className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 text-left xl:text-[14px] 2xl:text-[22px]! 2xl:leading-[1.6]!"
               >
                 Solomon O. Ayodele is one of Africa's leading voices where
@@ -998,20 +1050,20 @@ export default function Home() {
             <motion.div
               {...(isDesktop
                 ? {
-                  style: {
-                    opacity: authorImageOpacity,
-                    scale: authorImageScale,
-                    x: authorImageX,
-                    y: authorImageY,
-                    transformOrigin: "bottom left",
-                  },
-                }
+                    style: {
+                      opacity: authorImageOpacity,
+                      scale: authorImageScale,
+                      x: authorImageX,
+                      y: authorImageY,
+                      transformOrigin: "bottom left",
+                    },
+                  }
                 : {
-                  initial: { opacity: 0, y: 30, scale: 0.8 },
-                  whileInView: { opacity: 1, y: 0, scale: 1 },
-                  viewport: { once: true },
-                  transition: { duration: 1 },
-                })}
+                    initial: { opacity: 0, y: 30, scale: 0.8 },
+                    whileInView: { opacity: 1, y: 0, scale: 1 },
+                    viewport: { once: true },
+                    transition: { duration: 1 },
+                  })}
               className="w-full md:w-[45%] py-5 h-auto ml-0 top-0 relative z-2 shrink-0 flex items-start justify-start md:justify-end xl:items-end xl:justify-end xl:w-87.5 2xl:w-137.5! xl:h-full 2xl:h-full! xl:top-0 xl:ml-0 xl:mr-5 xl:py-0 2xl:py-0 2xl:top-auto 2xl:ml-0! 2xl:mr-0"
             >
               <div className="w-full max-w-[320px] h-105 mx-0 md:ml-auto bg-transparent overflow-hidden flex items-end justify-start xl:items-end xl:justify-center xl:w-full xl:max-w-none xl:h-full 2xl:h-full">
@@ -1260,11 +1312,11 @@ export default function Home() {
                 {...(isDesktop
                   ? { style: { x: shopCard1X }, animate: { opacity: 1 } }
                   : {
-                    initial: { opacity: 0, x: -40 },
-                    whileInView: { opacity: 1, x: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1 },
-                  })}
+                      initial: { opacity: 0, x: -40 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1 },
+                    })}
                 className="relative z-1"
               >
                 <ShopCard
@@ -1279,11 +1331,11 @@ export default function Home() {
                 {...(isDesktop
                   ? { style: { x: shopCard2X }, animate: { opacity: 1 } }
                   : {
-                    initial: { opacity: 0, x: 40 },
-                    whileInView: { opacity: 1, x: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.1 },
-                  })}
+                      initial: { opacity: 0, x: 40 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.1 },
+                    })}
                 className="relative z-2"
               >
                 <ShopCard
@@ -1299,11 +1351,11 @@ export default function Home() {
                 {...(isDesktop
                   ? { style: { x: shopCard3X }, animate: { opacity: 1 } }
                   : {
-                    initial: { opacity: 0, x: -40 },
-                    whileInView: { opacity: 1, x: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.2 },
-                  })}
+                      initial: { opacity: 0, x: -40 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.2 },
+                    })}
                 className="relative z-3"
               >
                 <ShopCard
@@ -1318,11 +1370,11 @@ export default function Home() {
                 {...(isDesktop
                   ? { style: { x: shopCard4X }, animate: { opacity: 1 } }
                   : {
-                    initial: { opacity: 0, x: 40 },
-                    whileInView: { opacity: 1, x: 0 },
-                    viewport: { once: true },
-                    transition: { duration: 1, delay: 0.3 },
-                  })}
+                      initial: { opacity: 0, x: 40 },
+                      whileInView: { opacity: 1, x: 0 },
+                      viewport: { once: true },
+                      transition: { duration: 1, delay: 0.3 },
+                    })}
                 className="relative z-4"
               >
                 <ShopCard
@@ -1371,20 +1423,20 @@ export default function Home() {
                   <motion.p
                     {...(isDesktop
                       ? {
-                        style: {
-                          opacity: newsletterOpacity,
-                          scale: newsletterScale,
-                          x: newsletterX,
-                          y: newsletterY,
-                          transformOrigin: "top right",
-                        },
-                      }
+                          style: {
+                            opacity: newsletterOpacity,
+                            scale: newsletterScale,
+                            x: newsletterX,
+                            y: newsletterY,
+                            transformOrigin: "top right",
+                          },
+                        }
                       : {
-                        initial: { opacity: 0, y: 20 },
-                        whileInView: { opacity: 1, y: 0 },
-                        viewport: { once: true },
-                        transition: { duration: 1 },
-                      })}
+                          initial: { opacity: 0, y: 20 },
+                          whileInView: { opacity: 1, y: 0 },
+                          viewport: { once: true },
+                          transition: { duration: 1 },
+                        })}
                     className="font-sans text-[18px] font-light leading-[1.68] text-brand-purple2 mb-6 xl:text-[14px] 2xl:text-[22px]! 2xl:mb-10! 2xl:leading-[1.6]!"
                   >
                     Join thousands of readers who get weekly reflections on
@@ -1395,20 +1447,20 @@ export default function Home() {
                 <motion.form
                   {...(isDesktop
                     ? {
-                      style: {
-                        opacity: newsletterOpacity,
-                        scale: newsletterScale,
-                        x: newsletterX,
-                        y: newsletterY,
-                        transformOrigin: "top right",
-                      },
-                    }
+                        style: {
+                          opacity: newsletterOpacity,
+                          scale: newsletterScale,
+                          x: newsletterX,
+                          y: newsletterY,
+                          transformOrigin: "top right",
+                        },
+                      }
                     : {
-                      initial: { opacity: 0, y: 20 },
-                      whileInView: { opacity: 1, y: 0 },
-                      viewport: { once: true },
-                      transition: { duration: 1, delay: 0.15 },
-                    })}
+                        initial: { opacity: 0, y: 20 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true },
+                        transition: { duration: 1, delay: 0.15 },
+                      })}
                   className="flex flex-col gap-6 w-full items-start xl:w-auto xl:gap-4 2xl:gap-8!"
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -1466,20 +1518,20 @@ export default function Home() {
                 <motion.form
                   {...(isDesktop
                     ? {
-                      style: {
-                        opacity: contactFormOpacity,
-                        scale: contactFormScale,
-                        x: contactFormX,
-                        y: contactFormY,
-                        transformOrigin: "bottom left",
-                      },
-                    }
+                        style: {
+                          opacity: contactFormOpacity,
+                          scale: contactFormScale,
+                          x: contactFormX,
+                          y: contactFormY,
+                          transformOrigin: "bottom left",
+                        },
+                      }
                     : {
-                      initial: { opacity: 0, y: 30 },
-                      whileInView: { opacity: 1, y: 0 },
-                      viewport: { once: true },
-                      transition: { duration: 1 },
-                    })}
+                        initial: { opacity: 0, y: 30 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true },
+                        transition: { duration: 1 },
+                      })}
                   className="flex flex-col gap-0 items-start w-full"
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -1523,31 +1575,31 @@ export default function Home() {
               <motion.div
                 {...(isDesktop
                   ? {
-                    style: {
-                      opacity: contactInfoOpacity,
-                      scale: contactInfoScale,
-                      x: contactInfoX,
-                      y: contactInfoY,
-                      transformOrigin: "top right",
-                    },
-                  }
+                      style: {
+                        opacity: contactInfoOpacity,
+                        scale: contactInfoScale,
+                        x: contactInfoX,
+                        y: contactInfoY,
+                        transformOrigin: "top right",
+                      },
+                    }
                   : {
-                    initial: { opacity: 0 },
-                    whileInView: { opacity: 1 },
-                    viewport: { once: true },
-                    transition: { duration: 1 },
-                  })}
+                      initial: { opacity: 0 },
+                      whileInView: { opacity: 1 },
+                      viewport: { once: true },
+                      transition: { duration: 1 },
+                    })}
                 className="flex flex-col w-full px-0 pt-15 gap-7.5 h-auto shrink-0 md:items-start xl:w-80 2xl:w-115! xl:pl-5 2xl:pl-15! xl:pt-9 2xl:pt-13.75! xl:justify-start xl:gap-6 2xl:gap-10! xl:items-start"
               >
                 {/* Web detail */}
                 <motion.div
                   {...(!isDesktop
                     ? {
-                      initial: { opacity: 0, y: 20 },
-                      whileInView: { opacity: 1, y: 0 },
-                      viewport: { once: true },
-                      transition: { duration: 1, delay: 0 },
-                    }
+                        initial: { opacity: 0, y: 20 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true },
+                        transition: { duration: 1, delay: 0 },
+                      }
                     : { animate: { opacity: 1, y: 0 } })}
                   className="flex items-center gap-4 xl:gap-4 2xl:gap-6!"
                 >
@@ -1615,11 +1667,11 @@ export default function Home() {
                 <motion.div
                   {...(!isDesktop
                     ? {
-                      initial: { opacity: 0, y: 20 },
-                      whileInView: { opacity: 1, y: 0 },
-                      viewport: { once: true },
-                      transition: { duration: 1, delay: 0.15 },
-                    }
+                        initial: { opacity: 0, y: 20 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true },
+                        transition: { duration: 1, delay: 0.15 },
+                      }
                     : { animate: { opacity: 1, y: 0 } })}
                   className="flex items-center gap-4 xl:gap-4 2xl:gap-6!"
                 >
@@ -1672,11 +1724,11 @@ export default function Home() {
                 <motion.div
                   {...(!isDesktop
                     ? {
-                      initial: { opacity: 0, y: 20 },
-                      whileInView: { opacity: 1, y: 0 },
-                      viewport: { once: true },
-                      transition: { duration: 1, delay: 0.3 },
-                    }
+                        initial: { opacity: 0, y: 20 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true },
+                        transition: { duration: 1, delay: 0.3 },
+                      }
                     : { animate: { opacity: 1, y: 0 } })}
                   className="flex items-center gap-4 xl:gap-4 2xl:gap-6!"
                 >
