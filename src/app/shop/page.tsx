@@ -40,6 +40,7 @@ export default function ShopPage() {
     pageSize: PAGE_SIZE,
     categoryIds: categoryId ? categoryId : undefined,
     searchTerm: debouncedSearch || undefined,
+    status: "Published",
   });
 
   const products = productsResponse?.data ?? [];
