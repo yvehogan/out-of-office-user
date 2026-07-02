@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import PhoneInput from "@/components/phone-input";
 import { useCreateOrder } from "@/hooks/use-checkout";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/toast";
 import { clearCartKey } from "@/lib/cart-key";
 import { lagosCities, nigerianStates } from "@/lib/data/countries-data";
@@ -105,7 +105,7 @@ type CheckoutFormProps = {
 };
 
 export default function CheckoutForm({ cartId }: CheckoutFormProps) {
-  // const router = useRouter();
+  const router = useRouter();
   const [delivery, setDelivery] = useState<DeliveryType>("pickup");
   const [form, setForm] = useState<FormData>({
     fullName: "",
@@ -205,17 +205,15 @@ export default function CheckoutForm({ cartId }: CheckoutFormProps) {
       clearCartKey();
 
       // Success toast is automatically shown by axios interceptor
-      toast.success("Order placed successfully!");
+      // toast.success("Order placed successfully!");
 
       // Redirect to success page or payment page
       // If your API returns a payment URL, redirect there
       if (response.data && "paymentUrl" in response.data) {
         window.location.href = (response.data as any).paymentUrl;
+      } else {
+        router.push(`/checkout/?orderId=${response.data.id}`);
       }
-
-      // else {
-      //   router.push(`/checkout/?orderId=${response.data.id}`);
-      // }
     } catch (error: any) {
       console.error("Checkout error:", error);
 
