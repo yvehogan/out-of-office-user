@@ -12,7 +12,7 @@ const appUrl = "https://www.theoutofoffice.org/";
 const appTitle = "Out of Office";
 const appDescription =
   "Out of Office is not a self help book about work or career. It is a playbook for navigating setbacks, difficult transitions, thriving in tough environments and the courage to reinvent yourself - so you can step into the most meaningful season of your life.";
-const appOgImage = "/screenshots/beyond-podcast.webp";
+const appOgImage = "/landscape.jpeg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
