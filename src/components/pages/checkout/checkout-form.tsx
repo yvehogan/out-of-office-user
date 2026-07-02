@@ -183,8 +183,7 @@ export default function CheckoutForm({ cartId }: CheckoutFormProps) {
         customerEmail: form.email,
         customerPhone: form.phone,
         deliveryType: delivery,
-        // redirectUrl: `${window.location.origin}/checkout/success`,
-        redirectUrl: `https://out-of-office-coral.vercel.app/insights`,
+        redirectUrl: `${window.location.origin}/checkout/order-status`,
 
         ...(delivery === "doorstep" && {
           shippingAddress: form.shippingAddress,

@@ -33,6 +33,10 @@ export const ENDPOINTS = {
   ORDER_SUMMARY: (id: string) => `/orders/${id}` as const,
   CHECKOUT_ORDER: (cartKey: string) => `/checkout/${cartKey}` as const,
 
+  // PAYMENT VALIDATION
+  PAYMENT_STATUS: (paymentReference: string) =>
+    `/payments/alatpay/status/${paymentReference}` as const,
+
   // ── Waitlist ──
   WAITLIST: "/waitlist/join",
 } as const;

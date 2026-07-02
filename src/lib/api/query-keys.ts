@@ -30,6 +30,9 @@ export const queryKeys = {
   waitlist: {
     all: ["waitlist"] as const,
   },
+  payment: {
+    all: ["payment"] as const,
+  },
 
   events: {
     all: ["events"] as const,

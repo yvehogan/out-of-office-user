@@ -209,4 +209,10 @@ export interface WaitlistPayload {
   phoneNumber: string;
 }
 
-export interface WaitListResponse {}
+export interface PaymentStatus {
+  paymentReference: string;
+  status: string;
+  message: string;
+  amount: string;
+  currency: string;
+}

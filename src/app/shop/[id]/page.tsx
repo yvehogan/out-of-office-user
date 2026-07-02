@@ -287,7 +287,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
                       <div className="flex items-center mt-6 gap-6 py-2 px-4 rounded-[40px] border border-brand-green2 w-fit">
                         <span className="text-brand-purple2 font-semibold text-xl sm:text-2xl">
-                          {displayPrice?.toLocaleString()}
+                          ₦{displayPrice?.toLocaleString()}
                         </span>
 
                         <button

@@ -1,51 +1,79 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import successIcon from "@/assets/images/Checkmark.svg";
-// import errorIcon from "@/assets/images/Error.svg";
+import errorIcon from "@/assets/images/Error.svg";
 import Image from "next/image";
+import { usePayment } from "@/hooks/use-payment";
+
+const successfulStatuses = new Set([
+  "success",
+  "successful",
+  "paid",
+  "completed",
+  "complete",
+]);
 
 const CheckoutSuccessContent = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const orderId = searchParams.get("orderId");
-  const [mounted, setMounted] = useState(false);
+  const paymentReference =
+    searchParams.get("paymentReference") ??
+    searchParams.get("reference") ??
+    searchParams.get("payment_reference");
+  const { data, isLoading, isError } = usePayment(
+    paymentReference ?? undefined,
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const statusValue = data?.data?.status?.toLowerCase() ?? "";
+  const isPaymentSuccessful = successfulStatuses.has(statusValue);
+  const isMissingReference = !paymentReference;
+  const hasVerificationFailure = isMissingReference || isError;
+  const shouldShowErrorState = hasVerificationFailure || !isPaymentSuccessful;
 
-  if (!mounted) return null;
+  if (isLoading && !isMissingReference) {
+    return (
+      <div className="flex flex-col items-center bg-white px-4">
+        <div className="max-w-lg flex flex-col justify-center items-center w-full text-center space-y-4 animate-slide-up">
+          <div className="w-8 h-8 border-2 border-brand-purple border-t-transparent rounded-full animate-spin" />
+          <div className="space-y-2 text-brand-purple2">
+            <h1 className="font-cormorant font-bold text-2xl">
+              Confirming Payment...
+            </h1>
+            <p className="text-sm font-unageo">
+              Please wait while we verify your payment status.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const title = shouldShowErrorState ? "Payment Failed" : "Order Confirmed!";
+  const description = shouldShowErrorState
+    ? data?.data?.message ||
+      "Unfortunately, your payment could not be completed and your order was not placed. To continue shopping, please return to the store and start a new order."
+    : data?.data?.message ||
+      "A confirmation email containing your order details has been sent to your inbox. We'll keep you updated every step of the way.";
 
   return (
     <div className="flex flex-col items-center  bg-white px-4">
       <div className="max-w-lg flex flex-col justify-center items-center w-full text-center space-y-4 animate-slide-up">
-        {/* Success Icon */}
-        <Image src={successIcon} alt="success" />
+        <Image
+          src={shouldShowErrorState ? errorIcon : successIcon}
+          alt={shouldShowErrorState ? "error" : "success"}
+        />
 
-        {/* Success Message */}
         <div className="space-y-4 text-brand-purple2 ">
-          <h1 className="font-cormorant font-bold text-2xl">
-            Order Confirmed!
-          </h1>
-          <p className="text-sm font-unageo">
-            A confirmation email containing your order details has been sent to
-            your inbox. We'll keep you updated every step of the way.
-          </p>
+          <h1 className="font-cormorant font-bold text-2xl">{title}</h1>
+          <p className="text-sm font-unageo">{description}</p>
+          {paymentReference && (
+            <p className="text-xs text-brand-purple2/70">
+              Reference: {paymentReference}
+            </p>
+          )}
         </div>
-
-        {/* Error  */}
-        {/* <Image src={errorIcon} alt="error" />
-        <div className="space-y-4 text-brand-purple2 ">
-          <h1 className="font-cormorant font-bold text-2xl">Payment Failed</h1>
-          <p className="text-sm font-unageo">
-            Unfortunately, your payment could not be completed and your order
-            was not placed. To continue shopping, please return to the store and
-            start a new order.
-          </p>
-        </div> */}
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
