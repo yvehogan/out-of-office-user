@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localfont from "next/font/local";
-import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import Providers from "@/app/providers";
@@ -12,7 +12,7 @@ const appUrl = "https://www.theoutofoffice.org/";
 const appTitle = "Out of Office";
 const appDescription =
   "Out of Office is not a self help book about work or career. It is a playbook for navigating setbacks, difficult transitions, thriving in tough environments and the courage to reinvent yourself - so you can step into the most meaningful season of your life.";
-const appOgImage = "/screenshots/beyond-newsletter.webp";
+const appOgImage = "/screenshots/beyond-podcast.webp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
