@@ -8,9 +8,40 @@ import Providers from "@/app/providers";
 
 // const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
+const appUrl = "https://www.theoutofoffice.org/";
+const appTitle = "Out of Office";
+const appDescription =
+  "Out of Office is not a self help book about work or career. It is a playbook for navigating setbacks, difficult transitions, thriving in tough environments and the courage to reinvent yourself - so you can step into the most meaningful season of your life.";
+const appOgImage = "/screenshots/beyond-newsletter.webp";
+
 export const metadata: Metadata = {
-  title: "Out of Office",
-  description: "Out of Office application",
+  metadataBase: new URL(appUrl),
+  title: {
+    default: appTitle,
+    template: `%s | ${appTitle}`,
+  },
+  description: appDescription,
+  openGraph: {
+    title: appTitle,
+    description: appDescription,
+    url: appUrl,
+    siteName: appTitle,
+    type: "website",
+    images: [
+      {
+        url: appOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Out of Office",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: appTitle,
+    description: appDescription,
+    images: [appOgImage],
+  },
 };
 
 const unageo = localfont({
