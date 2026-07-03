@@ -44,7 +44,7 @@ export function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className={`w-full h-12.5 p-4 cursor-pointer rounded-[40px] border bg-white text-sm text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none transition-all ${
+        className={`w-full h-12.5 p-4 rounded-[40px] border bg-white text-sm text-[#1A1A1A] placeholder-[#9CA3AF] focus:outline-none transition-all ${
           error
             ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
             : "border-[#667085] focus:border-brand-purple focus:ring-2 focus:ring-brand-purple hover:border-brand-purple hover:ring-2 hover:ring-brand-purple"
@@ -311,14 +311,22 @@ export default function CheckoutForm({ cartId }: CheckoutFormProps) {
               value={form.landmark}
               onChange={set("landmark")}
             />
-            <SelectField
+            <InputField
+              placeholder="State"
+              value={form.state}
+              onChange={set("state")}
+              required
+              error={errors.state}
+            />
+
+            {/* <SelectField
               placeholder="State"
               value={form.state}
               onChange={set("state")}
               options={nigerianStates}
               required
               error={errors.state}
-            />
+            /> */}
             <SelectField
               placeholder="City"
               value={form.city}

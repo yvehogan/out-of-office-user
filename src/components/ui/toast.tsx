@@ -137,7 +137,7 @@ function ToastItem({
   // Icons and Brand Color Mapping
   const iconMap = {
     success: (
-      <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: "#00CC8D" }} />
+      <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: "#5700FF" }} />
     ),
     error: (
       <AlertCircle className="w-5 h-5 shrink-0" style={{ color: "#FF0000" }} />
@@ -153,7 +153,7 @@ function ToastItem({
 
   // Styling helper for subtle left color indicator
   const borderMap = {
-    success: "border-l-4 border-l-[#00CC8D]",
+    success: "border-l-4 border-l-[#5700FF]",
     error: "border-l-4 border-l-[#FF0000]",
     info: "border-l-4 border-l-[#5700FF]",
     warning: "border-l-4 border-l-[#eab308]",
@@ -161,7 +161,7 @@ function ToastItem({
 
   // Progress Bar background color mapping
   const progressBgMap = {
-    success: "bg-[#00CC8D]",
+    success: "bg-[#5700FF]",
     error: "bg-[#FF0000]",
     info: "bg-[#5700FF]",
     warning: "bg-[#eab308]",
