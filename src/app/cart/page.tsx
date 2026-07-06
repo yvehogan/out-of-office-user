@@ -134,7 +134,7 @@ const CartPageContent = () => {
                         </span>
                         <Link
                           href={`/checkout`}
-                          className="relative  text-sm overflow-hidden bg-brand-green cursor-pointer sm:text-base text-brand-navy h-12.25 font-medium px-7 sm:px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
+                          className="relative  text-sm overflow-hidden bg-brand-green cursor-pointer sm:text-base text-brand-navy h-12.25 font-medium px-8 sm:px-10 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
                         >
                           <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
                           <span className="relative font-medium z-10 group-hover:text-white transition-colors duration-300">
