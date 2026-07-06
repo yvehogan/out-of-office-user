@@ -153,7 +153,7 @@ const CartPageContent = () => {
         <hr className="mt-24 border-t" />
         <div className="mt-6 ">
           {cart.length > 0 ? (
-            <h3 className="font-cormorant font-semibold text-brand-purple2 text-[40px] mb-6">
+            <h3 className="font-cormorant font-semibold text-brand-purple2 text-2xl sm:text-[40px] mb-6">
               Others who pre-ordered also{" "}
               <span className="text-brand-purple">grabbed this</span>
             </h3>
