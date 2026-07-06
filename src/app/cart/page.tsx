@@ -128,8 +128,8 @@ const CartPageContent = () => {
 
                   {cart.length > 0 && (
                     <div className="flex sm:justify-end font-unageo ">
-                      <div className="w-full flex justify-between items-center whitespace-nowrap mt-20! gap-4 sm:gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 sm:w-fit">
-                        <span className="text-brand-purple2 font-semibold text-lg sm:text-2xl">
+                      <div className="w-full flex justify-between items-center whitespace-nowrap mt-20! gap-3 sm:gap-6 py-2 px-3 rounded-[40px] border border-brand-green2 sm:w-fit">
+                        <span className="text-brand-purple2 font-semibold text-base sm:text-2xl">
                           Total: {formatCurrency(total)}
                         </span>
                         <Link
