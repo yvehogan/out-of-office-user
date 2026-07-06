@@ -311,27 +311,35 @@ export default function CheckoutForm({ cartId }: CheckoutFormProps) {
               value={form.landmark}
               onChange={set("landmark")}
             />
-            <InputField
+            {/* <InputField
               placeholder="State"
               value={form.state}
               onChange={set("state")}
               required
               error={errors.state}
-            />
+            /> */}
 
-            {/* <SelectField
+            <SelectField
               placeholder="State"
               value={form.state}
               onChange={set("state")}
               options={nigerianStates}
               required
               error={errors.state}
-            /> */}
-            <SelectField
+            />
+            {/* <SelectField
               placeholder="City"
               value={form.city}
               onChange={set("city")}
               options={lagosCities}
+              required
+              error={errors.city}
+            /> */}
+
+            <InputField
+              placeholder="City"
+              value={form.city}
+              onChange={set("city")}
               required
               error={errors.city}
             />
