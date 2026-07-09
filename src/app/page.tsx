@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import CountryConfirmationModal from "@/components/Modal/country-confirmationModal";
 import ReviewCard from "@/components/pages/home/review-card";
+import { useProducts } from "@/hooks/use-products";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLElement>(null);
@@ -25,6 +26,19 @@ export default function Home() {
   const [isDesktop, setIsDesktop] = useState(false);
   const insightRef = useRef<HTMLImageElement>(null);
   const [openModal, setOpenModal] = useState(false);
+
+  const {
+    data: productsResponse,
+    isLoading,
+    error,
+  } = useProducts({ status: "Published" });
+
+  const products = productsResponse?.data ?? [];
+
+  const product1 = products[0] ?? null;
+  const product2 = products[1] ?? null;
+  const product3 = products[2] ?? null;
+  const product4 = products[3] ?? null;
 
   useEffect(() => {
     const check = () => {
@@ -1319,13 +1333,16 @@ export default function Home() {
                     })}
                 className="relative z-1"
               >
-                <ShopCard
-                  title="Out of Office Shirt"
-                  image={"shirt"}
-                  bgColor="bg-[#FFEEF5]"
-                  features={["4 Colours", "Sizes: S, M, L, XL"]}
-                  imagePosition="-bottom-2 -right-4"
-                />
+                {product1 !== null && product1 !== undefined && (
+                  <ShopCard
+                    product={product1}
+                    title={product1?.name ?? "T-Shirt"}
+                    image={product1?.primaryImageUrl ?? "shirt"}
+                    // bgColor="bg-[#FFEEF5]"
+                    // features={["4 Colours", "Sizes: S, M, L, XL"]}
+                    imagePosition="-bottom-2 -right-4"
+                  />
+                )}
               </motion.div>
               <motion.div
                 {...(isDesktop
@@ -1338,14 +1355,17 @@ export default function Home() {
                     })}
                 className="relative z-2"
               >
-                <ShopCard
-                  title="Hoodie"
-                  image="hoodie"
-                  bgColor="bg-[#CCF4E9]"
-                  features={["3 Colours", "Sizes: S, M, L, XL"]}
-                  price="₦32,000"
-                  imagePosition="-bottom-4 -right-8"
-                />
+                {product2 !== null && product2 !== undefined && (
+                  <ShopCard
+                    product={product2}
+                    title={product2?.name ?? "Book"}
+                    image={product2?.primaryImageUrl ?? "journal"}
+                    // bgColor="bg-[#CCF4E9]"
+                    // features={["3 Colours", "Sizes: S, M, L, XL"]}
+                    // price="₦32,000"
+                    imagePosition="-bottom-4 -right-8"
+                  />
+                )}
               </motion.div>
               <motion.div
                 {...(isDesktop
@@ -1358,13 +1378,16 @@ export default function Home() {
                     })}
                 className="relative z-3"
               >
-                <ShopCard
-                  title="Cap"
-                  image="cap"
-                  bgColor="bg-[#DECCFF]"
-                  features={["4 Colours", "Sizes: S, M, L, XL"]}
-                  imagePosition="-bottom-3 -right-3"
-                />
+                {product3 !== null && product3 !== undefined && (
+                  <ShopCard
+                    product={product3}
+                    title={product3?.name ?? "Cap"}
+                    image={product3?.primaryImageUrl ?? "cap"}
+                    // bgColor="bg-[#DECCFF]"
+                    // features={["4 Colours", "Sizes: S, M, L, XL"]}
+                    imagePosition="-bottom-3 -right-3"
+                  />
+                )}
               </motion.div>
               <motion.div
                 {...(isDesktop
@@ -1377,13 +1400,16 @@ export default function Home() {
                     })}
                 className="relative z-4"
               >
-                <ShopCard
-                  title="Journal"
-                  image="journal"
-                  bgColor="bg-[#FEEECB]"
-                  features={["4 Colours", "1,500 Pages"]}
-                  imagePosition="-bottom-2 -right-4"
-                />
+                {product4 !== null && product4 !== undefined && (
+                  <ShopCard
+                    product={product4}
+                    title={product4?.name ?? "Journal"}
+                    image={product4?.primaryImageUrl ?? "journal"}
+                    // bgColor="bg-[#FEEECB]"
+                    // features={["4 Colours", "1,500 Pages"]}
+                    imagePosition="-bottom-2 -right-4"
+                  />
+                )}
               </motion.div>
             </div>
           </section>

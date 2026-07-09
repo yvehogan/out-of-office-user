@@ -5,15 +5,18 @@ import journal from "@/assets/images/journal.png";
 import cap from "@/assets/images/cap.png";
 import hoodie from "@/assets/images/hoodie.png";
 import type { StaticImageData } from "next/image";
+import { ApiProduct } from "@/lib/types";
+import { formatNaira } from "../shop/product-card";
 
 interface ShopCardProps {
   title: string;
   image: string;
-  bgColor: string;
-  features?: string[];
-  price?: string;
+  // bgColor: string;
+  // features?: string[];
+  // price?: string;
   imagePosition: string;
   xlImagePosition?: string;
+  product: ApiProduct;
 }
 
 const imageSrcByKey: Record<string, StaticImageData> = {
@@ -26,13 +29,21 @@ const imageSrcByKey: Record<string, StaticImageData> = {
 export function ShopCard({
   title,
   image,
-  features = [],
-  bgColor,
-  price = "₦24,000",
-  imagePosition,
-  xlImagePosition,
+  // features = [],
+  // bgColor,
+  // price = "₦24,000",
+  // imagePosition,
+  // xlImagePosition,
+  product,
 }: ShopCardProps) {
   const imageSrc = imageSrcByKey[image] ?? image;
+
+  const displayPrice =
+    product?.type === "Variant" && product?.variantCount > 0
+      ? product?.minVariantPrice
+      : product?.price;
+
+  const isOutOfStock = product?.stockStatus === "OutOfStock";
 
   return (
     <>
@@ -60,7 +71,7 @@ export function ShopCard({
         // style={{ boxShadow: "0px 4px 17.6px 0px #0000001A" }}
         >
           {/* Image area — square, white background */}
-          <div className="relative w-full aspect-4/3 bg-white flex items-center justify-center  overflow-hidden">
+          <div className="relative w-full aspect-5/3 bg-white flex items-center justify-center  overflow-hidden">
             <Image
               src={imageSrc}
               alt={title}
@@ -76,7 +87,7 @@ export function ShopCard({
               {title}
             </h3>
 
-            {features.length > 0 && (
+            {/* {features.length > 0 && (
               <div className="flex flex-wrap items-center justify-center gap-2">
                 {features.map((feature) => (
                   <span
@@ -87,12 +98,38 @@ export function ShopCard({
                   </span>
                 ))}
               </div>
-            )}
+            )} */}
+
+            {/* Meta tags */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="text-brand-purple2 bg-black/5 py-1 px-2 rounded-[40px] text-base">
+                {product?.categoryName}
+              </span>
+
+              {product?.catalogueProperties
+                ?.slice()
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+                .map((prop) => (
+                  <span
+                    key={prop.label}
+                    className="text-brand-purple2 bg-black/5 py-1 px-2 rounded-[40px] text-base"
+                  >
+                    {prop.count > 0
+                      ? `${prop.count} ${prop.label}`
+                      : `${prop.value} ${prop.label}`}
+                  </span>
+                ))}
+              {product?.stockStatus === "OutOfStock" && (
+                <span className="text-red-500 bg-red-50 py-1 px-2 rounded-[40px] text-base">
+                  Out of Stock
+                </span>
+              )}
+            </div>
 
             {/* Price + CTA */}
             <div className="flex items-center mt-6 gap-6 py-1 px-3 pr-1.5 rounded-[40px] border border-brand-green2 w-fit">
               <span className="text-brand-purple2 font-semibold text-[17px]">
-                {price}
+                {formatNaira(displayPrice)}
               </span>
               <Link
                 href={`/shop`}
