@@ -131,6 +131,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     );
   };
 
+  console.log(sortedImages, "sortedImages");
+
   return (
     <>
       <div className="min-h-screen flex flex-col bg-white animate-slide-right">
@@ -148,6 +150,28 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 <div className="flex flex-col md:flex-row  gap-6  gap-x-14 justify-between">
                   <div className="w-full md:w-1/2 ">
                     <article className="">
+                      <nav
+                        aria-label="Breadcrumb"
+                        className="mx-24 -mt-10 mb-10 flex sm:hidden items-center  gap-1 text-sm text-gray-400"
+                      >
+                        <Link
+                          href="/"
+                          className="hover:text-brand-navy transition-colors text-black font-semibold text-base"
+                        >
+                          Home
+                        </Link>
+                        <ChevronRight className="w-3.5 h-3.5 text-black font-bold" />
+                        <Link
+                          href="/shop"
+                          className="hover:text-brand-navy transition-colors text-black font-semibold text-base"
+                        >
+                          Shop
+                        </Link>
+                        <ChevronRight className="w-3.5 h-3.5 text-black font-bold" />
+                        <span className="text-brand-purple font-semibold text-base">
+                          Product
+                        </span>
+                      </nav>
                       {/* Main Image */}
                       <div className="relative w-full aspect-3/3 overflow-hidden ">
                         {mainImage && (
@@ -163,7 +187,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       </div>
 
                       {/* Thumbnails */}
-                      <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-6 mt-6 ">
+                      <div className="flex  flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 mt-6 ">
                         {sortedImages.map((img, i) => (
                           <button
                             key={img.id}
@@ -191,7 +215,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     {/* Breadcrumb */}
                     <nav
                       aria-label="Breadcrumb"
-                      className="flex items-center  gap-1 text-sm text-gray-400"
+                      className="sm:flex hidden items-center  gap-1 text-sm text-gray-400"
                     >
                       <Link
                         href="/"
