@@ -342,9 +342,14 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               <hr className="mt-24 border-t" />
               {/* other products */}
               <div className="mt-6 ">
-                <h3 className="font-cormorant font-semibold text-black text-[40px] mb-6">
+                {/* <h3 className="font-cormorant font-semibold text-black text-[40px] mb-6">
                   Complete the{" "}
                   <span className="text-brand-purple">experience</span>
+                </h3> */}
+
+                <h3 className="font-cormorant font-semibold text-black text-[40px] mb-6">
+                  Others who ordered also{" "}
+                  <span className="text-brand-purple">grabbed this</span>
                 </h3>
 
                 {productsLoading ? (

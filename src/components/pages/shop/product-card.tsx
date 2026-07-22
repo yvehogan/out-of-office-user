@@ -85,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
             >
               <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>
               <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                Pre-order Now
+                Buy Now
               </span>
             </Link>
           )}

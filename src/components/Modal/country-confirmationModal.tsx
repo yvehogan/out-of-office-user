@@ -43,7 +43,13 @@ export default function CountryConfirmationModal({
 
         <div className="w-full flex items-center mb-5 justify-center gap-5">
           <button
-            onClick={() => navigate.push("/waitlist")}
+            onClick={() => {
+              window.open(
+                "https://www.amazon.com/dp/9786343603?spcref=PRINT_LISTING",
+                "_blank",
+              );
+              onDone();
+            }}
             className="relative sm:w-55 border border-[#00CC8D]  w-full  overflow-hidden  cursor-pointer font-sans text-base text-brand-navy h-16.25 font-medium px-11 py-5 rounded-[47px] active:scale-95 transition-all  flex items-center justify-center group"
           >
             <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out rounded-[47px]"></span>

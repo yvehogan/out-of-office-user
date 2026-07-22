@@ -381,8 +381,8 @@ export default function Home() {
                     fill="black"
                   />
                 </svg>
-                <div className="font-serif text-[13px] font-bold text-brand-green2 xl:text-[14px] 2xl:text-[16px]! uppercase tracking-wider whitespace-nowrap">
-                  NEW BOOK AVAILABLE FOR PRE-ORDER
+                <div className="font-serif text-[18px] font-bold text-brand-green2 xl:text-[24px] 2xl:text-[24px]! uppercase tracking-wider whitespace-nowrap">
+                  New Book Now Available
                 </div>
               </motion.div>
 
@@ -435,7 +435,7 @@ export default function Home() {
                 >
                   <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
                   <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                    Pre-order Now
+                    Buy Out Of Office
                   </span>
                 </Button>
               </motion.div>
@@ -734,7 +734,7 @@ export default function Home() {
                 >
                   <span className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-[47px]"></span>
                   <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                    Pre-order Now
+                    Buy Out Of Office
                   </span>
                 </Button>
               </motion.div>
@@ -1797,7 +1797,7 @@ export default function Home() {
                       href="tel:+2347037373284"
                       className="font-serif text-[16px] font-medium text-[#5700FF] no-underline transition-colors duration-300 ease hover:text-brand-purple2 2xl:text-[24px]!"
                     >
-                      +234 703 737 3284
+                      +234 810 391 0919
                     </a>
                   </div>
                 </motion.div>
